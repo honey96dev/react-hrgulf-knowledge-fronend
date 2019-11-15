@@ -1,0 +1,233 @@
+@import "./consts";
+
+@-webkit-keyframes autofill {
+  to {
+    //background: transparent;
+    //background: linear-gradient(to bottom, #ced4da, #ced4da);
+  }
+}
+
+@keyframes autofill {
+  to {
+    //background: transparent;
+    //background: linear-gradient(to bottom, #4285f4, #4285f4), linear-gradient(to bottom, #ced4da, #ced4da);
+  }
+}
+
+input:-webkit-autofill {
+  -webkit-animation-name: autofill;
+  animation-name: autofill;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.margin-auto-x {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.text-align-left {
+  text-align: left;
+}
+
+.text-align-center {
+  text-align: center;
+}
+
+.text-align-right {
+  text-align: right;
+}
+
+.text-transform-none {
+  text-transform: none;
+}
+
+.full-width {
+  width: 100%;
+}
+
+button i, button div.spinner-grow, button div.spinner-border {
+  margin-left: $button-icon-margin;
+  margin-right: $button-icon-margin;
+}
+
+.screen-breakpoint {
+  width: $screen-breakpoint;
+}
+
+@media (max-width: $screen-breakpoint) {
+  .screen-breakpoint{
+    width: 100%;
+  }
+}
+
+.navbar-toggler-icon {
+  color: $gray !important;
+}
+
+.round-border {
+  border-radius: $radius;
+  -webkit-border-radius: $radius;
+}
+
+.round-border-top {
+  border-top-left-radius: $radius;
+  -webkit-border-top-left-radius: $radius;
+  border-top-right-radius: $radius;
+  -webkit-border-top-right-radius: $radius;
+}
+
+.round-border-left {
+  border-top-left-radius: $radius;
+  -webkit-border-top-left-radius: $radius;
+  border-bottom-left-radius: $radius;
+  -webkit-border-bottom-left-radius: $radius;
+}
+
+.round-border-right {
+  border-top-right-radius: $radius;
+  -webkit-border-top-right-radius: $radius;
+  border-bottom-right-radius: $radius;
+  -webkit-border-bottom-right-radius: $radius;
+}
+
+.round-border-bottom {
+  border-bottom-left-radius: $radius;
+  -webkit-border-bottom-left-radius: $radius;
+  border-bottom-right-radius: $radius;
+  -webkit-border-bottom-right-radius: $radius;
+}
+
+.text-color-white {
+  color: $white;
+}
+
+.background-color-white {
+  background-color: $white;
+}
+
+.background-color-semi-white {
+  background-color: $semi-white;
+}
+
+.label {
+  color: $input-label-color;
+}
+
+.form-check {
+  padding-left: unset;
+}
+
+.select-wrapper input.select-dropdown {
+  margin-bottom: 0 !important;
+}
+
+.date-picker div:first-child {
+  width: 100%;
+}
+
+.md-form.input-group .input-group-text.md-addon {
+  font-weight: unset !important;
+}
+
+.valid-field {
+  width: 100%;
+  margin-top: .25rem;
+  font-size: 80%;
+  color: #28a745;
+}
+
+.invalid-field {
+  width: 100%;
+  margin-top: .25rem;
+  font-size: 80%;
+  color: #dc3545;
+}
+
+.fade-transition-enter {
+  opacity: 0.01;
+}
+
+.fade-transition-enter.fade-transition-enter-active {
+  opacity: 1;
+  transition: opacity $transition-time ease-in;
+}
+
+.fade-transition-leave.fade-transition-leave-active {
+  opacity: 1;
+}
+
+.fade-transition-leave.fade-transition-leave-active {
+  opacity: 0.01;
+  transition: opacity $transition-time ease-in;
+}
+
+
+
+.ltr-force {
+  direction: ltr !important;
+  text-align: left !important;
+}
+
+.rtl-content {
+  direction: rtl;
+}
+
+.rtl-content .md-form label, .rtl-content .error-message {
+  left: unset;
+  right: 0;
+}
+
+.rtl-content h1, .rtl-content h2, .rtl-content h3, .rtl-content h4, .rtl-content h5, .rtl-content h6 {
+  //text-align: right;
+}
+
+.rtl-content .alert-dismissible {
+  padding-left: 4em;
+  padding-right: 1.25rem;
+  text-align: right;
+}
+
+.rtl-content .alert-dismissible .close {
+  left: 0;
+  right: unset;
+}
+
+.rtl-content .my-modal-close {
+  left: 0 !important;
+  right: unset !important;
+}
+
+.rtl-content .mdb-feed .news .excerpt {
+  margin: 0 1.2rem 1.2rem 0 !important;
+  text-align: right !important;
+}
+
+.rtl-content .mdb-feed .news .excerpt .brief .date {
+  padding-left: unset !important;
+  padding-right: 0.7rem !important;
+}
+
+.rtl-content .invalid-field, .rtl-content .valid-field {
+  text-align: right;
+}
+
+.rtl-content .select-wrapper > label.mdb-main-label {
+  text-align: right;
+  left: unset !important;
+  right: 0 !important;
+}
+
+.rtl-content .select-wrapper span.caret {
+  position: absolute;
+  left: 0;
+  right: unset !important;
+}
+
+.rtl-content .dropdown-content {
+  padding-inline-start: unset !important;
+}
+
+.rtl-content .dropdown-content li {
+  text-align: right;
+}
