@@ -38,6 +38,11 @@ export default {
       MALE: 'الذكر',
       FEMALE: 'أنثى',
     },
+    LANGUAGE: {
+      LANGUAGE: 'لغة',
+      ENGLISH: 'English',
+      ARABIC: 'عربى',
+    },
   },
   AUTH: {
     EMAIL: "البريد الإلكتروني",

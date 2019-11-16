@@ -5,6 +5,7 @@ import {initReactI18next} from "react-i18next";
 
 import en from "./i18n/en";
 import ar from "./i18n/ar";
+import {setHeader} from "../apis/fetch";
 
 const fallbackLng = ["en"];
 const availableLanguages = ["en", "ar"];
@@ -33,5 +34,11 @@ i18n
   });
 
 // i18n.changeLanguage("ar");
+export const changeLanguage = lang => {
+  // const newLang = lang === "en" ? "ar" : "en";
+  const newLang = lang;
+  i18n.changeLanguage(newLang);
+  setHeader({lang: newLang});
+};
 
 export default i18n;

@@ -42,14 +42,14 @@ export default (props) => {
     event.preventDefault();
     try {
       const params = {email, password};
-      dispatch(auth.request(params));
+      dispatch(auth.requestSignIn(params));
       setLoading(true);
       let res = await UserService.signIn(params);
       setLoading(false);
       if (res.result === SUCCESS) {
-        dispatch(auth.success(res.data));
+        dispatch(auth.successSignIn(res.data));
       } else {
-        dispatch(auth.failure(res.message));
+        dispatch(auth.failureSignIn(res.message));
         setAlert({
           show: true,
           color: ALERT_DANGER,
@@ -58,7 +58,7 @@ export default (props) => {
       }
     } catch (err) {
       setLoading(false);
-      dispatch(auth.failure(UNKNOWN_SERVER_ERROR));
+      dispatch(auth.failureSignIn(UNKNOWN_SERVER_ERROR));
       setAlert({
         show: true,
         color: ALERT_DANGER,

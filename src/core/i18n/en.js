@@ -38,6 +38,11 @@ export default {
       MALE: 'Male',
       FEMALE: 'Female',
     },
+    LANGUAGE: {
+      LANGUAGE: 'Language',
+      ENGLISH: 'English',
+      ARABIC: 'عربى',
+    },
   },
   AUTH: {
     EMAIL: "Email",
@@ -51,7 +56,7 @@ export default {
     COMPANY: "Company",
     COUNTRY: "Country",
     CITY: "City",
-    PHONE: "Phone",
+    PHONE: "Phone Number",
     PASSWORD: "Password",
     PASSWORD2: "Confirm Password",
     SIGN_IN: "Sign in",

@@ -1,3 +1,4 @@
+import libphonenumber from 'google-libphonenumber';
 import {USERNAME_MAX_LENGTH} from "./globals";
 
 export default {
@@ -9,4 +10,13 @@ export default {
     const re = /^[a-zA-Z_][0-9a-zA-Z_.-]+$/;
     return value.length <= USERNAME_MAX_LENGTH && re.test(String(value).toLowerCase());
   },
+  isPhoneNumber: (value) => {
+    const phoneUtil = libphonenumber.PhoneNumberUtil.getInstance();
+    try {
+      const number = phoneUtil.parseAndKeepRawInput(value);
+      return phoneUtil.isValidNumber(number);
+    } catch (e) {
+      return false;
+    }
+  }
 }
