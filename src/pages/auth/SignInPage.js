@@ -1,23 +1,23 @@
 import React, {useEffect, useState} from "react";
 import {useTranslation} from "react-i18next";
 import {Link} from "react-router-dom";
-import {MDBAlert, MDBBtn, MDBCard, MDBCardBody, MDBCol, MDBIcon, MDBInput, MDBModalFooter, MDBRow} from "mdbreact";
+import {MDBAlert, MDBBtn, MDBCard, MDBCardBody, MDBIcon, MDBInput, MDBModalFooter} from "mdbreact";
 import {useDispatch, useSelector} from "react-redux";
 
 import auth from "actions/auth";
 import UserService from "services/UserService";
 import {
-  ALERT_LIFETIME,
+  ALERT_DANGER,
   DEFAULT_EMAIL,
   DEFAULT_PASSWORD,
   isDev,
   PASSWORD_MIN_LENGTH,
-  SUCCESS, TRANSITION_TIME,
+  SUCCESS,
+  TRANSITION_TIME,
   UNKNOWN_SERVER_ERROR
 } from "core/globals";
 import routes from "core/routes";
 import validators from "core/validators";
-import {ALERT_SUCCESS, ALERT_DANGER} from "core/globals";
 
 import "./SignInPage.scss";
 import {CSSTransition} from "react-transition-group";
@@ -42,7 +42,7 @@ export default (props) => {
     event.preventDefault();
     try {
       const params = {email, password};
-      dispatch(auth.requestSignIn(params));
+      dispatch(auth.requestSignIn({user: params}));
       setLoading(true);
       let res = await UserService.signIn(params);
       setLoading(false);

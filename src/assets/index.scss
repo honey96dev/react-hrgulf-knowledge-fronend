@@ -178,7 +178,7 @@ button i, button div.spinner-grow, button div.spinner-border {
   transition: opacity $transition-time ease-in;
 }
 
-.fade-transition-leave.fade-transition-leave-active {
+.fade-transition-leave {
   opacity: 1;
 }
 
@@ -195,169 +195,173 @@ button i, button div.spinner-grow, button div.spinner-border {
 
 .rtl-content {
   direction: rtl;
-}
-
-.rtl-content .md-form label, .rtl-content .error-message {
-  left: unset;
-  right: 0;
-}
-
-.rtl-content h1, .rtl-content h2, .rtl-content h3, .rtl-content h4, .rtl-content h5, .rtl-content h6 {
-  //text-align: right;
-}
-
-.rtl-content .alert {
-  text-align: right;
-}
-
-.rtl-content .alert .close {
-  position: absolute;
-  top: 0;
-  left: 0 !important;
-  right: unset !important;
-  padding: 0.75rem 1.25rem;
-}
-
-.rtl-content .my-modal-close {
-  left: 0 !important;
-  right: unset !important;
-}
-
-.rtl-content .mdb-feed .news .excerpt {
-  margin: 0 1.2rem 1.2rem 0 !important;
-  text-align: right !important;
-}
-
-.rtl-content .mdb-feed .news .excerpt .brief .date {
-  padding-left: unset !important;
-  padding-right: 0.7rem !important;
-}
-
-.rtl-content .invalid-field, .rtl-content .valid-field {
-  text-align: right;
-}
-
-.rtl-content .select-wrapper > label.mdb-main-label {
-  text-align: right;
-  left: unset !important;
-  right: 0 !important;
-}
-
-.rtl-content .select-wrapper span.caret {
-  position: absolute;
-  left: 0;
-  right: unset !important;
-}
-
-.rtl-content .dropdown-content {
-  padding-inline-start: unset !important;
-}
-
-.rtl-content .dropdown-content li {
-  text-align: right;
-}
-
-.rtl-content .ml-auto {
-  margin-left: unset !important;
-  margin-right: auto !important;
-}
-
-.rtl-content .ml-2 {
-  margin-left: unset !important;
-  margin-right: 0.5rem !important;
-}
-
-.rtl-content .ml-3 {
-  margin-left: unset !important;
-  margin-right: 1rem !important;
-}
-
-.rtl-content .mr-auto {
-  margin-left: auto !important;
-  margin-right: unset !important;
-}
-
-.rtl-content .mr-2 {
-  margin-left: 0.5rem !important;
-  margin-right: unset !important;
-}
-
-.rtl-content .mr-3 {
-  margin-left: 1rem !important;
-  margin-right: unset !important;
-}
-
-.rtl-content ul {
-  padding-inline-start: 0;
-  padding-inline-end: 0;
-}
-
-.rtl-content .navbar-brand {
-  margin-left: 1rem;
-  margin-right: 0;
-}
-
-.rtl-content .text-left {
-  text-align: right !important
-}
-
-.rtl-content .text-right {
-  text-align: left !important
-}
-
-@media (min-width: 576px) {
-  .rtl-content .text-sm-left {
-    text-align: right !important
+   .md-form label,  .error-message {
+    left: unset;
+    right: 0;
   }
-  .rtl-content .text-sm-right {
-    text-align: left !important
-  }
-}
 
-@media (min-width: 768px) {
-  .rtl-content .text-sm-left {
-    text-align: right !important
+   h1,  h2,  h3,  h4,  h5,  h6 {
+    //text-align: right;
   }
-  .rtl-content .text-md-right {
-    text-align: left !important
-  }
-}
 
-@media (min-width: 768px) {
-  .rtl-content .text-md-left {
-    text-align: right !important
+   .alert {
+    text-align: right;
   }
-  .rtl-content .text-md-right {
-    text-align: left !important
-  }
-}
 
-@media (min-width: 992px) {
-  .rtl-content .text-lg-left {
-    text-align: right !important
-  }
-  .rtl-content .text-lg-right {
-    text-align: left !important
-  }
-}
-
-@media (min-width: 1200px) {
-  .rtl-content .text-xl-left {
-    text-align: right !important
-  }
-  .rtl-content .text-xl-right {
-    text-align: left !important
-  }
-}
-
-.rtl-content .dropdown .dropdown-menu {
-  left: unset !important;
-  right: 0;
-}
-
-@media (min-width: 768px) {
-  .rtl-content .dropdown .dropdown-menu {
+   .alert .close {
+    position: absolute;
+    top: 0;
     left: 0 !important;
-    right: unset;
+    right: unset !important;
+    padding: 0.75rem 1.25rem;
+  }
+
+   .my-modal-close {
+    left: 0 !important;
+    right: unset !important;
+  }
+
+   .mdb-feed .news .excerpt {
+    margin: 0 1.2rem 1.2rem 0 !important;
+    text-align: right !important;
+  }
+
+   .mdb-feed .news .excerpt .brief .date {
+    padding-left: unset !important;
+    padding-right: 0.7rem !important;
+  }
+
+   .invalid-field,  .valid-field {
+    text-align: right;
+  }
+
+   .select-wrapper > label.mdb-main-label {
+    text-align: right;
+    left: unset !important;
+    right: 0 !important;
+  }
+
+   .select-wrapper span.caret {
+    position: absolute;
+    left: 0;
+    right: unset !important;
+  }
+
+   .dropdown-content {
+    padding-inline-start: unset !important;
+  }
+
+   .dropdown-content li {
+    text-align: right;
+  }
+
+   .ml-auto {
+    margin-left: unset !important;
+    margin-right: auto !important;
+  }
+
+   .ml-2 {
+    margin-left: unset !important;
+    margin-right: 0.5rem !important;
+  }
+
+   .ml-3 {
+    margin-left: unset !important;
+    margin-right: 1rem !important;
+  }
+
+   .mr-auto {
+    margin-left: auto !important;
+    margin-right: unset !important;
+  }
+
+   .mr-2 {
+    margin-left: 0.5rem !important;
+    margin-right: unset !important;
+  }
+
+   .mr-3 {
+    margin-left: 1rem !important;
+    margin-right: unset !important;
+  }
+
+   ul {
+    padding-inline-start: 0;
+    padding-inline-end: 0;
+  }
+
+   .navbar-brand {
+    margin-left: 1rem;
+    margin-right: 0;
+  }
+
+   .text-left {
+    text-align: right !important
+  }
+
+   .text-right {
+    text-align: left !important
+  }
+  
+  @media (min-width: 576px) {
+    .text-sm-left {
+      text-align: right !important
+    }
+    .text-sm-right {
+      text-align: left !important
+    }
+  }
+
+  @media (min-width: 768px) {
+    .text-sm-left {
+      text-align: right !important
+    }
+    .text-md-right {
+      text-align: left !important
+    }
+  }
+
+  @media (min-width: 768px) {
+    .text-md-left {
+      text-align: right !important
+    }
+    .text-md-right {
+      text-align: left !important
+    }
+  }
+
+  @media (min-width: 992px) {
+    .text-lg-left {
+      text-align: right !important
+    }
+    .text-lg-right {
+      text-align: left !important
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .text-xl-left {
+      text-align: right !important
+    }
+    .text-xl-right {
+      text-align: left !important
+    }
+  }
+
+  .dropdown .dropdown-menu {
+    left: unset !important;
+    right: 0;
+  }
+
+  @media (min-width: 768px) {
+    .dropdown .dropdown-menu {
+      left: 0 !important;
+      right: unset;
+    }
+  }
+
+  .dropdown-toggle::after {
+    margin-left: unset;
+    margin-right: .255em;
   }
 }

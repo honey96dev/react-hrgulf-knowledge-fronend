@@ -4,6 +4,7 @@ export const SUCCESS = "success";
 export const ERROR = "error";
 
 export const CURRENT_USER = "currentUser";
+export const TOKEN = 'token';
 
 export const GENDER_MALE = "M";
 export const GENDER_FEMALE = "F";

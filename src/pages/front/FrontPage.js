@@ -9,10 +9,10 @@ export default () => {
   return (
     <>
       <Navbar/>
-      <Loader />
       <div className="fixed-bottom">
         <Footer/>
       </div>
+      {/*<Loader />*/}
     </>
   );
 }

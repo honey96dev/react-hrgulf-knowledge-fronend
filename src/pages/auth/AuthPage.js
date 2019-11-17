@@ -1,8 +1,10 @@
 import React from "react";
 import {Route, Switch} from "react-router-dom";
 import {MDBCol, MDBContainer, MDBRow} from "mdbreact";
+
 import Navbar from "components/Navbar";
 import Footer from "components/Footer";
+import BackToTop from "components/BackToTop";
 import SignInPage from "./SignInPage";
 import SignUpPage from "./SignUpPage";
 
@@ -11,6 +13,7 @@ import "./AuthPage.scss";
 export default () => {
   return (
     <>
+      <BackToTop/>
       <Navbar/>
       <MDBContainer>
         <MDBRow className={"section mb-5"}>

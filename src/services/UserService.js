@@ -1,7 +1,7 @@
 import fetch, {setHeader} from "apis/fetch";
 import {POST} from "apis/constants";
 import apis from "core/apis";
-import {SUCCESS} from "../core/globals";
+import {CURRENT_USER, SUCCESS, TOKEN} from "../core/globals";
 
 export default {
   signIn: (params) => {
@@ -9,7 +9,7 @@ export default {
       fetch(POST, apis.auth.signIn, params)
         .then(res => {
           if (res.result === SUCCESS) {
-            setHeader({Authorization: `Bearer ${res.data.token}`})
+            setHeader({Authorization: `Bearer ${res.data.token}`});
           }
           resolve(res);
         }, err => {

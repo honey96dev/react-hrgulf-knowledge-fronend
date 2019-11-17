@@ -2,6 +2,7 @@ export default {
   NAME: "English",
   CODE: "en",
   DIRECTION: "ltr",
+  SITE_NAME: 'SITE_NAME',
   COMMON: {
     BUTTON: {
       HOME: "Home",
@@ -62,6 +63,7 @@ export default {
     SIGN_IN: "Sign in",
     SIGN_UP: "Sign up",
     SIGN_OUT: "Sign out",
+    MY_ACCOUNT: "My account",
     FORGOT_PASSWORD: "Forgot password?",
     ALREADY_REGISTERED: "Already registered?",
     NOT_REGISTERED: "Not registered?",

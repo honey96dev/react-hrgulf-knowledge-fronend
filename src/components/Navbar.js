@@ -15,21 +15,28 @@ import {
   MDBNavLink
 } from "mdbreact";
 import {useTranslation} from "react-i18next";
+import {useDispatch, useSelector} from "react-redux";
 
 import {changeLanguage} from "core/i18n";
-import routes from "../core/routes";
+import routes from "core/routes";
+import authActions from "actions/auth";
+import UserService from "../services/UserService";
 
 export default (props) => {
   const {t} = useTranslation();
   const history = useHistory();
+  const {auth} = useSelector(state => state);
+  const dispatch = useDispatch();
 
   const [collapse, setCollapse] = useState(false);
 
-  const dir = t('DIRECTION');
-  const classTextAlignRight = dir === 'rtl' ? 'text-align-right' : '';
-
   const toggleCollapse = () => {
     setCollapse(!collapse);
+  };
+
+  const handleSignOut = () => {
+    UserService.signOut();
+    dispatch(authActions.signOut());
   };
 
   return (
@@ -65,14 +72,16 @@ export default (props) => {
               </MDBDropdownMenu>
             </MDBDropdown>
           </MDBNavItem>
-          <MDBNavItem className="ml-3">
+          <MDBNavItem>
             <MDBDropdown>
               <MDBDropdownToggle nav caret>
                 <MDBIcon icon="user" className="d-inline-inline"/>
               </MDBDropdownToggle>
               <MDBDropdownMenu className="text-left">
-                <MDBDropdownItem onClick={() => history.push(routes.auth.signIn)}>{t('AUTH.SIGN_IN')}</MDBDropdownItem>
-                <MDBDropdownItem onClick={() => history.push(routes.auth.signUp)}>{t('AUTH.SIGN_UP')}</MDBDropdownItem>
+                {!auth.signedIn && <><MDBDropdownItem onClick={() => history.push(routes.auth.signIn)}>{t('AUTH.SIGN_IN')}</MDBDropdownItem>
+                <MDBDropdownItem onClick={() => history.push(routes.auth.signUp)}>{t('AUTH.SIGN_UP')}</MDBDropdownItem></>}
+                {auth.signedIn && <><MDBDropdownItem onClick={() => history.push(routes.auth.myAccount)}>{t('AUTH.MY_ACCOUNT')}</MDBDropdownItem>
+                <MDBDropdownItem onClick={handleSignOut}>{t('AUTH.SIGN_OUT')}</MDBDropdownItem></>}
               </MDBDropdownMenu>
             </MDBDropdown>
           </MDBNavItem>

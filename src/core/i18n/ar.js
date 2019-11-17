@@ -2,6 +2,7 @@ export default {
   NAME: "عربى",
   CODE: "ar",
   DIRECTION: "rtl",
+  SITE_NAME: 'SITE_NAME',
   COMMON: {
     BUTTON: {
       HOME: "الصفحة الرئيسية",
@@ -62,6 +63,7 @@ export default {
     SIGN_IN: "تسجيل الدخول",
     SIGN_UP: "سجل",
     SIGN_OUT: "خروج",
+    MY_ACCOUNT: "الحساب",
     FORGOT_PASSWORD: "هل نسيت كلمة المرور؟",
     ALREADY_REGISTERED: "مسجل بالفعل؟",
     NOT_REGISTERED: "غير مسجل؟",
