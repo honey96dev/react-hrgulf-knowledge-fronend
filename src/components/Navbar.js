@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {Fragment, useState} from "react";
 import {useHistory} from "react-router-dom";
 import {
   MDBCollapse,
@@ -16,13 +16,14 @@ import {
 } from "mdbreact";
 import {useTranslation} from "react-i18next";
 import {useDispatch, useSelector} from "react-redux";
+import useWindowScrollPosition from "@rehooks/window-scroll-position";
 
 import {changeLanguage} from "core/i18n";
 import routes from "core/routes";
 import authActions from "actions/auth";
 import UserService from "../services/UserService";
 
-export default (props) => {
+export default ({thresholdY}) => {
   const {t} = useTranslation();
   const history = useHistory();
   const {auth} = useSelector(state => state);
@@ -30,34 +31,61 @@ export default (props) => {
 
   const [collapse, setCollapse] = useState(false);
 
-  const toggleCollapse = () => {
+  const options = {
+    throttle: 100,
+  };
+  const position = useWindowScrollPosition(options);
+  const flag = position.y > (thresholdY || 200);
+
+  const pathname = history.location.pathname;
+
+  const toggleCollapse = e => {
     setCollapse(!collapse);
   };
 
-  const handleSignOut = () => {
+  const handleMouseEnter = e => {
+    console.log(e);
+  };
+
+  const handleMouseLeave = e => {
+    console.log(e);
+  };
+
+  const handleSignOut = e => {
     UserService.signOut();
     dispatch(authActions.signOut());
   };
 
   return (
-    <MDBNavbar color="mdb-color" dark expand="md" scrolling fixed="top">
+    <MDBNavbar color={flag ? "mdb-color" : "white"} light={!flag} dark={flag} expand="md" scrolling fixed="top">
       <MDBNavbarBrand href="/">
         <strong>{t('SITE_NAME')}</strong>
       </MDBNavbarBrand>
       <MDBNavbarToggler onClick={toggleCollapse}/>
       <MDBCollapse isOpen={collapse} navbar className="text-left">
         <MDBNavbarNav left>
-          <MDBNavItem active>
-            <MDBNavLink to="#">Home</MDBNavLink>
+          <MDBNavItem active={pathname === routes.root}>
+            <MDBNavLink to={routes.root}>{t("NAVBAR.HOME")}</MDBNavLink>
           </MDBNavItem>
-          <MDBNavItem>
-            <MDBNavLink to="#">Features</MDBNavLink>
+          <MDBNavItem active={pathname.startsWith(routes.posts.root)}>
+            <MDBDropdown onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+              <MDBDropdownToggle nav caret>
+                <span className="mr-2">{t('NAVBAR.POSTS.POSTS')}</span>
+              </MDBDropdownToggle>
+              <MDBDropdownMenu className="text-left">
+                <MDBDropdownItem onClick={() => history.push(routes.posts.add)}>{t('NAVBAR.POSTS.ADD')}</MDBDropdownItem>
+                <MDBDropdownItem onClick={() => history.push(routes.posts.all)}>{t('NAVBAR.POSTS.ALL')}</MDBDropdownItem>
+              </MDBDropdownMenu>
+            </MDBDropdown>
           </MDBNavItem>
-          <MDBNavItem>
-            <MDBNavLink to="#">Pricing</MDBNavLink>
+          <MDBNavItem active={pathname.startsWith(routes.news.root)}>
+            <MDBNavLink to={routes.news.root}>{t("NAVBAR.NEWS")}</MDBNavLink>
           </MDBNavItem>
-          <MDBNavItem>
-            <MDBNavLink to="#">Options</MDBNavLink>
+          <MDBNavItem active={pathname.startsWith(routes.video.root)}>
+            <MDBNavLink to={routes.video.root}>{t("NAVBAR.VIDEO")}</MDBNavLink>
+          </MDBNavItem>
+          <MDBNavItem active={pathname.startsWith(routes.vote.root)}>
+            <MDBNavLink to={routes.vote.root}>{t("NAVBAR.VOTE")}</MDBNavLink>
           </MDBNavItem>
         </MDBNavbarNav>
         <MDBNavbarNav right>
@@ -78,10 +106,10 @@ export default (props) => {
                 <MDBIcon icon="user" className="d-inline-inline"/>
               </MDBDropdownToggle>
               <MDBDropdownMenu className="text-left">
-                {!auth.signedIn && <><MDBDropdownItem onClick={() => history.push(routes.auth.signIn)}>{t('AUTH.SIGN_IN')}</MDBDropdownItem>
-                <MDBDropdownItem onClick={() => history.push(routes.auth.signUp)}>{t('AUTH.SIGN_UP')}</MDBDropdownItem></>}
-                {auth.signedIn && <><MDBDropdownItem onClick={() => history.push(routes.auth.myAccount)}>{t('AUTH.MY_ACCOUNT')}</MDBDropdownItem>
-                <MDBDropdownItem onClick={handleSignOut}>{t('AUTH.SIGN_OUT')}</MDBDropdownItem></>}
+                {!auth.signedIn && <Fragment><MDBDropdownItem onClick={() => history.push(routes.auth.signIn)}>{t('AUTH.SIGN_IN')}</MDBDropdownItem>
+                <MDBDropdownItem onClick={() => history.push(routes.auth.signUp)}>{t('AUTH.SIGN_UP')}</MDBDropdownItem></Fragment>}
+                {auth.signedIn && <Fragment><MDBDropdownItem onClick={() => history.push(routes.auth.myAccount)}>{t('AUTH.MY_ACCOUNT')}</MDBDropdownItem>
+                <MDBDropdownItem onClick={handleSignOut}>{t('AUTH.SIGN_OUT')}</MDBDropdownItem></Fragment>}
               </MDBDropdownMenu>
             </MDBDropdown>
           </MDBNavItem>

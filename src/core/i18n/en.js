@@ -20,6 +20,10 @@ export default {
       JOIN_US: "Join Us",
       DETAILS: "Details",
       CHANGE: "Change",
+      ADD: "Add",
+      CANCEL: "Cancel",
+      FIRST: "First",
+      LAST: "Last",
     },
     VALIDATION: {
       REQUIRED: "{{field}} is required",
@@ -45,6 +49,17 @@ export default {
       ARABIC: 'عربى',
     },
   },
+  NAVBAR: {
+    HOME: "Home",
+    POSTS: {
+      POSTS: "Posts",
+      ADD: "Add post",
+      ALL: "All posts",
+    },
+    NEWS: "News",
+    VIDEO: "Video",
+    VOTE: "Vote",
+  },
   AUTH: {
     EMAIL: "Email",
     USERNAME: "Username",
@@ -67,5 +82,14 @@ export default {
     FORGOT_PASSWORD: "Forgot password?",
     ALREADY_REGISTERED: "Already registered?",
     NOT_REGISTERED: "Not registered?",
+  },
+  POSTS: {
+    TITLE: "Title",
+    TEXT: "Text",
+    DESCRIPTION: "Description",
+    MEDIA: "Image",
+    ADD: {
+
+    },
   },
 };

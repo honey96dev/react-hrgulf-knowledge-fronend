@@ -6,4 +6,9 @@ export default {
     signIn: "auth/sign-in",
     signUp: "auth/sign-up",
   },
+  posts: {
+    list: "posts/list",
+    save: "posts/save",
+    delete: "posts/delete",
+  },
 };

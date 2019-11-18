@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Fragment} from "react";
 import {Route, Switch} from "react-router-dom";
 import {MDBCol, MDBContainer, MDBRow} from "mdbreact";
 
@@ -7,27 +7,28 @@ import Footer from "components/Footer";
 import BackToTop from "components/BackToTop";
 import SignInPage from "./SignInPage";
 import SignUpPage from "./SignUpPage";
+import routes from "core/routes";
 
 import "./AuthPage.scss";
 
 export default () => {
   return (
-    <>
-      <BackToTop/>
+    <Fragment>
       <Navbar/>
       <MDBContainer>
         <MDBRow className={"section mb-5"}>
           <MDBCol lg="3" md="0"/>
           <MDBCol lg="6">
             <Switch>
-              <Route path={"/auth/sign-in"} component={SignInPage}/>
-              <Route path={"/auth/sign-up"} component={SignUpPage}/>
+              <Route path={routes.auth.signIn} component={SignInPage}/>
+              <Route path={routes.auth.signUp} component={SignUpPage}/>
             </Switch>
           </MDBCol>
           <MDBCol lg="3" md="0"/>
         </MDBRow>
       </MDBContainer>
       <Footer/>
-    </>
+      <BackToTop/>
+    </Fragment>
   );
 }

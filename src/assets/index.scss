@@ -52,6 +52,10 @@ input:-webkit-autofill {
   width: 100%;
 }
 
+.loading-page {
+  height: $loading-page-height;
+}
+
 button i, button div.spinner-grow, button div.spinner-border {
   margin-left: $button-icon-margin;
   margin-right: $button-icon-margin;
@@ -169,6 +173,26 @@ button i, button div.spinner-grow, button div.spinner-border {
   color: #dc3545;
 }
 
+.navbar.navbar-light .navbar-nav .nav-item.active > .dropdown {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.navbar.navbar-dark .navbar-nav .nav-item.active > .dropdown {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.md-form label {
+  padding-right: 10px;
+}
+
+textarea.form-control {
+  border-radius: 4px !important;
+}
+
+.breadcrumb-item+.breadcrumb-item::before {
+  content: ">";
+}
+
 .fade-transition-enter {
   opacity: 0.01;
 }
@@ -187,7 +211,6 @@ button i, button div.spinner-grow, button div.spinner-border {
   transition: opacity $transition-time ease-in;
 }
 
-
 .ltr-force {
   direction: ltr !important;
   text-align: left !important;
@@ -195,20 +218,21 @@ button i, button div.spinner-grow, button div.spinner-border {
 
 .rtl-content {
   direction: rtl;
-   .md-form label,  .error-message {
-    left: unset;
+
+  .md-form label, .error-message {
+    left: unset !important;
     right: 0;
   }
 
-   h1,  h2,  h3,  h4,  h5,  h6 {
+  h1, h2, h3, h4, h5, h6 {
     //text-align: right;
   }
 
-   .alert {
+  .alert {
     text-align: right;
   }
 
-   .alert .close {
+  .alert .close {
     position: absolute;
     top: 0;
     left: 0 !important;
@@ -216,93 +240,93 @@ button i, button div.spinner-grow, button div.spinner-border {
     padding: 0.75rem 1.25rem;
   }
 
-   .my-modal-close {
+  .my-modal-close {
     left: 0 !important;
     right: unset !important;
   }
 
-   .mdb-feed .news .excerpt {
+  .mdb-feed .news .excerpt {
     margin: 0 1.2rem 1.2rem 0 !important;
     text-align: right !important;
   }
 
-   .mdb-feed .news .excerpt .brief .date {
+  .mdb-feed .news .excerpt .brief .date {
     padding-left: unset !important;
     padding-right: 0.7rem !important;
   }
 
-   .invalid-field,  .valid-field {
+  .invalid-field, .valid-field {
     text-align: right;
   }
 
-   .select-wrapper > label.mdb-main-label {
+  .select-wrapper > label.mdb-main-label {
     text-align: right;
     left: unset !important;
     right: 0 !important;
   }
 
-   .select-wrapper span.caret {
+  .select-wrapper span.caret {
     position: absolute;
     left: 0;
     right: unset !important;
   }
 
-   .dropdown-content {
+  .dropdown-content {
     padding-inline-start: unset !important;
   }
 
-   .dropdown-content li {
+  .dropdown-content li {
     text-align: right;
   }
 
-   .ml-auto {
+  .ml-auto {
     margin-left: unset !important;
     margin-right: auto !important;
   }
 
-   .ml-2 {
+  .ml-2 {
     margin-left: unset !important;
     margin-right: 0.5rem !important;
   }
 
-   .ml-3 {
+  .ml-3 {
     margin-left: unset !important;
     margin-right: 1rem !important;
   }
 
-   .mr-auto {
+  .mr-auto {
     margin-left: auto !important;
     margin-right: unset !important;
   }
 
-   .mr-2 {
+  .mr-2 {
     margin-left: 0.5rem !important;
     margin-right: unset !important;
   }
 
-   .mr-3 {
+  .mr-3 {
     margin-left: 1rem !important;
     margin-right: unset !important;
   }
 
-   ul {
+  ul {
     padding-inline-start: 0;
     padding-inline-end: 0;
   }
 
-   .navbar-brand {
+  .navbar-brand {
     margin-left: 1rem;
     margin-right: 0;
   }
 
-   .text-left {
+  .text-left {
     text-align: right !important
   }
 
-   .text-right {
+  .text-right {
     text-align: left !important
   }
-  
+
   @media (min-width: 576px) {
     .text-sm-left {
       text-align: right !important
@@ -363,5 +387,16 @@ button i, button div.spinner-grow, button div.spinner-border {
   .dropdown-toggle::after {
     margin-left: unset;
     margin-right: .255em;
+  }
+
+  .breadcrumb-item+.breadcrumb-item {
+    padding-left: unset;
+    padding-right: .5rem;
+  }
+
+  .breadcrumb-item+.breadcrumb-item::before {
+    padding-left: .5rem;
+    padding-right: unset;
+    //content: "<" !i;
   }
 }

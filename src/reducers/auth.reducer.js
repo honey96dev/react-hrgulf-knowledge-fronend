@@ -1,4 +1,5 @@
 import {
+  AUTH_REDIRECT_URL_SIGNAL,
   AUTH_SIGN_IN_FAILURE_SIGNAL,
   AUTH_SIGN_IN_REQUEST_SIGNAL,
   AUTH_SIGN_IN_SUCCESS_SIGNAL,
@@ -9,6 +10,7 @@ const initialState = {
   signedIn: false,
   user: null,
   token: null,
+  redirectUrl: null,
 };
 
 export default (state = initialState, action) => {
@@ -41,6 +43,12 @@ export default (state = initialState, action) => {
         signedIn: false,
         user: null,
         token: null,
+        redirectUrl: "",
+      };
+    case AUTH_REDIRECT_URL_SIGNAL:
+      return {
+        ...state,
+        redirectUrl: payload,
       };
     default:
       return state

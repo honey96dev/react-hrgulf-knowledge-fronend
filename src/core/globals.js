@@ -19,6 +19,12 @@ export const SAUDI_PHONE_PREFIX = "+966";
 export const USERNAME_MAX_LENGTH = 20;
 export const PASSWORD_MIN_LENGTH = 6;
 
+export const DESCRIPTION_LENGTH_BREAKPOINT = 400;
+
+export const TEXTAREA_ROWS1 = 10;
+export const TEXTAREA_ROWS2 = 18;
+export const TEXTAREA_MAXLENGTH = 4096;
+
 export const ALERT_SUCCESS = "success";
 export const ALERT_DANGER = "danger";
 export const ALERT_LIFETIME = 5000;

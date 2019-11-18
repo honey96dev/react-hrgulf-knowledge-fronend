@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {Fragment, useEffect, useState} from "react";
 import {useTranslation} from "react-i18next";
 import {Link} from "react-router-dom";
 import {
@@ -34,7 +34,8 @@ import {
   isDev,
   PASSWORD_MIN_LENGTH,
   SAUDI_PHONE_PREFIX,
-  SUCCESS, TRANSITION_TIME,
+  SUCCESS,
+  TRANSITION_TIME,
   UNKNOWN_SERVER_ERROR,
   USERNAME_MAX_LENGTH
 } from "core/globals";
@@ -48,7 +49,6 @@ import {CSSTransition} from "react-transition-group";
 // import "moment/locale/ar";
 
 export default (props) => {
-  const signedIn = useSelector(state => state.auth);
   const dispatch = useDispatch();
   const {t} = useTranslation();
 
@@ -121,14 +121,14 @@ export default (props) => {
           <div className="grey-text">
             <MDBRow>
               <MDBCol md={6}>
-                <MDBInput id="email" name="email" type="email" label={t("AUTH.EMAIL")} background containerClass="mb-0" value={email} getValue={setEmail} onBlur={() => setTouched(Object.assign({}, touched, {email: true}))}>
+                <MDBInput id="email" name="email" type="email" label={t("AUTH.EMAIL")} outline containerClass="mb-0" value={email} getValue={setEmail} onBlur={() => setTouched(Object.assign({}, touched, {email: true}))}>
                   {touched.email && !validators.isEmail(email) && <div className="invalid-field">
                     {email.length === 0 ? t("COMMON.VALIDATION.REQUIRED", {field: t("AUTH.EMAIL")}) : !validators.isEmail(email) ? t("COMMON.VALIDATION.INVALID", {field: t("AUTH.EMAIL")}) : ""}
                   </div>}
                 </MDBInput>
               </MDBCol>
               <MDBCol md={6}>
-                <MDBInput id="username" name="username" type="text" label={t("AUTH.USERNAME")} background containerClass="mb-0" value={username} getValue={setUsername} onBlur={() => setTouched(Object.assign({}, touched, {username: true}))}>
+                <MDBInput id="username" name="username" type="text" label={t("AUTH.USERNAME")} outline containerClass="mb-0" value={username} getValue={setUsername} onBlur={() => setTouched(Object.assign({}, touched, {username: true}))}>
                   {touched.username && !validators.isUsername(username) && <div className="invalid-field">
                     {username.length === 0 ? t("COMMON.VALIDATION.REQUIRED", {field: t("AUTH.USERNAME")}) : username.length > USERNAME_MAX_LENGTH ? t('COMMON.VALIDATION.MAX_LENGTH', {field: t('AUTH.USERNAME'), length: USERNAME_MAX_LENGTH}) : !validators.isUsername(username) ? t("COMMON.VALIDATION.INVALID", {field: t("AUTH.USERNAME")}) : ""}
                   </div>}
@@ -137,14 +137,14 @@ export default (props) => {
             </MDBRow>
             <MDBRow>
               <MDBCol md={6}>
-                <MDBInput id="firstName" name="firstName" type="text" label={t("AUTH.FIRST_NAME")} background containerClass="mt-3 mb-0" value={firstName} getValue={setFirstName} onBlur={() => setTouched(Object.assign({}, touched, {firstName: true}))}>
+                <MDBInput id="firstName" name="firstName" type="text" label={t("AUTH.FIRST_NAME")} outline containerClass="mt-3 mb-0" value={firstName} getValue={setFirstName} onBlur={() => setTouched(Object.assign({}, touched, {firstName: true}))}>
                   {touched.firstName && firstName.length === 0 && <div className="invalid-field">
                     {t("COMMON.VALIDATION.REQUIRED", {field: t("AUTH.FIRST_NAME")})}
                   </div>}
                 </MDBInput>
               </MDBCol>
               <MDBCol md={6}>
-                <MDBInput id="lastName" name="lastName" type="text" label={t("AUTH.LAST_NAME")} background containerClass="mt-3 mb-0" value={lastName} getValue={setLastName} onBlur={() => setTouched(Object.assign({}, touched, {lastName: true}))}>
+                <MDBInput id="lastName" name="lastName" type="text" label={t("AUTH.LAST_NAME")} outline containerClass="mt-3 mb-0" value={lastName} getValue={setLastName} onBlur={() => setTouched(Object.assign({}, touched, {lastName: true}))}>
                   {touched.lastName && lastName.length === 0 && <div className="invalid-field">
                     {t("COMMON.VALIDATION.REQUIRED", {field: t("AUTH.LAST_NAME")})}
                   </div>}
@@ -164,14 +164,14 @@ export default (props) => {
             </MDBRow>
             <MDBRow>
               <MDBCol md={6}>
-                <MDBInput id="jobTitle" name="jobTitle" type="text" label={t("AUTH.JOB_TITLE")} background containerClass="mt-3 mb-0" value={jobTitle} getValue={setJobTitle} onBlur={() => setTouched(Object.assign({}, touched, {jobTitle: true}))}>
+                <MDBInput id="jobTitle" name="jobTitle" type="text" label={t("AUTH.JOB_TITLE")} outline containerClass="mt-3 mb-0" value={jobTitle} getValue={setJobTitle} onBlur={() => setTouched(Object.assign({}, touched, {jobTitle: true}))}>
                   {touched.jobTitle && jobTitle.length === 0 && <div className="invalid-field">
                     {t("COMMON.VALIDATION.REQUIRED", {field: t("AUTH.JOB_TITLE")})}
                   </div>}
                 </MDBInput>
               </MDBCol>
               <MDBCol md={6}>
-                <MDBInput id="sector" name="sector" type="text" label={t("AUTH.SECTOR")} background containerClass="mt-3 mb-0" value={sector} getValue={setSector} onBlur={() => setTouched(Object.assign({}, touched, {sector: true}))}>
+                <MDBInput id="sector" name="sector" type="text" label={t("AUTH.SECTOR")} outline containerClass="mt-3 mb-0" value={sector} getValue={setSector} onBlur={() => setTouched(Object.assign({}, touched, {sector: true}))}>
                   {touched.sector && sector.length === 0 && <div className="invalid-field">
                     {t("COMMON.VALIDATION.REQUIRED", {field: t("AUTH.SECTOR")})}
                   </div>}
@@ -180,14 +180,14 @@ export default (props) => {
             </MDBRow>
             <MDBRow>
               <MDBCol md={6}>
-                <MDBInput id="company" name="company" type="text" label={t("AUTH.COMPANY")} background containerClass="mt-3 mb-0" value={company} getValue={setCompany} onBlur={() => setTouched(Object.assign({}, touched, {company: true}))}>
+                <MDBInput id="company" name="company" type="text" label={t("AUTH.COMPANY")} outline containerClass="mt-3 mb-0" value={company} getValue={setCompany} onBlur={() => setTouched(Object.assign({}, touched, {company: true}))}>
                   {touched.company && company.length === 0 && <div className="invalid-field">
                     {t("COMMON.VALIDATION.REQUIRED", {field: t("AUTH.COMPANY")})}
                   </div>}
                 </MDBInput>
               </MDBCol>
               <MDBCol md={6}>
-                <MDBInput id="city" name="city" type="text" label={t("AUTH.CITY")} background containerClass="mt-3 mb-0" value={city} getValue={setCity} onBlur={() => setTouched(Object.assign({}, touched, {city: true}))}>
+                <MDBInput id="city" name="city" type="text" label={t("AUTH.CITY")} outline containerClass="mt-3 mb-0" value={city} getValue={setCity} onBlur={() => setTouched(Object.assign({}, touched, {city: true}))}>
                   {touched.city && city.length === 0 && <div className="invalid-field">
                     {t("COMMON.VALIDATION.REQUIRED", {field: t("AUTH.CITY")})}
                   </div>}
@@ -198,8 +198,10 @@ export default (props) => {
               {/*<MDBCol md={6}>{t("AUTH.PHONE")}</MDBCol>*/}
               <MDBCol md={12}>
                 <MDBInputGroup
-                  material type="text"
-                  prepend={<><span className="input-group-text md-addon">{t("AUTH.PHONE")}</span><span className="input-group-text md-addon">{SAUDI_PHONE_PREFIX}</span></>}
+                  material
+                  type="text"
+                  // outline
+                  prepend={<Fragment><span className="input-group-text md-addon">{t("AUTH.PHONE")}</span><span className="input-group-text md-addon">{SAUDI_PHONE_PREFIX}</span></Fragment>}
                   // inputs={
                   //   <MDBInput id="phone" name="phone" containerClass="mt-0 mb-0" value={phone} onChange={e => setPhone(e.target.value)} onBlur={() => setTouched(Object.assign({}, touched, {phone: true}))}/>}
                   containerClassName="mt-3 mb-4 ltr-force"
@@ -212,7 +214,7 @@ export default (props) => {
             </MDBRow>
             <MDBRow>
               <MDBCol md={6}>
-                <MDBInput id="password" name="password" label={t("AUTH.PASSWORD")} type="password" background containerClass="mt-3" value={password} getValue={setPassword} onBlur={() => setTouched(Object.assign({}, touched, {password: true}))}>
+                <MDBInput id="password" name="password" label={t("AUTH.PASSWORD")} type="password" outline containerClass="mt-3" value={password} getValue={setPassword} onBlur={() => setTouched(Object.assign({}, touched, {password: true}))}>
                   {touched.password && password.length < PASSWORD_MIN_LENGTH && <div
                     className="invalid-field">{password.length === 0 ? t("COMMON.VALIDATION.REQUIRED", {field: t("AUTH.PASSWORD")}) : t("COMMON.VALIDATION.MIN_LENGTH", {
                     field: t("AUTH.PASSWORD"),
@@ -221,7 +223,7 @@ export default (props) => {
                 </MDBInput>
               </MDBCol>
               <MDBCol md={6}>
-                <MDBInput id="password2" name="password2" label={t("AUTH.PASSWORD2")} type="password" background containerClass="mt-3" value={password2} getValue={setPassword2} onBlur={() => setTouched(Object.assign({}, touched, {password2: true}))}>
+                <MDBInput id="password2" name="password2" label={t("AUTH.PASSWORD2")} type="password" outline containerClass="mt-3" value={password2} getValue={setPassword2} onBlur={() => setTouched(Object.assign({}, touched, {password2: true}))}>
                   {touched.password2 && (password2.length < PASSWORD_MIN_LENGTH || password2 !== password) && <div
                     className="invalid-field">{password2.length === 0 ? t("COMMON.VALIDATION.REQUIRED", {field: t("AUTH.PASSWORD2")}) : password2.length < PASSWORD_MIN_LENGTH ? t("COMMON.VALIDATION.MIN_LENGTH", {
                     field: t("AUTH.PASSWORD2"),

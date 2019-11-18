@@ -20,6 +20,10 @@ export default {
       JOIN_US: "انضم الينا",
       DETAILS: "تفاصيل",
       CHANGE: "يتغيرون",
+      ADD: "إضافة",
+      CANCEL: "إلغاء",
+      FIRST: "First",
+      LAST: "Last",
     },
     VALIDATION: {
       REQUIRED: "{{field}} مطلوب",
@@ -45,6 +49,17 @@ export default {
       ARABIC: 'عربى',
     },
   },
+  NAVBAR: {
+    HOME: "البداية",
+    POSTS: {
+      POSTS: "المشاركات",
+      ADD: "اضف مشاركة",
+      ALL: "جميع المشاركات",
+    },
+    NEWS: "الأخبار",
+    VIDEO: "الفيديوهات",
+    VOTE: "الفيديوهات",
+  },
   AUTH: {
     EMAIL: "البريد الإلكتروني",
     USERNAME: "اسم المستخدم",
@@ -67,5 +82,14 @@ export default {
     FORGOT_PASSWORD: "هل نسيت كلمة المرور؟",
     ALREADY_REGISTERED: "مسجل بالفعل؟",
     NOT_REGISTERED: "غير مسجل؟",
+  },
+  POSTS: {
+    TITLE: "عنوان",
+    TEXT: "نص",
+    DESCRIPTION: "وصف",
+    MEDIA: "صورة",
+    ADD: {
+
+    },
   },
 };

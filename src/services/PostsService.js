@@ -4,23 +4,9 @@ import apis from "core/apis";
 import {SUCCESS} from "core/globals";
 
 export default {
-  signIn: (params) => {
+  list: (params) => {
     return new Promise((resolve, reject) => {
-      fetch(POST, apis.auth.signIn, params)
-        .then(res => {
-          if (res.result === SUCCESS) {
-            setHeader({Authorization: `Bearer ${res.data.token}`});
-          }
-          resolve(res);
-        }, err => {
-          reject(err);
-        });
-    });
-  },
-
-  signUp: (params) => {
-    return new Promise((resolve, reject) => {
-      fetch(POST, apis.auth.signUp, params)
+      fetch(POST, apis.posts.list, params)
         .then(res => {
           resolve(res);
         }, err => {
@@ -28,8 +14,14 @@ export default {
         });
     });
   },
-
-  signOut: params => {
-    setHeader({Authorization: null});
-  }
+  save: (params) => {
+    return new Promise((resolve, reject) => {
+      fetch(POST, apis.posts.save, params)
+        .then(res => {
+          resolve(res);
+        }, err => {
+          reject(err);
+        });
+    });
+  },
 };

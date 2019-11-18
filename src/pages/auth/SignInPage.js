@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {useTranslation} from "react-i18next";
-import {Link} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 import {MDBAlert, MDBBtn, MDBCard, MDBCardBody, MDBIcon, MDBInput, MDBModalFooter} from "mdbreact";
 import {useDispatch, useSelector} from "react-redux";
 
@@ -23,9 +23,10 @@ import "./SignInPage.scss";
 import {CSSTransition} from "react-transition-group";
 
 export default (props) => {
-  const signedIn = useSelector(state => state.auth);
+  const {auth: {redirectUrl}} = useSelector(state => state);
   const dispatch = useDispatch();
   const {t} = useTranslation();
+  const history = useHistory();
 
   const [touched, setTouched] = useState({});
   const [loading, setLoading] = useState(false);
@@ -48,6 +49,9 @@ export default (props) => {
       setLoading(false);
       if (res.result === SUCCESS) {
         dispatch(auth.successSignIn(res.data));
+        const params = new URLSearchParams(props.location.search);
+        const redirect = params.get('redirect');
+        history.push(redirect || routes.root);
       } else {
         dispatch(auth.failureSignIn(res.message));
         setAlert({
@@ -77,12 +81,15 @@ export default (props) => {
             </h3>
           </div>
           <div className="grey-text">
-            <MDBInput id="email" name="name" type="email" label={t("AUTH.EMAIL")} background value={email} getValue={setEmail} onBlur={() => setTouched(Object.assign({}, touched, {email: true}))}>
+            <MDBInput id="email" name="name" type="email" label={t("AUTH.EMAIL")} outline value={email}
+                      getValue={setEmail} onBlur={() => setTouched(Object.assign({}, touched, {email: true}))}>
               {touched.email && !validators.isEmail(email) && <div className="invalid-field">
                 {email.length === 0 ? t("COMMON.VALIDATION.REQUIRED", {field: t("AUTH.EMAIL")}) : !validators.isEmail(email) ? t("COMMON.VALIDATION.INVALID", {field: t("AUTH.EMAIL")}) : ""}
               </div>}
             </MDBInput>
-            <MDBInput id="password" name="password" label={t("AUTH.PASSWORD")} type="password" background containerClass="mb-0" value={password} getValue={setPassword} onBlur={() => setTouched(Object.assign({}, touched, {password: true}))}>
+            <MDBInput id="password" name="password" label={t("AUTH.PASSWORD")} type="password" outline
+                      containerClass="mb-0" value={password} getValue={setPassword}
+                      onBlur={() => setTouched(Object.assign({}, touched, {password: true}))}>
               {touched.password && password.length < PASSWORD_MIN_LENGTH && <div
                 className="invalid-field">{password.length === 0 ? t("COMMON.VALIDATION.REQUIRED", {field: t("AUTH.PASSWORD")}) : t("COMMON.VALIDATION.MIN_LENGTH", {
                 field: t("AUTH.PASSWORD"),
