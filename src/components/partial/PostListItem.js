@@ -1,6 +1,7 @@
 import React from "react";
 import {MDBBtn, MDBCol, MDBIcon, MDBMask, MDBRow, MDBView} from "mdbreact";
 import {Link} from "react-router-dom";
+import {useTranslation} from "react-i18next";
 
 import {DESCRIPTION_LENGTH_BREAKPOINT} from "core/globals";
 import routes from "core/routes";
@@ -8,7 +9,7 @@ import routes from "core/routes";
 import "./PostListItem.scss";
 
 export default ({id, date, time, author, comments, media, title, description}) => {
-
+  const {t} = useTranslation();
   const desc = description.length > DESCRIPTION_LENGTH_BREAKPOINT ? description.substr(0, DESCRIPTION_LENGTH_BREAKPOINT) + " ..." : description;
 
   return (
@@ -37,10 +38,12 @@ export default ({id, date, time, author, comments, media, title, description}) =
             {date}
           </p>
           <p className="mr-2">{time}</p>
+          <p>{t("DIRECTION") === "ltr" ? "/" : "\\"}</p>
           <p className="mx-2">
             <span className="mr-2"><MDBIcon icon="user"/></span>
             {author}
           </p>
+          <p>{t("DIRECTION") === "ltr" ? "/" : "\\"}</p>
           <p className="mx-2">
             <span className="mr-2"><MDBIcon icon="comments"/></span>
             {comments}
@@ -50,9 +53,11 @@ export default ({id, date, time, author, comments, media, title, description}) =
         {/*<p>*/}
         {/*  by <a href="#!" className="font-weight-bold">Jessica Clark</a>, 19/04/2018*/}
         {/*</p>*/}
-        <MDBBtn color="primary" size="md">
-          Read More
-        </MDBBtn>
+        <Link to={`${routes.posts.detail}/${id}`}>
+          <MDBBtn size="sm" color="indigo">
+          {t("COMMON.BUTTON.READ_MORE")}
+          </MDBBtn>
+        </Link>
       </MDBCol>
     </MDBRow>
   );

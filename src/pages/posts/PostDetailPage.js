@@ -71,14 +71,14 @@ export default ({}) => {
     <div>
       <MDBBreadcrumb>
         <MDBBreadcrumbItem><Link to={routes.posts.all}>{t('NAVBAR.POSTS.POSTS')}</Link></MDBBreadcrumbItem>
-        <MDBBreadcrumbItem active>{t('NAVBAR.POSTS.ADD')}</MDBBreadcrumbItem>
+        <MDBBreadcrumbItem active>{t('POSTS.DETAIL.POST_DETAIL')}</MDBBreadcrumbItem>
       </MDBBreadcrumb>
       {!!loading && <div className="loading-page"><Loader/></div>}
       {!loading && (!data || !data.id) && <div className="loading-page"><Error heading={404} message={t("COMMON.ERROR.NO_DATA")} /></div>}
       {!loading && !!data && !!data.id && <MDBRow>
         <MDBCol md={9}>
-          <PostDetail data={data}/>
-          {!data.commentId && <WriteComment commentId={data.id} />}
+          <PostDetail data={data} comments={comments.length}/>
+          {data.userId !== auth.user.id && !data.commentId && <WriteComment commentId={data.id} />}
           {!!data.commentId && <MDBAlert className="mt-5 mb-3" color="warning">{t("POSTS.DETAIL.ALREADY_WROTE_COMMENT")}</MDBAlert>}
           <Comments data={comments} />
         </MDBCol>

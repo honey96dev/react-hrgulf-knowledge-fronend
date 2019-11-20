@@ -1,8 +1,14 @@
 import React, {Fragment, useEffect, useState} from "react";
-import {MDBPageItem, MDBPageNav, MDBPagination} from "mdbreact";
+import {MDBIcon, MDBPageItem, MDBPageNav, MDBPagination} from "mdbreact";
+import {useTranslation} from "react-i18next";
 
 export default ({circle, current, pageCount, width, onChange}) => {
+  const {t} = useTranslation();
+
   const [pages, setPages] = useState([]);
+
+  const dir1 = t("DIRECTION") === "ltr" ? "left" : "right";
+  const dir2 = t("DIRECTION") === "ltr" ? "right" : "left";
 
   useEffect(e => {
     const half = Math.ceil((width || 10) / 2);
@@ -25,7 +31,12 @@ export default ({circle, current, pageCount, width, onChange}) => {
       {pageCount > 0 && <MDBPagination circle={circle}>
         <MDBPageItem disabled={current === 1} onClick={() => onChange(1)}>
           <MDBPageNav className="page-link">
-            <span>First</span>
+            <MDBIcon icon={`angle-double-${dir1}`} />
+          </MDBPageNav>
+        </MDBPageItem>
+        <MDBPageItem disabled={current === 1} onClick={() => onChange(current - 1)}>
+          <MDBPageNav className="page-link">
+            <MDBIcon icon={`angle-${dir1}`} />
           </MDBPageNav>
         </MDBPageItem>
         {pages.map((page, index) => (
@@ -33,9 +44,14 @@ export default ({circle, current, pageCount, width, onChange}) => {
             <MDBPageNav className="page-link">{page}</MDBPageNav>
           </MDBPageItem>
         ))}
+        <MDBPageItem disabled={current === pageCount} onClick={() => onChange(current + 1)}>
+          <MDBPageNav className="page-link">
+            <MDBIcon icon={`angle-${dir2}`} />
+          </MDBPageNav>
+        </MDBPageItem>
         <MDBPageItem disabled={current === pageCount} onClick={() => onChange(pageCount)}>
           <MDBPageNav className="page-link">
-            Last
+            <MDBIcon icon={`angle-double-${dir2}`} />
           </MDBPageNav>
         </MDBPageItem>
       </MDBPagination>}

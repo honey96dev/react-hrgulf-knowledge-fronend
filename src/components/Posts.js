@@ -12,7 +12,7 @@ export default ({items}) => {
   const count = items.length - 1;
 
   return (
-    <div className={"text-left mt-5"}>
+    <div className={"text-left mt-3"}>
       {items.map((item, index) => (
         <Fragment key={item.id}>
           <PostListItem id={item.id} date={item.date} time={item.time} author={`${item.firstName} ${item.lastName}`} comments={item.comments} media={item.media} title={item.title} description={item.description}/>

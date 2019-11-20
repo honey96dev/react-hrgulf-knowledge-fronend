@@ -22,8 +22,9 @@ export default {
       CHANGE: "يتغيرون",
       ADD: "إضافة",
       CANCEL: "إلغاء",
-      FIRST: "First",
-      LAST: "Last",
+      FIRST: "أول",
+      LAST: "الاخير",
+      READ_MORE: "قراءة المزيد",
     },
     VALIDATION: {
       REQUIRED: "{{field}} مطلوب",
@@ -92,6 +93,7 @@ export default {
 
     },
     DETAIL: {
+      POST_DETAIL: "نشر التفاصيل",
       WRITE_COMMENT: "اكتب <span className=\"primary-color\"></span>{{comment}}",
       WRITE: "كتابة",
       COMMENT: "تعليق",

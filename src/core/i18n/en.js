@@ -24,6 +24,7 @@ export default {
       CANCEL: "Cancel",
       FIRST: "First",
       LAST: "Last",
+      READ_MORE: "Read more",
     },
     VALIDATION: {
       REQUIRED: "{{field}} is required",
@@ -92,6 +93,7 @@ export default {
 
     },
     DETAIL: {
+      POST_DETAIL: "Post Detail",
       WRITE_COMMENT: "Write a <span className=\"primary-color\">{{comment}}</span>",
       WRITE: "Write a",
       COMMENT: "Comment",

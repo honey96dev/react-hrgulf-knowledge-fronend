@@ -1,6 +1,6 @@
 import React, {Fragment, useEffect, useState} from "react";
 import {Link, useHistory, useParams} from "react-router-dom";
-import {MDBBreadcrumb, MDBBreadcrumbItem, MDBCol, MDBRow} from "mdbreact";
+import {MDBBreadcrumb, MDBBreadcrumbItem, MDBBtn, MDBCol, MDBRow} from "mdbreact";
 import {useTranslation} from "react-i18next";
 import {sprintf} from "sprintf-js";
 import {animateScroll as scroll} from "react-scroll";
@@ -73,6 +73,15 @@ export default ({}) => {
         <MDBCol md={12} className="text-center">
           <div className="mt-5">
             <Pagination circle current={currentPage} pageCount={pageCount} width={10} onChange={handlePageChange}/>
+          </div>
+        </MDBCol>
+        <MDBCol md={12} className="text-left mt-3">
+          <div className="full-width">
+            <Link to={routes.posts.add}>
+              <MDBBtn size="sm" color="primary">
+                {t("NAVBAR.POSTS.ADD")}
+              </MDBBtn>
+            </Link>
           </div>
         </MDBCol>
         <MDBCol md={12}>

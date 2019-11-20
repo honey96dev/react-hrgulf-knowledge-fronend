@@ -18,6 +18,7 @@ export default ({data}) => {
               {item.date}
             </p>
             <p className="mr-2 mb-0">{item.time}</p>
+            <p>{t("DIRECTION") === "ltr" ? "/" : "\\"}</p>
             <p className="mx-2 mb-0">
               <span className="mr-2"><MDBIcon icon="user"/></span>
               {`${item.firstName} ${item.lastName}`}
