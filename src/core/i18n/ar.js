@@ -37,7 +37,7 @@ export default {
     },
     ERROR: {
       UNKNOWN_SERVER_ERROR: "خطأ غير معروف في الخادم",
-      NO_DATA: "لايوجد بيانات",
+      NO_DATA: "ليس هنالك معلومات",
     },
     GENDER: {
       MALE: 'الذكر',
@@ -90,6 +90,15 @@ export default {
     MEDIA: "صورة",
     ADD: {
 
+    },
+    DETAIL: {
+      WRITE_COMMENT: "اكتب <span className=\"primary-color\"></span>{{comment}}",
+      WRITE: "كتابة",
+      COMMENT: "تعليق",
+      REQUIRE_SIGN_IN: "لإضافة تعليقك ، يجب عليك التسجيل أو",
+      ALREADY_WROTE_COMMENT: "لقد كتبت بالفعل تعليقًا على هذا المنشور",
+      COMMENTS: "تعليقات",
+      NO_COMMENT: "لا يوجد أي تعليق حتى الان",
     },
   },
 };

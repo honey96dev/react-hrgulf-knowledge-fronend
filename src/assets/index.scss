@@ -146,7 +146,7 @@ button i, button div.spinner-grow, button div.spinner-border {
 }
 
 .match-parent {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
@@ -154,7 +154,7 @@ button i, button div.spinner-grow, button div.spinner-border {
 }
 
 .center-in-parent {
-  position: fixed;
+  position: absolute;
   top: 50%;
   left: 50%;
 }
@@ -292,6 +292,11 @@ textarea.form-control {
   .ml-3 {
     margin-left: unset !important;
     margin-right: 1rem !important;
+  }
+
+  .ml-5 {
+    margin-left: unset !important;
+    margin-right: 3rem !important;
   }
 
   .mr-auto {

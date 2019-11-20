@@ -5,7 +5,6 @@ import routes from "core/routes";
 
 export default ({component, ...props}) => {
   const {auth} = useSelector(state => state);
-  const history = useHistory();
 
   return (
     auth.signedIn ? <Redirect to={routes.root}/> : <Route component={component} {...props}/>

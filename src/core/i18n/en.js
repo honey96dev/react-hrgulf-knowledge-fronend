@@ -37,7 +37,7 @@ export default {
     },
     ERROR: {
       UNKNOWN_SERVER_ERROR: "Unknown server error",
-      NO_DATA: "No data",
+      NO_DATA: "There is no data",
     },
     GENDER: {
       MALE: 'Male',
@@ -90,6 +90,15 @@ export default {
     MEDIA: "Image",
     ADD: {
 
+    },
+    DETAIL: {
+      WRITE_COMMENT: "Write a <span className=\"primary-color\">{{comment}}</span>",
+      WRITE: "Write a",
+      COMMENT: "Comment",
+      REQUIRE_SIGN_IN: "To add your comment, you must register or",
+      ALREADY_WROTE_COMMENT: "You have already written a comment on this post",
+      COMMENTS: "Comments",
+      NO_COMMENT: "There is no comment yet",
     },
   },
 };

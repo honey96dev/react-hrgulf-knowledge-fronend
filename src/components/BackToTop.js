@@ -8,7 +8,7 @@ import {TRANSITION_TIME} from "core/globals";
 export default ({thresholdY, duration, transitionTime, ...props}) => {
   const handleBackToTop = e => {
     scroll.scrollToTop({
-      duration: duration || 500,
+      duration: duration || TRANSITION_TIME,
     });
   };
 

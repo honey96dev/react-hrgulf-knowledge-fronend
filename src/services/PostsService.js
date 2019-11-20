@@ -14,9 +14,43 @@ export default {
         });
     });
   },
+
   save: (params) => {
     return new Promise((resolve, reject) => {
       fetch(POST, apis.posts.save, params)
+        .then(res => {
+          resolve(res);
+        }, err => {
+          reject(err);
+        });
+    });
+  },
+
+  get: (params) => {
+    return new Promise((resolve, reject) => {
+      fetch(POST, apis.posts.get, params)
+        .then(res => {
+          resolve(res);
+        }, err => {
+          reject(err);
+        });
+    });
+  },
+
+  commentList: (params) => {
+    return new Promise((resolve, reject) => {
+      fetch(POST, apis.posts.commentList, params)
+        .then(res => {
+          resolve(res);
+        }, err => {
+          reject(err);
+        });
+    });
+  },
+
+  writeComment: (params) => {
+    return new Promise((resolve, reject) => {
+      fetch(POST, apis.posts.writeComment, params)
         .then(res => {
           resolve(res);
         }, err => {

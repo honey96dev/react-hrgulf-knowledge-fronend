@@ -21,6 +21,7 @@ import validators from "core/validators";
 
 import "./SignInPage.scss";
 import {CSSTransition} from "react-transition-group";
+import {animateScroll as scroll} from "react-scroll";
 
 export default (props) => {
   const {auth: {redirectUrl}} = useSelector(state => state);
@@ -36,8 +37,10 @@ export default (props) => {
   const [password, setPassword] = useState(isDev ? DEFAULT_PASSWORD : "");
 
   useEffect(() => {
-
-  });
+    scroll.scrollToTop({
+      duration: TRANSITION_TIME,
+    });
+  }, [props]);
 
   const handleSignIn = async event => {
     event.preventDefault();

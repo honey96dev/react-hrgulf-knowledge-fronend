@@ -4,7 +4,7 @@ export const SUCCESS = "success";
 export const ERROR = "error";
 
 export const CURRENT_USER = "currentUser";
-export const TOKEN = 'token';
+export const TOKEN = "token";
 
 export const GENDER_MALE = "M";
 export const GENDER_FEMALE = "F";
@@ -30,6 +30,9 @@ export const ALERT_DANGER = "danger";
 export const ALERT_LIFETIME = 5000;
 
 export const TRANSITION_TIME = 500;
+
+export const FILEUPLOAD_MAXSIZE1 = "5M";
+export const FILEUPLOAD_MAXSIZE2 = "10M";
 
 export const DEFAULT_EMAIL = "honey96dev@gmail.com";
 export const DEFAULT_USERNAME = "honey96dev";

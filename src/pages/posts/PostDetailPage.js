@@ -1,14 +1,71 @@
-import React from "react";
-import {MDBBreadcrumb, MDBBreadcrumbItem} from "mdbreact";
-import {Link} from "react-router-dom";
+import React, {Fragment, useEffect, useState} from "react";
+import {MDBAlert, MDBBreadcrumb, MDBBreadcrumbItem, MDBCol, MDBIcon, MDBRow} from "mdbreact";
+import {Link, useParams} from "react-router-dom";
 import {useTranslation} from "react-i18next";
+import {useSelector} from "react-redux";
+import {sprintf} from "sprintf-js";
+import {animateScroll as scroll} from "react-scroll";
 
 import routes from "core/routes";
+import apis from "core/apis";
+import {ALERT_DANGER, SUCCESS, TRANSITION_TIME} from "core/globals";
+import Loader from "components/Loader";
+import Error from "components/Error";
+import PostDetail from "./partial/PostDetail";
+import WriteComment from "./partial/WriteComment";
+import PostsService from "services/PostsService";
 
 import "./PostDetailPage.scss";
+import Comments from "./partial/Comments";
+
 
 export default ({}) => {
+  const {id} = useParams();
   const {t} = useTranslation();
+  const {auth} = useSelector(state => state);
+
+  const [loading, setLoading] = useState(true);
+  const [alert, setAlert] = useState({});
+  const [data, setData] = useState();
+  const [comments, setComments] = useState([]);
+
+  useEffect(e => {
+    scroll.scrollToTop({
+      duration: TRANSITION_TIME,
+    });
+    PostsService.get({id, userId: !!auth.user ? auth.user.id : undefined})
+      .then(res => {
+        if (res.result === SUCCESS) {
+          res.data["media"] = (res.data["media"].startsWith("http://") || res.data["media"].startsWith("https://")) ? res.data["media"] : sprintf("%s%s", apis.assetsBaseUrl, res.data["media"]);
+          setData(res.data);
+        } else {
+          setAlert({
+            show: true,
+            color: ALERT_DANGER,
+            message: res.message,
+          });
+        }
+        setLoading(false);
+      })
+      .catch(err => {
+        console.log(err);
+        setAlert({
+          show: true,
+          color: ALERT_DANGER,
+          message: t('COMMON.ERROR.UNKNOWN_SERVER_ERROR'),
+        });
+        setLoading(false);
+      });
+    PostsService.commentList({postId: id})
+      .then(res => {
+        if (res.result === SUCCESS) {
+          setComments(res.data);
+        }
+      })
+      .catch(err => {
+
+      })
+  }, [id]);
 
   return (
     <div>
@@ -16,78 +73,19 @@ export default ({}) => {
         <MDBBreadcrumbItem><Link to={routes.posts.all}>{t('NAVBAR.POSTS.POSTS')}</Link></MDBBreadcrumbItem>
         <MDBBreadcrumbItem active>{t('NAVBAR.POSTS.ADD')}</MDBBreadcrumbItem>
       </MDBBreadcrumb>
-      <div>
-        يحذرك الناس من الذئاب..
-        وقد قالوا لك "إن لم تكن ذئبا أكلتك الذئاب"!
-        هي نصيحة متكررة لتكون حذرا من غدر قد ينالك ولتكون شرساً في وجود من ينتظر فرصة لافتراسك، وصار الذئب مثالا للغدر في كثير من الأدبيات المتداولة منذ القدم، وربطوا اسمه بقصص العدوانية والأذى، بل جعلوه – في قصص الأطفال - مجرماً يسطو على بيوت الخنازير الصغيرة المسكينة..
+      {!!loading && <div className="loading-page"><Loader/></div>}
+      {!loading && (!data || !data.id) && <div className="loading-page"><Error heading={404} message={t("COMMON.ERROR.NO_DATA")} /></div>}
+      {!loading && !!data && !!data.id && <MDBRow>
+        <MDBCol md={9}>
+          <PostDetail data={data}/>
+          {!data.commentId && <WriteComment commentId={data.id} />}
+          {!!data.commentId && <MDBAlert className="mt-5 mb-3" color="warning">{t("POSTS.DETAIL.ALREADY_WROTE_COMMENT")}</MDBAlert>}
+          <Comments data={comments} />
+        </MDBCol>
+        <MDBCol md={3}>
 
-        لكن هذه المقالة تأتي في سياق مختلف..
-        ‪ ‬‬ ‬
-        الذئب حيوان أنيق..
-        فهو رغم نمط حياته وتغذيته وتنقله يكاد لا يبقى شيئاً من الوسخ على نفسه ويساعد من حوله في "تنظيف" أجسادهم وما تعلق بها..
-        عندما تنظر إلى قطيع من الذئاب يسهل ملاحظة ذلك..
-        وجمال الخارج يصحبه جمال داخلي، فأناقة الذئب لا تتوقف عند مظهره ونظافته الشخصية، بل في كثير من سلوكياته أيضاً..
-
-        الذئب وفيّ جداً..
-        انس خرافات قصص الأطفال..
-        الذئب وفيّ جداً لشريكة حياته فهو لا يفارقها وهي لا تفارقه حتى الموت غالباً..
-        ووفاؤه يصل إلى القطيع كاملا.. عائلته الكبيرة..
-        فمن أبرز سمات الذئاب وحدة المجموعة فهم يسيرون في مجموعة لا تتجزأ ويظهرون ولاء ملفتاً للنظر، ومهما اشتدت الظروف فلا تجد القطيع يسير تاركاً ذئباً خلفه فريسة للهلاك، بل ينتصر الواحد منهم للذئب الذي يجد نفسه في ورطة ولو أدى الأمر إلى موته..
-        وفي قطيع الذئاب يأكل صغارهم قبل كبارهم، ولو قل الطعام يصبر الكبير ويتحمل ولا يغامر قائدهم بحرمان الصغار والضعفاء..
-        ليس الوفاء فقط بل التضحية أيضا..
-        فقد وجد علماء الحيوان أن الذئب لا يتردد في أن يموت لو كان موته سببا لإنقاذ القطيع..
-        وهو أمر قل حدوثه في عوالم الحيوانات التي نصفها بالوحشية!
-
-        الذئب منظم جداً..
-        ومفهوم القيادة عنده واضح..
-        هناك دائماً ذئب قائد اسمه alpha ‬ وله قوة تفوق غيره ويسيطر على سير القطيع ومهامه.‬
-        والقيادة ليست قوة فقط فالقائد "مايسترو" يضبط إيقاع الفريق ويحفظ وحدته..
-        وعندما يسير القطيع ويقطع طرقاً طويلة فلكل ذئب دوره..
-        في المقدمة وفي المؤخرة وفي منتصف هذه العائلة الكبيرة..
-        ووفق كل دور يظهر الذئب لغة جسد تميزه فقائد القطيع ينصب جسده بشكل ملفت ليعرف الجميع مهمته ويكون قدوة ويسيرون خلفه أو أمامه وهو يبدأ بنفسه في حال الهجوم وهو يتأكد من قيام كل ذئب بدوره بشكل تام وهو يضمن عدم زعزعة روابط القطيع..
-        وتظهر مبادئ التكامل والترابط خاصة في وقت المجاعة أو هجوم حيوانات أخرى..
-        ولديهم نمط سلوكي مثير حيال المحمية الخاصة بهم فهم يحمون حدودها مهما كبرت مساحتها ولا يسمحون بدخيل أن يعكر أمنها..
-
-        القائد لا بد من أن يعيش دوره..
-        والفريق كله له هدف واحد..
-        القائد يقوم بدوره ويعتني بفريقه ولا يغفل الفريق أهمية القائد واحترامه ومنح "الكبار" التقدير الذي يستحقونه..
-        يعملون بإيقاع منظم ويتقاسمون المهام بانسيابية عالية ولا يتعارض هذا مع علاقاتهم المجتمعية الداخلية المعقدة، فوحدة القطيع والرغبة في البقاء والنجاة تعلو على كافة المتغيرات الأخرى..
-
-        دور الفرد مهم.. ووحدة الفريق أهم..
-        قوة الفريق تأتي من الاهتمام بالفرد وبقوة كل واحد منهم..
-        وصارت للذئاب قوة يحسب لها حساب..
-        ليس مصدرها الافتراس بل التنظيم ووضوح الهدف ووحدة المجموعة والعناية بكل فرد..
-        هذه السمات سبب لظهور كلمة wolfpack وما يشبهها مثالا للفريق أو "الشلة" المترابطة!‬
-
-        الذئب قوي جداً..
-        ويتميز بالصمود والاستفادة من الموارد المتاحة ولو قلّت وبمواجهة التحديات مهما قست الظروف من حوله، وليس غريبا أن الذئاب ليست من الحيوانات المهددة بالانقراض بشكل عام، فنمط حياتها وسلوكياتها يسهم في بقائها..
-
-        وقوة الذئب تتجلى في مواقف الضعف..
-        فحين يتم نفي ذئب ما بسبب صراع داخلي ويصبح الذئب وحده..
-        لا يموت.. بل يتكيف مع محيطه ويعارك الحياة وقد يعود للقطيع..
-        لكن في كثير من الأحيان يستمر وحده وربما بدأ قطيعا جديدا..
-        والقصد أن حياة الذئب لا تتوقف.. فقد بني هذا الكائن ليبقى!
-
-        الذئب متوازن جداً..
-        ولو أنك راقبت مجموعة ذئاب فستلحظ ملامسة عالية بينهم..
-        فهناك لعق أو شم أو مشاكسة ودية وملاعبة بين أفرادها..
-        فقوة الذئب لا تمنعه من أن يظهر مشاعره ولحظات ضعفه الفطرية بل يتصالح معها ويعيشها..
-        هو يجد لنفسه وقت راحة ولا يتعارك كل يوم..
-        بل يمنح نفسه فرصا للراحة حتى تأتي لحظة الحاجة للعراك.. فيكون مستعداً.. قوياً..
-
-        بعض المجتمعات البشرية اقتبست شيئا من سلوكيات الذئاب لغرض مقاومة قسوة عوامل الطبيعة لكن هناك مزيد أمور نستطيع تعلمها..
-        ربما حان وقت أن يتعلم القياديون وكثير من الفرق والمنظمات دروساً من هذا "الحيوان"..
-        فقط إن منحوا أنفسهم وقتا للتأمل.. وفرصة للنظر ولإعادة التفكير..
-
-        رسالة أخيرة..
-
-        الذئب يترك أثراً.. دائماً..
-        قد يترك رائحة أو أثرا عضويا..
-        أو بقايا محمية.. أو شيئاً من صيد ثمين..
-        فهو حين يغادر..
-        لا يغادر تماماً..
-        من يأتي بعده.. يجد أثراً …
-      </div>
+        </MDBCol>
+      </MDBRow>}
     </div>
   )
 };

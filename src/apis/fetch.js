@@ -33,9 +33,11 @@ export const setHeader = (params) => {
     axios.defaults.headers.common[key] = value;
   });
 };
+export default (requestType, resourceURL, parameters, headers) => {
+  // Object.entries(headers).forEach(([key, value]) => {
+  //   axios.defaults.headers.common[key] = value;
+  // });
 
-export default (requestType, resourceURL, parameters) => {
-  // axios.defaults.headers.common["Authorization"] = "Bearer " + G.UserProfile.accessToken;
   switch (requestType) {
     case GET:
       return new Promise((resolve, reject) => {
@@ -45,12 +47,12 @@ export default (requestType, resourceURL, parameters) => {
             cancelToken: new CancelToken(c => {
               cancel = c;
             }),
+            headers: headers,
           })
           .then(response => {
             resolve(response.data);
           })
           .catch(error => {
-            // console.log(error.response);
             reject(error);
           });
       });
@@ -63,6 +65,7 @@ export default (requestType, resourceURL, parameters) => {
             cancelToken: new CancelToken(c => {
               cancel = c;
             }),
+            headers: headers,
           })
           .then(response => {
             resolve(response.data);
@@ -80,6 +83,7 @@ export default (requestType, resourceURL, parameters) => {
             cancelToken: new CancelToken(c => {
               cancel = c;
             }),
+            headers: headers,
           })
           .then(response => {
             resolve(response.data);
@@ -97,6 +101,7 @@ export default (requestType, resourceURL, parameters) => {
             cancelToken: new CancelToken(c => {
               cancel = c;
             }),
+            headers: headers,
           })
           .then(response => {
             resolve(response.data);
@@ -114,6 +119,7 @@ export default (requestType, resourceURL, parameters) => {
             cancelToken: new CancelToken(c => {
               cancel = c;
             }),
+            headers: headers,
           })
           .then(response => {
             resolve(response.data);

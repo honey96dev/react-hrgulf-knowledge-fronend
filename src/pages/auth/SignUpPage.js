@@ -13,9 +13,12 @@ import {
   MDBInputGroup,
   MDBModalFooter,
   MDBRow,
-  MDBSelect
+  MDBSelect,
+  MDBSelectInput,
+  MDBSelectOption,
+  MDBSelectOptions,
 } from "mdbreact";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {
   ALERT_DANGER,
   DATE_FORMAT_ISO,
@@ -45,6 +48,7 @@ import "./SignUpPage.scss";
 import UserService from "services/UserService";
 import auth from "actions/auth";
 import {CSSTransition} from "react-transition-group";
+import {animateScroll as scroll} from "react-scroll";
 
 // import "moment/locale/ar";
 
@@ -60,7 +64,7 @@ export default (props) => {
   const [username, setUsername] = useState(isDev ? DEFAULT_USERNAME : "");
   const [firstName, setFirstName] = useState(isDev ? DEFAULT_FIRST_NAME : "");
   const [lastName, setLastName] = useState(isDev ? DEFAULT_LAST_NAME : "");
-  const [gender, setGender] = useState(isDev ? GENDER_MALE : "");
+  const [gender, setGender] = useState("");
   const [birthday, setBirthday] = useState(isDev ? new Date() : "");
   const [jobTitle, setJobTitle] = useState(isDev ? DEFAULT_JOB_TITLE : "");
   const [sector, setSector] = useState(isDev ? DEFAULT_SECTOR : "");
@@ -71,15 +75,11 @@ export default (props) => {
   const [password, setPassword] = useState(isDev ? DEFAULT_PASSWORD : "");
   const [password2, setPassword2] = useState(isDev ? DEFAULT_PASSWORD : "");
 
-  const [genderOptions, setGenderOptions] = useState();
-
   useEffect(() => {
-    setGenderOptions([
-      {text: t('COMMON.GENDER.MALE'), value: GENDER_MALE},
-      {text: t('COMMON.GENDER.FEMALE'), value: GENDER_FEMALE},
-    ]);
-    setGender(GENDER_MALE);
-  }, [props, t]);
+    scroll.scrollToTop({
+      duration: TRANSITION_TIME,
+    });
+  }, [props]);
 
   const handleSignIn = async event => {
     event.preventDefault();
@@ -153,7 +153,13 @@ export default (props) => {
             </MDBRow>
             <MDBRow>
               <MDBCol md={6}>
-                <MDBSelect options={genderOptions} label={t('AUTH.GENDER')} className="mt-3 mb-0" selected={gender} getValue={val => setGender(val)} />
+                <MDBSelect label={t('AUTH.GENDER')} className="mt-3 mb-0" selected={[gender]} getValue={val => setGender(val[0])} >
+                  <MDBSelectInput selected={[gender]} />
+                  <MDBSelectOptions>
+                    <MDBSelectOption value={GENDER_MALE}>{t("COMMON.GENDER.MALE")}</MDBSelectOption>
+                    <MDBSelectOption value={GENDER_FEMALE}>{t("COMMON.GENDER.FEMALE")}</MDBSelectOption>
+                  </MDBSelectOptions>
+                </MDBSelect>
                 {gender.length === 0 && <div className="invalid-field">
                   {t("COMMON.VALIDATION.REQUIRED", {field: t("AUTH.GENDER")})}
                 </div> }

@@ -1,6 +1,8 @@
+@import "../../assets/consts";
+
 .post-media {
   width: 100%;
-  max-height: 250px;
+  max-height: $postitem-media-maxheight;
   object-fit: cover;
 }
 

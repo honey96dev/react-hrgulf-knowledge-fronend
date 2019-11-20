@@ -41,7 +41,10 @@ export default ({id, date, time, author, comments, media, title, description}) =
             <span className="mr-2"><MDBIcon icon="user"/></span>
             {author}
           </p>
-          <p>{comments}</p>
+          <p className="mx-2">
+            <span className="mr-2"><MDBIcon icon="comments"/></span>
+            {comments}
+          </p>
         </div>
         <p className="dark-grey-text">{desc}</p>
         {/*<p>*/}

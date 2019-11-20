@@ -2,13 +2,18 @@ import React, {Fragment, useEffect, useState} from "react";
 import {Link, useHistory, useParams} from "react-router-dom";
 import {MDBBreadcrumb, MDBBreadcrumbItem, MDBCol, MDBRow} from "mdbreact";
 import {useTranslation} from "react-i18next";
+import {sprintf} from "sprintf-js";
+import {animateScroll as scroll} from "react-scroll";
 
 import Posts from "components/Posts";
 import Loader from "components/Loader";
 import Pagination from "components/Pagination";
 import PostsService from "services/PostsService";
-import {ALERT_DANGER, SUCCESS} from "core/globals";
+import {ALERT_DANGER, SUCCESS, TRANSITION_TIME} from "core/globals";
 import routes from "core/routes";
+import apis from "core/apis";
+
+import "./AllPostsPage.scss";
 
 export default ({}) => {
   const {page} = useParams();
@@ -27,16 +32,22 @@ export default ({}) => {
   };
 
   useEffect(e => {
+    scroll.scrollToTop({
+      duration: TRANSITION_TIME,
+    });
     PostsService.list({page})
       .then(res => {
         if (res.result === SUCCESS) {
           setPageCount(res.pageCount);
+          for (let item of res.data) {
+            item["media"] = (item["media"].startsWith("http://") || item["media"].startsWith("https://")) ? item["media"] : sprintf("%s%s", apis.assetsBaseUrl, item["media"]);
+          }
           setPosts(res.data);
         } else {
           setAlert({
             show: true,
             color: ALERT_DANGER,
-            message: t('COMMON.ERROR.UNKNOWN_SERVER_ERROR'),
+            message: res.message,
           });
         }
         setLoading(false);

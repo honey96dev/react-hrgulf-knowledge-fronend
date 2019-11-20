@@ -11,6 +11,7 @@ export const routes = {
     all: "/posts",
     add: "/posts/add",
     detail: "/posts/detail",
+    comment: "/posts/comment",
   },
   news: {
     root: "/news",
