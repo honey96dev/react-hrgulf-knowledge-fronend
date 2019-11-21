@@ -25,6 +25,7 @@ export default {
       FIRST: "First",
       LAST: "Last",
       READ_MORE: "Read more",
+      MODIFY: "Modify",
     },
     VALIDATION: {
       REQUIRED: "{{field}} is required",
@@ -48,6 +49,19 @@ export default {
       LANGUAGE: 'Language',
       ENGLISH: 'English',
       ARABIC: 'عربى',
+    },
+    FILE_UPLOAD: {
+      DEFAULT: "Drag and drop a file here or click",
+      REPLACE: "Drag and drop or click to replace",
+      REMOVE: "Remove",
+      ERROR: "Oops, something wrong happened",
+      ERROR_FILESIZE: "The file size is too big ({{max}} max)",
+      ERROR_FILEEXTENSION: "The file is not allowed ({{extensions}} only)",
+      ERROR_IMAGEFORMAT: "The image format is not allowed ({{format}} only)",
+      ERROR_MAXHEIGHT: "The image height is too big ({{max}}px max)",
+      ERROR_MINHEIGHT: "The image height is too small ({{min}}px min)",
+      ERROR_MAXWIDTH: "The image width is too big ({{max}}px max)",
+      ERROR_MINWIDTH: "The image width is too small ({{min}}px min)",
     },
   },
   NAVBAR: {
@@ -83,6 +97,22 @@ export default {
     FORGOT_PASSWORD: "Forgot password?",
     ALREADY_REGISTERED: "Already registered?",
     NOT_REGISTERED: "Not registered?",
+  },
+  PROFILE: {
+    PROFILE: "Profile",
+    MY_POSTS: {
+      MY_POSTS: "My Posts",
+      DETAIL: "Detail",
+    },
+    MAIN: {
+      PERSONAL_INFO: "Personal Info",
+      SOCIAL_MEDIA: "Social Media",
+      PASSWORD: "Password",
+    },
+    PASSWORD: {
+      CURRENT_PASSWORD: "Current Password",
+      NEW_PASSWORD: "New Password",
+    },
   },
   POSTS: {
     TITLE: "Title",

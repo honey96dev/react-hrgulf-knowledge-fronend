@@ -4,7 +4,14 @@ export const routes = {
     root: "/auth",
     signIn: "/auth/sign-in",
     signUp: "/auth/sign-up",
-    myAccount: "/auth/my-account",
+  },
+  profile: {
+    root: "/profile",
+    main: "/profile/main",
+    myPosts: {
+      root: "/profile/my-posts",
+      detail: "/profile/my-posts/detail",
+    },
   },
   posts: {
     root: "/posts",

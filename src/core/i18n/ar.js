@@ -25,6 +25,7 @@ export default {
       FIRST: "أول",
       LAST: "الاخير",
       READ_MORE: "قراءة المزيد",
+      MODIFY: "تعديل",
     },
     VALIDATION: {
       REQUIRED: "{{field}} مطلوب",
@@ -48,6 +49,19 @@ export default {
       LANGUAGE: 'لغة',
       ENGLISH: 'English',
       ARABIC: 'عربى',
+    },
+    FILE_UPLOAD: {
+      DEFAULT: "سحب وإسقاط ملف هنا أو انقر فوق",
+      REPLACE: "سحب وإسقاط أو انقر لاستبدال",
+      REMOVE: "إزالة",
+      ERROR: "عفوًا ، حدث خطأ ما",
+      ERROR_FILESIZE: "حجم الملف كبير جدًا ({{max}} بحد أقصى)",
+      ERROR_FILEEXTENSION: "الملف غير مسموح به ({{extensions}} فقط)",
+      ERROR_IMAGEFORMAT: "تنسيق الصورة غير مسموح به ({{format}} فقط)",
+      ERROR_MAXHEIGHT: "ارتفاع الصورة أكبر من اللازم ({{max}} بكسل كحد أقصى)",
+      ERROR_MINHEIGHT: "ارتفاع الصورة صغير جدًا ({{min}} بكسل)",
+      ERROR_MAXWIDTH: "عرض الصورة أكبر من اللازم ({{max}} بكسل كحد أقصى)",
+      ERROR_MINWIDTH: "عرض الصورة صغير جدًا ({{min}} بكسل)",
     },
   },
   NAVBAR: {
@@ -83,6 +97,22 @@ export default {
     FORGOT_PASSWORD: "هل نسيت كلمة المرور؟",
     ALREADY_REGISTERED: "مسجل بالفعل؟",
     NOT_REGISTERED: "غير مسجل؟",
+  },
+  PROFILE: {
+    PROFILE: "الملف الشخصي",
+    MY_POSTS: {
+      MY_POSTS: "مشاركاتي",
+      DETAIL: "التفاصيل",
+    },
+    MAIN: {
+      PERSONAL_INFO: "معلومات شخصية",
+      SOCIAL_MEDIA: "وسائل التواصل الاجتماعي",
+      PASSWORD: "كلمه السر",
+    },
+    PASSWORD: {
+      CURRENT_PASSWORD: "كلمة المرور الحالي",
+      NEW_PASSWORD: "كلمة مرور جديدة",
+    },
   },
   POSTS: {
     TITLE: "عنوان",

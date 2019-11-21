@@ -19,6 +19,13 @@ import {
   MDBSelectOptions,
 } from "mdbreact";
 import {useDispatch} from "react-redux";
+import UserService from "services/UserService";
+import auth from "actions/auth";
+import {CSSTransition} from "react-transition-group";
+import {animateScroll as scroll} from "react-scroll";
+
+// import "moment/locale/ar";
+
 import {
   ALERT_DANGER,
   DATE_FORMAT_ISO,
@@ -44,13 +51,8 @@ import {
 } from "core/globals";
 import routes from "core/routes";
 import validators from "core/validators";
-import "./SignUpPage.scss";
-import UserService from "services/UserService";
-import auth from "actions/auth";
-import {CSSTransition} from "react-transition-group";
-import {animateScroll as scroll} from "react-scroll";
 
-// import "moment/locale/ar";
+import "./SignUpPage.scss";
 
 export default (props) => {
   const dispatch = useDispatch();
@@ -64,7 +66,7 @@ export default (props) => {
   const [username, setUsername] = useState(isDev ? DEFAULT_USERNAME : "");
   const [firstName, setFirstName] = useState(isDev ? DEFAULT_FIRST_NAME : "");
   const [lastName, setLastName] = useState(isDev ? DEFAULT_LAST_NAME : "");
-  const [gender, setGender] = useState("");
+  const [gender, setGender] = useState(isDev ? GENDER_MALE : "");
   const [birthday, setBirthday] = useState(isDev ? new Date() : "");
   const [jobTitle, setJobTitle] = useState(isDev ? DEFAULT_JOB_TITLE : "");
   const [sector, setSector] = useState(isDev ? DEFAULT_SECTOR : "");
@@ -81,7 +83,7 @@ export default (props) => {
     });
   }, [props]);
 
-  const handleSignIn = async event => {
+  const handleSubmit = async event => {
     event.preventDefault();
 
     try {
@@ -112,7 +114,7 @@ export default (props) => {
   return (
     <MDBCard>
       <MDBCardBody className="mx-md-4 mx-sm-1">
-        <form onSubmit={handleSignIn}>
+        <form onSubmit={handleSubmit}>
           <div className="text-center">
             <h3 className="dark-grey-text mb-3 h1-responsive">
               <strong>{t("AUTH.SIGN_UP")}</strong>
@@ -156,16 +158,19 @@ export default (props) => {
                 <MDBSelect label={t('AUTH.GENDER')} className="mt-3 mb-0" selected={[gender]} getValue={val => setGender(val[0])} >
                   <MDBSelectInput selected={[gender]} />
                   <MDBSelectOptions>
-                    <MDBSelectOption value={GENDER_MALE}>{t("COMMON.GENDER.MALE")}</MDBSelectOption>
-                    <MDBSelectOption value={GENDER_FEMALE}>{t("COMMON.GENDER.FEMALE")}</MDBSelectOption>
+                    <MDBSelectOption value={GENDER_MALE} checked={gender === GENDER_MALE}>{t("COMMON.GENDER.MALE")}</MDBSelectOption>
+                    <MDBSelectOption value={GENDER_FEMALE} checked={gender === GENDER_FEMALE}>{t("COMMON.GENDER.FEMALE")}</MDBSelectOption>
                   </MDBSelectOptions>
                 </MDBSelect>
-                {gender.length === 0 && <div className="invalid-field">
+                {!!gender && gender.length === 0 && <div className="invalid-field">
                   {t("COMMON.VALIDATION.REQUIRED", {field: t("AUTH.GENDER")})}
                 </div> }
               </MDBCol>
               <MDBCol md={6}>
-                <MDBDatePicker format={DATE_FORMAT_ISO} /*locale={moment.locale(t("CODE"))}*/ className="date-picker" value={birthday} getValue={val => setBirthday(val)} />
+                <MDBDatePicker format={DATE_FORMAT_ISO}  autoOk /*locale={moment.locale(t("CODE"))}*/ className="date-picker" value={birthday} getValue={val => setBirthday(val)}
+                               // TextFieldComponent={<MDBInput label={t("AUTH.BIRTHDAY")}/>}
+                />
+                <label className="date-picker-label">{t("AUTH.BIRTHDAY")}</label>
               </MDBCol>
             </MDBRow>
             <MDBRow>

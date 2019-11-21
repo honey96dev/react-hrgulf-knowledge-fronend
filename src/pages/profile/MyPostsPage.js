@@ -3,6 +3,7 @@ import {Link, useHistory, useParams} from "react-router-dom";
 import {MDBBreadcrumb, MDBBreadcrumbItem, MDBBtn, MDBCol, MDBRow} from "mdbreact";
 import {useTranslation} from "react-i18next";
 import {sprintf} from "sprintf-js";
+import {useSelector} from "react-redux";
 import {animateScroll as scroll} from "react-scroll";
 
 import Posts from "components/Posts";
@@ -13,10 +14,11 @@ import {ALERT_DANGER, SUCCESS, TRANSITION_TIME} from "core/globals";
 import routes from "core/routes";
 import apis from "core/apis";
 
-import "./AllPostsPage.scss";
+import "./MyPostsPage.scss";
 
 export default ({}) => {
   const {page} = useParams();
+  const {auth} = useSelector(state => state);
   const {t} = useTranslation();
   const history = useHistory();
 
@@ -28,14 +30,14 @@ export default ({}) => {
   const currentPage = page ? parseInt(page) : 1;
 
   const handlePageChange = page => {
-    history.push(`${routes.posts.all}/${page}`);
+    history.push(`${routes.profile.myPosts.root}/${page}`);
   };
 
   useEffect(e => {
     scroll.scrollToTop({
       duration: TRANSITION_TIME,
     });
-    PostsService.list({page})
+    PostsService.list({userId: auth.user.id, page})
       .then(res => {
         if (res.result === SUCCESS) {
           setPageCount(res.pageCount);
@@ -65,8 +67,8 @@ export default ({}) => {
   return (
     <Fragment>
       <MDBBreadcrumb>
-        <MDBBreadcrumbItem><Link to={routes.posts.all}>{t('NAVBAR.POSTS.POSTS')}</Link></MDBBreadcrumbItem>
-        <MDBBreadcrumbItem active>{t('NAVBAR.POSTS.ALL')}</MDBBreadcrumbItem>
+        <MDBBreadcrumbItem><Link to={routes.profile.main}>{t('PROFILE.PROFILE')}</Link></MDBBreadcrumbItem>
+        <MDBBreadcrumbItem active>{t('PROFILE.MY_POSTS.MY_POSTS')}</MDBBreadcrumbItem>
       </MDBBreadcrumb>
       {!!loading && <div className="loading-page"><Loader/></div>}
       {!loading && <MDBRow>
@@ -85,7 +87,7 @@ export default ({}) => {
           </div>
         </MDBCol>
         <MDBCol md={12}>
-          <Posts items={posts} detailLink={routes.posts.detail} />
+          <Posts items={posts} detailLink={routes.profile.myPosts.detail} />
         </MDBCol>
         <MDBCol md={12} className="text-center">
           <div className="mt-5">

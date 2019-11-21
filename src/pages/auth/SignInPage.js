@@ -42,7 +42,7 @@ export default (props) => {
     });
   }, [props]);
 
-  const handleSignIn = async event => {
+  const handleSubmit = async event => {
     event.preventDefault();
     try {
       const params = {email, password};
@@ -77,7 +77,7 @@ export default (props) => {
   return (
     <MDBCard>
       <MDBCardBody className="mx-md-4 mx-sm-1">
-        <form onSubmit={handleSignIn}>
+        <form onSubmit={handleSubmit}>
           <div className="text-center">
             <h3 className="dark-grey-text mb-5">
               <strong>{t("AUTH.SIGN_IN")}</strong>

@@ -193,6 +193,12 @@ textarea.form-control {
   content: ">";
 }
 
+.date-picker-label {
+  font-size: 12px;
+  position: absolute;
+  top: 5px;
+}
+
 .fade-transition-enter {
   opacity: 0.01;
 }
@@ -403,5 +409,16 @@ textarea.form-control {
     padding-left: .5rem;
     padding-right: unset;
     //content: "<" !i;
+  }
+
+  @media (min-width: 62em) {
+    .classic-tabs .nav li:first-child {
+      margin-left: unset;
+      margin-right: 56px;
+    }
+  }
+
+  .date-picker-label {
+    right: 25px;
   }
 }

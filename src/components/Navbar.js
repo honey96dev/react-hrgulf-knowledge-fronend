@@ -59,7 +59,7 @@ export default ({thresholdY}) => {
   return (
     <MDBNavbar color={flag ? "mdb-color" : "white"} light={!flag} dark={flag} expand="md" scrolling fixed="top">
       <MDBNavbarBrand href="/">
-        <strong>{t('SITE_NAME')}</strong>
+        <strong>{t("SITE_NAME")}</strong>
       </MDBNavbarBrand>
       <MDBNavbarToggler onClick={toggleCollapse}/>
       <MDBCollapse isOpen={collapse} navbar className="text-left">
@@ -70,11 +70,11 @@ export default ({thresholdY}) => {
           <MDBNavItem active={pathname.startsWith(routes.posts.root)}>
             <MDBDropdown onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
               <MDBDropdownToggle nav caret>
-                <span className="mr-2">{t('NAVBAR.POSTS.POSTS')}</span>
+                <span className="mr-2">{t("NAVBAR.POSTS.POSTS")}</span>
               </MDBDropdownToggle>
               <MDBDropdownMenu className="text-left">
-                <MDBDropdownItem onClick={() => history.push(routes.posts.add)}>{t('NAVBAR.POSTS.ADD')}</MDBDropdownItem>
-                <MDBDropdownItem onClick={() => history.push(routes.posts.all)}>{t('NAVBAR.POSTS.ALL')}</MDBDropdownItem>
+                <MDBDropdownItem onClick={() => history.push(routes.posts.add)}>{t("NAVBAR.POSTS.ADD")}</MDBDropdownItem>
+                <MDBDropdownItem onClick={() => history.push(routes.posts.all)}>{t("NAVBAR.POSTS.ALL")}</MDBDropdownItem>
               </MDBDropdownMenu>
             </MDBDropdown>
           </MDBNavItem>
@@ -92,11 +92,11 @@ export default ({thresholdY}) => {
           <MDBNavItem>
             <MDBDropdown>
               <MDBDropdownToggle nav caret>
-                <span className="mr-2">{t('COMMON.LANGUAGE.LANGUAGE')}</span>
+                <span className="mr-2">{t("COMMON.LANGUAGE.LANGUAGE")}</span>
               </MDBDropdownToggle>
               <MDBDropdownMenu className="text-left">
-                <MDBDropdownItem onClick={() => changeLanguage('ar')}>{t('COMMON.LANGUAGE.ARABIC')}</MDBDropdownItem>
-                <MDBDropdownItem onClick={() => changeLanguage('en')}>{t('COMMON.LANGUAGE.ENGLISH')}</MDBDropdownItem>
+                <MDBDropdownItem onClick={() => changeLanguage("ar")}>{t("COMMON.LANGUAGE.ARABIC")}</MDBDropdownItem>
+                <MDBDropdownItem onClick={() => changeLanguage("en")}>{t("COMMON.LANGUAGE.ENGLISH")}</MDBDropdownItem>
               </MDBDropdownMenu>
             </MDBDropdown>
           </MDBNavItem>
@@ -106,10 +106,15 @@ export default ({thresholdY}) => {
                 <MDBIcon icon="user" className="d-inline-inline"/>
               </MDBDropdownToggle>
               <MDBDropdownMenu className="text-left">
-                {!auth.signedIn && <Fragment><MDBDropdownItem onClick={() => history.push(routes.auth.signIn)}>{t('AUTH.SIGN_IN')}</MDBDropdownItem>
-                <MDBDropdownItem onClick={() => history.push(routes.auth.signUp)}>{t('AUTH.SIGN_UP')}</MDBDropdownItem></Fragment>}
-                {auth.signedIn && <Fragment><MDBDropdownItem onClick={() => history.push(routes.auth.myAccount)}>{t('AUTH.MY_ACCOUNT')}</MDBDropdownItem>
-                <MDBDropdownItem onClick={handleSignOut}>{t('AUTH.SIGN_OUT')}</MDBDropdownItem></Fragment>}
+                {!auth.signedIn && <Fragment>
+                  <MDBDropdownItem onClick={() => history.push(routes.auth.signIn)}>{t("AUTH.SIGN_IN")}</MDBDropdownItem>
+                  <MDBDropdownItem onClick={() => history.push(routes.auth.signUp)}>{t("AUTH.SIGN_UP")}</MDBDropdownItem>
+                </Fragment>}
+                {auth.signedIn && <Fragment>
+                  <MDBDropdownItem onClick={() => history.push(routes.profile.main)}>{t("AUTH.MY_ACCOUNT")}</MDBDropdownItem>
+                  <MDBDropdownItem onClick={() => history.push(routes.profile.myPosts.root)}>{t("PROFILE.MY_POSTS.MY_POSTS")}</MDBDropdownItem>
+                  <MDBDropdownItem onClick={handleSignOut}>{t("AUTH.SIGN_OUT")}</MDBDropdownItem>
+                </Fragment>}
               </MDBDropdownMenu>
             </MDBDropdown>
           </MDBNavItem>

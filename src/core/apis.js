@@ -7,6 +7,10 @@ export default {
     signIn: "auth/sign-in",
     signUp: "auth/sign-up",
   },
+  profile: {
+    save: "profile/save",
+    changePassword: "profile/change-password",
+  },
   posts: {
     list: "posts/list",
     save: "posts/save",

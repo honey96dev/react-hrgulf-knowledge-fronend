@@ -8,7 +8,7 @@ import routes from "core/routes";
 
 import "./PostListItem.scss";
 
-export default ({id, date, time, author, comments, media, title, description}) => {
+export default ({id, date, time, author, comments, media, title, description, detailLink}) => {
   const {t} = useTranslation();
   const desc = description.length > DESCRIPTION_LENGTH_BREAKPOINT ? description.substr(0, DESCRIPTION_LENGTH_BREAKPOINT) + " ..." : description;
 
@@ -21,14 +21,14 @@ export default ({id, date, time, author, comments, media, title, description}) =
             src={media}
             alt=""
           />
-          <Link to={`${routes.posts.detail}/${id}`}>
+          <Link to={`${detailLink}/${id}`}>
             <MDBMask overlay="white-slight" />
           </Link>
         </MDBView>
       </MDBCol>
       <MDBCol lg="7" xl="8">
         <h3 className="font-weight-bold mb-3 p-0">
-          <Link to={`${routes.posts.detail}/${id}`}>
+          <Link to={`${detailLink}/${id}`}>
             <strong>{title}</strong>
           </Link>
         </h3>
@@ -53,7 +53,7 @@ export default ({id, date, time, author, comments, media, title, description}) =
         {/*<p>*/}
         {/*  by <a href="#!" className="font-weight-bold">Jessica Clark</a>, 19/04/2018*/}
         {/*</p>*/}
-        <Link to={`${routes.posts.detail}/${id}`}>
+        <Link to={`${detailLink}/${id}`}>
           <MDBBtn size="sm" color="indigo">
           {t("COMMON.BUTTON.READ_MORE")}
           </MDBBtn>

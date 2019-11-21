@@ -1,6 +1,6 @@
-import React, {Fragment, useEffect, useState} from "react";
-import {MDBAlert, MDBBreadcrumb, MDBBreadcrumbItem, MDBCol, MDBIcon, MDBRow} from "mdbreact";
-import {Link, useParams} from "react-router-dom";
+import React, {useEffect, useState} from "react";
+import {MDBAlert, MDBBreadcrumb, MDBBreadcrumbItem, MDBBtn, MDBCol, MDBRow} from "mdbreact";
+import {Link, useHistory, useParams} from "react-router-dom";
 import {useTranslation} from "react-i18next";
 import {useSelector} from "react-redux";
 import {sprintf} from "sprintf-js";
@@ -22,6 +22,7 @@ import Comments from "./partial/Comments";
 export default ({}) => {
   const {id} = useParams();
   const {t} = useTranslation();
+  const history = useHistory();
   const {auth} = useSelector(state => state);
 
   const [loading, setLoading] = useState(true);
@@ -67,6 +68,10 @@ export default ({}) => {
       })
   }, [id]);
 
+  const handleGoBack = e => {
+    history.goBack();
+  };
+
   return (
     <div>
       <MDBBreadcrumb>
@@ -77,6 +82,11 @@ export default ({}) => {
       {!loading && (!data || !data.id) && <div className="loading-page"><Error heading={404} message={t("COMMON.ERROR.NO_DATA")} /></div>}
       {!loading && !!data && !!data.id && <MDBRow>
         <MDBCol md={9}>
+          <div className="full-width">
+            <MDBBtn size="sm" color="warning" onClick={handleGoBack}>
+              {t("COMMON.BUTTON.BACK")}
+            </MDBBtn>
+          </div>
           <PostDetail data={data} comments={comments.length}/>
           {data.userId !== auth.user.id && !data.commentId && <WriteComment commentId={data.id} />}
           {!!data.commentId && <MDBAlert className="mt-5 mb-3" color="warning">{t("POSTS.DETAIL.ALREADY_WROTE_COMMENT")}</MDBAlert>}
