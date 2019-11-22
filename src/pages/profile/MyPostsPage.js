@@ -87,7 +87,7 @@ export default ({}) => {
           </div>
         </MDBCol>
         <MDBCol md={12}>
-          <Posts items={posts} detailLink={routes.profile.myPosts.detail} />
+          <Posts items={posts} detailLabel={t("COMMON.BUTTON.DETAILS")} detailLink={routes.profile.myPosts.detail} />
         </MDBCol>
         <MDBCol md={12} className="text-center">
           <div className="mt-5">
