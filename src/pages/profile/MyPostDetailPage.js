@@ -13,17 +13,17 @@ import {
 import MDBFileupload from "mdb-react-fileupload";
 import {Link, useHistory, useParams} from "react-router-dom";
 import {useTranslation} from "react-i18next";
-import {useFormState} from "react-use-form-state";
 import {useSelector} from "react-redux";
 import {CSSTransition} from "react-transition-group";
+import {Helmet} from "react-helmet";
+import {sprintf} from "sprintf-js";
 
 import routes from "core/routes";
+import apis from "core/apis";
 import {ALERT_DANGER, FILEUPLOAD_MAXSIZE1, SUCCESS, TEXTAREA_ROWS2, TRANSITION_TIME} from "core/globals";
 import PostsService from "services/PostsService";
 
 import "./MyPostDetailPage.scss";
-import {sprintf} from "sprintf-js";
-import apis from "../../core/apis";
 
 export default ({}) => {
   const {id} = useParams();
@@ -97,9 +97,11 @@ export default ({}) => {
     history.goBack();
   };
 
-  console.log(title, description, file);
   return (
     <Fragment>
+      <Helmet>
+        <title>{t("PROFILE.MY_POSTS.DETAIL")} - {t("SITE_NAME")}</title>
+      </Helmet>
       <MDBBreadcrumb>
         <MDBBreadcrumbItem><Link to={routes.profile.main}>{t('PROFILE.PROFILE')}</Link></MDBBreadcrumbItem>
         <MDBBreadcrumbItem><Link to={routes.profile.myPosts.root}>{t('PROFILE.MY_POSTS.MY_POSTS')}</Link></MDBBreadcrumbItem>

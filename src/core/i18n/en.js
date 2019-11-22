@@ -40,6 +40,7 @@ export default {
     ERROR: {
       UNKNOWN_SERVER_ERROR: "Unknown server error",
       NO_DATA: "There is no data",
+      ERROR_404: "Ops, Page not found",
     },
     GENDER: {
       MALE: 'Male',

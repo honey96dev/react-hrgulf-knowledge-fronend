@@ -11,6 +11,7 @@ import {
   MDBTabPane
 } from "mdbreact";
 import {useTranslation} from "react-i18next";
+import {Helmet} from "react-helmet";
 
 import routes from "core/routes";
 import PersonalInfo from "./partial/PersonalInfo";
@@ -52,6 +53,9 @@ export default (props) => {
 
   return (
     <Fragment>
+      <Helmet>
+        <title>{t("PROFILE.PROFILE")} - {t("SITE_NAME")}</title>
+      </Helmet>
       <MDBBreadcrumb>
         <MDBBreadcrumbItem><Link to={routes.profile.main}>{t('PROFILE.PROFILE')}</Link></MDBBreadcrumbItem>
         <MDBBreadcrumbItem active>{CURRENT_TAB}</MDBBreadcrumbItem>

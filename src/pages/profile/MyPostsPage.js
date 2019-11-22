@@ -5,9 +5,10 @@ import {useTranslation} from "react-i18next";
 import {sprintf} from "sprintf-js";
 import {useSelector} from "react-redux";
 import {animateScroll as scroll} from "react-scroll";
+import {Helmet} from "react-helmet";
 
 import Posts from "components/Posts";
-import Loader from "components/Loader";
+import Loading from "components/Loading";
 import Pagination from "components/Pagination";
 import PostsService from "services/PostsService";
 import {ALERT_DANGER, SUCCESS, TRANSITION_TIME} from "core/globals";
@@ -66,11 +67,14 @@ export default ({}) => {
 
   return (
     <Fragment>
+      <Helmet>
+        <title>{t("PROFILE.MY_POSTS.MY_POSTS")} - {t("SITE_NAME")}</title>
+      </Helmet>
       <MDBBreadcrumb>
         <MDBBreadcrumbItem><Link to={routes.profile.main}>{t('PROFILE.PROFILE')}</Link></MDBBreadcrumbItem>
         <MDBBreadcrumbItem active>{t('PROFILE.MY_POSTS.MY_POSTS')}</MDBBreadcrumbItem>
       </MDBBreadcrumb>
-      {!!loading && <div className="loading-page"><Loader/></div>}
+      {!!loading && <Loading/>}
       {!loading && <MDBRow>
         <MDBCol md={12} className="text-center">
           <div className="mt-5">

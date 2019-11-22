@@ -2,12 +2,12 @@ import React, {Fragment} from "react";
 import {Route, Switch} from "react-router-dom";
 import {MDBCol, MDBContainer, MDBRow} from "mdbreact";
 
+import routes from "core/routes";
 import Navbar from "components/Navbar";
 import Footer from "components/Footer";
 import BackToTop from "components/BackToTop";
 import SignInPage from "./SignInPage";
 import SignUpPage from "./SignUpPage";
-import routes from "core/routes";
 
 import "./AuthPage.scss";
 

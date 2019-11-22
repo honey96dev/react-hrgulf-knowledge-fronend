@@ -16,6 +16,7 @@ import {useTranslation} from "react-i18next";
 import {useFormState} from "react-use-form-state";
 import {useSelector} from "react-redux";
 import {CSSTransition} from "react-transition-group";
+import {Helmet} from "react-helmet";
 
 import routes from "core/routes";
 import {ALERT_DANGER, FILEUPLOAD_MAXSIZE1, TEXTAREA_ROWS2, TRANSITION_TIME} from "core/globals";
@@ -68,6 +69,9 @@ export default ({}) => {
 
   return (
     <Fragment>
+      <Helmet>
+        <title>{t("NAVBAR.POSTS.ADD")} - {t("SITE_NAME")}</title>
+      </Helmet>
       <MDBBreadcrumb>
         <MDBBreadcrumbItem><Link to={routes.posts.all}>{t('NAVBAR.POSTS.POSTS')}</Link></MDBBreadcrumbItem>
         <MDBBreadcrumbItem active>{t('NAVBAR.POSTS.ADD')}</MDBBreadcrumbItem>

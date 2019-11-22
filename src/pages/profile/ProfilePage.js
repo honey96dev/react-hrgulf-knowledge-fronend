@@ -6,6 +6,7 @@ import Navbar from "components/Navbar";
 import SignedInRoute from "components/SignedInRoute";
 import Footer from "components/Footer";
 import BackToTop from "components/BackToTop";
+import Error404 from "components/Error404";
 import routes from "core/routes";
 import MainPage from "./MainPage";
 import MyPostsPage from "./MyPostsPage";
@@ -14,7 +15,6 @@ import MyPostDetailPage from "./MyPostDetailPage";
 import "./ProfilePage.scss";
 
 export default (props) => {
-
   return (
     <Fragment>
       <Navbar/>
@@ -25,6 +25,7 @@ export default (props) => {
           <SignedInRoute path={`${routes.profile.myPosts.root}/:page`} exact component={MyPostsPage}/>
           <SignedInRoute path={`${routes.profile.myPosts.detail}/:id`} component={MyPostDetailPage}/>
           <SignedInRoute path={`${routes.profile.main}/:tab`} component={MainPage}/>
+          <Route component={Error404}/>
         </Switch>
       </MDBContainer>
       <Footer/>

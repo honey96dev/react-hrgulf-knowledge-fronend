@@ -1,22 +1,23 @@
-import React, {useEffect, useState} from "react";
+import React, {Fragment, useEffect, useState} from "react";
 import {MDBAlert, MDBBreadcrumb, MDBBreadcrumbItem, MDBBtn, MDBCol, MDBRow} from "mdbreact";
 import {Link, useHistory, useParams} from "react-router-dom";
 import {useTranslation} from "react-i18next";
 import {useSelector} from "react-redux";
 import {sprintf} from "sprintf-js";
 import {animateScroll as scroll} from "react-scroll";
+import {Helmet} from "react-helmet";
 
 import routes from "core/routes";
 import apis from "core/apis";
 import {ALERT_DANGER, SUCCESS, TRANSITION_TIME} from "core/globals";
-import Loader from "components/Loader";
-import Error from "components/Error";
+import Loading from "components/Loading";
+import Error404 from "components/Error404";
 import PostDetail from "./partial/PostDetail";
 import WriteComment from "./partial/WriteComment";
+import Comments from "./partial/Comments";
 import PostsService from "services/PostsService";
 
 import "./PostDetailPage.scss";
-import Comments from "./partial/Comments";
 
 
 export default ({}) => {
@@ -74,15 +75,18 @@ export default ({}) => {
 
   return (
     <div>
+      <Helmet>
+        <title>{t("POSTS.DETAIL.POST_DETAIL")} - {t("SITE_NAME")}</title>
+      </Helmet>
       <MDBBreadcrumb>
         <MDBBreadcrumbItem><Link to={routes.posts.all}>{t('NAVBAR.POSTS.POSTS')}</Link></MDBBreadcrumbItem>
         <MDBBreadcrumbItem active>{t('POSTS.DETAIL.POST_DETAIL')}</MDBBreadcrumbItem>
       </MDBBreadcrumb>
-      {!!loading && <div className="loading-page"><Loader/></div>}
-      {!loading && (!data || !data.id) && <div className="loading-page"><Error heading={404} message={t("COMMON.ERROR.NO_DATA")} /></div>}
+      {!!loading && <Loading/>}
+      {!loading && (!data || !data.id) && <Error404 />}
       {!loading && !!data && !!data.id && <MDBRow>
         <MDBCol md={9}>
-          <div className="full-width">
+          <div className="full-width text-left">
             <MDBBtn size="sm" color="warning" onClick={handleGoBack}>
               {t("COMMON.BUTTON.BACK")}
             </MDBBtn>

@@ -1,8 +1,19 @@
-import React from "react";
-import Loader from "components/Loader";
+import React, {Fragment} from "react";
+import Loading from "components/Loading";
+import Navbar from "../../components/Navbar";
+import {MDBContainer} from "mdbreact";
+import Footer from "../../components/Footer";
+import BackToTop from "../../components/BackToTop";
 
 export default () => {
   return (
-    <Loader/>
+    <Fragment>
+      <Navbar/>
+      <MDBContainer className="section">
+        <Loading/>
+      </MDBContainer>
+      <Footer/>
+      <BackToTop/>
+    </Fragment>
   )
 };

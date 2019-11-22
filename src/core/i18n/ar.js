@@ -40,6 +40,7 @@ export default {
     ERROR: {
       UNKNOWN_SERVER_ERROR: "خطأ غير معروف في الخادم",
       NO_DATA: "ليس هنالك معلومات",
+      ERROR_404: "لم يتم العثور على الصفحة",
     },
     GENDER: {
       MALE: 'الذكر',

@@ -4,9 +4,10 @@ import {MDBBreadcrumb, MDBBreadcrumbItem, MDBBtn, MDBCol, MDBRow} from "mdbreact
 import {useTranslation} from "react-i18next";
 import {sprintf} from "sprintf-js";
 import {animateScroll as scroll} from "react-scroll";
+import {Helmet} from "react-helmet";
 
 import Posts from "components/Posts";
-import Loader from "components/Loader";
+import Loading from "components/Loading";
 import Pagination from "components/Pagination";
 import PostsService from "services/PostsService";
 import {ALERT_DANGER, SUCCESS, TRANSITION_TIME} from "core/globals";
@@ -64,11 +65,14 @@ export default ({}) => {
 
   return (
     <Fragment>
+      <Helmet>
+        <title>{t("NAVBAR.POSTS.ALL")} - {t("SITE_NAME")}</title>
+      </Helmet>
       <MDBBreadcrumb>
         <MDBBreadcrumbItem><Link to={routes.posts.all}>{t('NAVBAR.POSTS.POSTS')}</Link></MDBBreadcrumbItem>
         <MDBBreadcrumbItem active>{t('NAVBAR.POSTS.ALL')}</MDBBreadcrumbItem>
       </MDBBreadcrumb>
-      {!!loading && <div className="loading-page"><Loader/></div>}
+      {!!loading && <Loading/>}
       {!loading && <MDBRow>
         <MDBCol md={12} className="text-center">
           <div className="mt-5">
