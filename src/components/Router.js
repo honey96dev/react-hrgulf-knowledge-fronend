@@ -17,6 +17,7 @@ export default () => (
     <Route path={routes.posts.root} component={PostsPage}/>
     <SignedInRoute path={routes.profile.root} component={ProfilePage}/>
     <Route path={"/"} exact component={FrontPage}/>
+    <Route path={routes.admin} exact render={() => (window.location.href = `${routes.admin}/`)}/>
     <Route component={Error404Page}/>
   </Switch>
 );

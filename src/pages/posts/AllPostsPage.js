@@ -8,6 +8,7 @@ import {Helmet} from "react-helmet";
 
 import Posts from "components/Posts";
 import Loading from "components/Loading";
+import ErrorNoData from "components/ErrorNoData";
 import Pagination from "components/Pagination";
 import PostsService from "services/PostsService";
 import {ALERT_DANGER, SUCCESS, TRANSITION_TIME} from "core/globals";
@@ -73,7 +74,8 @@ export default ({}) => {
         <MDBBreadcrumbItem active>{t('NAVBAR.POSTS.ALL')}</MDBBreadcrumbItem>
       </MDBBreadcrumb>
       {!!loading && <Loading/>}
-      {!loading && <MDBRow>
+      {!loading && !posts.length && <ErrorNoData/>}
+      {!loading && !!posts.length && <MDBRow>
         <MDBCol md={12} className="text-center">
           <div className="mt-5">
             <Pagination circle current={currentPage} pageCount={pageCount} width={10} onChange={handlePageChange}/>
