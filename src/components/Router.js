@@ -7,17 +7,21 @@ import SignedOutRoute from "components/SignedOutRoute";
 import Error404Page from "pages/common/Error404Page";
 
 const AuthPage = React.lazy(() => import("pages/auth/AuthPage"));
+const ProfilePage = React.lazy(() => import("pages/profile/ProfilePage"));
 const FrontPage = React.lazy(() => import("pages/front/FrontPage"));
 const PostsPage = React.lazy(() => import("pages/posts/PostsPage"));
-const ProfilePage = React.lazy(() => import("pages/profile/ProfilePage"));
+const NewsPage = React.lazy(() => import("pages/news/NewsPage"));
+const VideoPage = React.lazy(() => import("pages/video/VideoPage"));
 
 export default () => (
   <Switch>
-    <SignedOutRoute path={routes.auth.root} component={AuthPage}/>
-    <Route path={routes.posts.root} component={PostsPage}/>
-    <SignedInRoute path={routes.profile.root} component={ProfilePage}/>
     <Route path={"/"} exact component={FrontPage}/>
-    <Route path={routes.admin} exact render={() => (window.location.href = `${routes.admin}/`)}/>
+    <SignedOutRoute path={routes.auth.root} component={AuthPage}/>
+    <SignedInRoute path={routes.profile.root} component={ProfilePage}/>
+    <Route path={routes.posts.root} component={PostsPage}/>
+    <Route path={routes.news.root} component={NewsPage}/>
+    <Route path={routes.video.root} component={VideoPage}/>
+    {/*<Route path={routes.admin} exact render={() => (window.location.href = `${routes.admin}/`)}/>*/}
     <Route component={Error404Page}/>
   </Switch>
 );

@@ -23,9 +23,13 @@ export const routes = {
   },
   news: {
     root: "/news",
+    all: "/news",
+    detail: "/news/detail",
   },
   video: {
     root: "/video",
+    all: "/video",
+    detail: "/video/detail",
   },
   vote: {
     root: "/vote",

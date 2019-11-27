@@ -15,6 +15,17 @@ export default {
     });
   },
 
+  latest: (params) => {
+    return new Promise((resolve, reject) => {
+      fetch(POST, apis.posts.latest, params)
+        .then(res => {
+          resolve(res);
+        }, err => {
+          reject(err);
+        });
+    });
+  },
+
   save: (params) => {
     return new Promise((resolve, reject) => {
       fetch(POST, apis.posts.save, params)

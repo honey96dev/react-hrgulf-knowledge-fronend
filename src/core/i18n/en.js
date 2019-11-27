@@ -35,9 +35,10 @@ export default {
       NOT_SAME: "Make sure same to {{field}}",
     },
     QUESTION: {
-      DELETE_CONFIRM: "Do you want to delete '{{item}}'?",
+      DELETE: "Do you want to delete '{{item}}'?",
     },
     ERROR: {
+      SORRY: "Sorry",
       UNKNOWN_SERVER_ERROR: "Unknown server error",
       NO_DATA: "There is no data",
       ERROR_404: "Ops, Page not found",
@@ -132,6 +133,24 @@ export default {
       ALREADY_WROTE_COMMENT: "You have already written a comment on this post",
       COMMENTS: "Comments",
       NO_COMMENT: "There is no comment yet",
+    },
+    LATEST_POSTS: "Latest Posts",
+  },
+  NEWS: {
+    NEWS: "News",
+    TITLE: "Title",
+    DESCRIPTION: "Description",
+    DETAIL: {
+      NEWS_DETAIL: "News Detail",
+    },
+    LATEST_NEWS: "Latest News",
+  },
+  VIDEO: {
+    VIDEO: "Video",
+    TITLE: "Title",
+    DESCRIPTION: "Description",
+    DETAIL: {
+      VIDEO_DETAIL: "Video Detail",
     },
   },
 };

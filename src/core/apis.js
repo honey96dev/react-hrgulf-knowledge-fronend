@@ -13,10 +13,20 @@ export default {
   },
   posts: {
     list: "posts/list",
+    latest: "posts/latest",
     save: "posts/save",
     delete: "posts/delete",
     get: "posts/get",
     commentList: "posts/comment-list",
     writeComment: "posts/write-comment",
+  },
+  news: {
+    list: "news/list",
+    latest: "news/latest",
+    get: "news/get",
+  },
+  video: {
+    list: "video/list",
+    get: "video/get",
   },
 };

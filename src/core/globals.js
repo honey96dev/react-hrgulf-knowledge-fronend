@@ -1,7 +1,8 @@
 export const isDev = !process.env.NODE_ENV || process.env.NODE_ENV === "development";
 
+export const PERSIST_KEY = "knowledge";
 export const SUCCESS = "success";
-export const ERROR = "error";
+export const ERROR = "danger";
 
 export const CURRENT_USER = "currentUser";
 export const TOKEN = "token";
@@ -18,6 +19,9 @@ export const SAUDI_PHONE_PREFIX = "+966";
 
 export const USERNAME_MAX_LENGTH = 20;
 export const PASSWORD_MIN_LENGTH = 6;
+
+export const PAGINATION_WIDTH = 10;
+export const PAGINATION_WIDTH_MOBILE = 6;
 
 export const DESCRIPTION_LENGTH_BREAKPOINT = 400;
 

@@ -35,9 +35,10 @@ export default {
       NOT_SAME: "تأكد من نفسه إلى {{field}}",
     },
     QUESTION: {
-      DELETE_CONFIRM: "هل تريد حذف '{{item}}'؟",
+      DELETE: "هل تريد حذف '{{item}}'؟",
     },
     ERROR: {
+      SORRY: "آسف",
       UNKNOWN_SERVER_ERROR: "خطأ غير معروف في الخادم",
       NO_DATA: "ليس هنالك معلومات",
       ERROR_404: "لم يتم العثور على الصفحة",
@@ -133,5 +134,15 @@ export default {
       COMMENTS: "تعليقات",
       NO_COMMENT: "لا يوجد أي تعليق حتى الان",
     },
+    LATEST_POSTS: "آخر المشاركات",
+  },
+  NEWS: {
+    NEWS: "أخبار",
+    TITLE: "عنوان",
+    DESCRIPTION: "وصف",
+    DETAIL: {
+      NEWS_DETAIL: "أخبار التفاصيل",
+    },
+    LATEST_NEWS: "أحدث الأخبار",
   },
 };
