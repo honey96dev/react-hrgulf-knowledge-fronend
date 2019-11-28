@@ -33,6 +33,7 @@ export const routes = {
   },
   vote: {
     root: "/vote",
+    all: "/vote",
   },
 };
 

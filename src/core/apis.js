@@ -29,4 +29,8 @@ export default {
     list: "video/list",
     get: "video/get",
   },
+  vote: {
+    list: "vote/list",
+    update: "vote/update",
+  },
 };

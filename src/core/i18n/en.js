@@ -153,4 +153,7 @@ export default {
       VIDEO_DETAIL: "Video Detail",
     },
   },
+  VOTE: {
+    VOTE: "Vote",
+  },
 };

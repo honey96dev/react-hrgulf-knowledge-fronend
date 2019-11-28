@@ -1,25 +1,27 @@
 import React, {Fragment, useEffect, useState} from "react";
 import {useHistory, useParams} from "react-router-dom";
+import {useSelector} from "react-redux";
 import {MDBAlert, MDBBreadcrumb, MDBBreadcrumbItem, MDBCol, MDBRow} from "mdbreact";
 import {useTranslation} from "react-i18next";
 import {animateScroll as scroll} from "react-scroll";
 import {Helmet} from "react-helmet";
 import {CSSTransition} from "react-transition-group";
 
-import Videos from "components/Videos";
 import Loading from "components/Loading";
 import ErrorNoData from "components/ErrorNoData";
 import Pagination from "components/Pagination";
-import VideoService from "services/VideoService";
+import VoteService from "services/VoteService";
 import {ALERT_DANGER, SUCCESS, TRANSITION_TIME} from "core/globals";
 import routes from "core/routes";
+import Votes from "./partial/Votes";
 
-import "./AllVideoPage.scss";
+import "./AllVotePage.scss";
 
 export default () => {
   const {page} = useParams();
   const {t} = useTranslation();
   const history = useHistory();
+  const {auth} = useSelector(state => state);
 
   const [loading, setLoading] = useState(true);
   const [alert, setAlert] = useState({});
@@ -33,11 +35,19 @@ export default () => {
     scroll.scrollToTop({
       duration: TRANSITION_TIME,
     });
-    VideoService.list({page})
+    loadData();
+  }, [page, t]);
+
+  const loadData = e => {
+    VoteService.list({page, userId: auth.user.id})
       .then(res => {
         if (res.result === SUCCESS) {
           setPageCount(res.pageCount);
           setItems(res.data);
+          setAlert({
+            ...alert,
+            show: false,
+          });
         } else {
           setAlert({
             show: true,
@@ -55,19 +65,48 @@ export default () => {
         });
         setLoading(false);
       });
-  }, [page, t]);
+  };
 
   const handlePageChange = page => {
-    history.push(`${routes.posts.all}/${page}`);
+    history.push(`${routes.vote.all}/${page}`);
+  };
+
+  const handleUpdate = ({questionId, answerId}) => {
+    VoteService.update({page, userId: auth.user.id, questionId, answerId})
+      .then(res => {
+        if (res.result === SUCCESS) {
+          setPageCount(res.pageCount);
+          setItems(res.data);
+          setAlert({
+            ...alert,
+            show: false,
+          });
+        } else {
+          setAlert({
+            show: true,
+            color: ALERT_DANGER,
+            message: res.message,
+          });
+        }
+        setLoading(false);
+      })
+      .catch(err => {
+        setAlert({
+          show: true,
+          color: ALERT_DANGER,
+          message: t('COMMON.ERROR.UNKNOWN_SERVER_ERROR'),
+        });
+        setLoading(false);
+      });
   };
   
   return (
     <Fragment>
       <Helmet>
-        <title>{t("VIDEO.VIDEO")} - {t("SITE_NAME")}</title>
+        <title>{t("VOTE.VOTE")} - {t("SITE_NAME")}</title>
       </Helmet>
       <MDBBreadcrumb>
-        <MDBBreadcrumbItem active>{t('VIDEO.VIDEO')}</MDBBreadcrumbItem>
+        <MDBBreadcrumbItem active>{t('VOTE.VOTE')}</MDBBreadcrumbItem>
       </MDBBreadcrumb>
       {!!loading && <Loading/>}
       {!loading && !items.length && <ErrorNoData/>}
@@ -83,7 +122,7 @@ export default () => {
           </div>
         </MDBCol>
         <MDBCol md={12}>
-          <Videos items={items} detailLabel={t("COMMON.BUTTON.DETAILS")} detailLink={routes.video.detail} />
+          <Votes items={items} onUpdate={handleUpdate}/>
         </MDBCol>
         <MDBCol md={12} className="text-center">
           <div className="mt-5">

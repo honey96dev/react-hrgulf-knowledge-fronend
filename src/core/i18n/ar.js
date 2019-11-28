@@ -145,4 +145,15 @@ export default {
     },
     LATEST_NEWS: "أحدث الأخبار",
   },
+  VIDEO: {
+    VIDEO: "فيديو",
+    TITLE: "عنوان",
+    DESCRIPTION: "وصف",
+    DETAIL: {
+      VIDEO_DETAIL: "فيديو التفاصيل",
+    },
+  },
+  VOTE: {
+    VOTE: "تصويت",
+  },
 };

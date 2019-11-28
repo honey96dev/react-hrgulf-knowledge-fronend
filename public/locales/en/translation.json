@@ -1,9 +1,0 @@
-{
-  "NAME": "English",
-  "CODE": "en",
-  "DIRECTION": "ltr",
-  "AUTH": "test",
-  "BRANCH": {
-    "KING": "KING1"
-  }
-}
