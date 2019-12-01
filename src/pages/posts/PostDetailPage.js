@@ -88,11 +88,13 @@ export default ({}) => {
       {!loading && (!data || !data.id) && <Error404 />}
       {!loading && !!data && !!data.id && <Fragment>
         <MDBRow>
-          <div className="full-width text-left">
-            <MDBBtn size="sm" color="warning" onClick={handleGoBack}>
-              {t("COMMON.BUTTON.BACK")}
-            </MDBBtn>
-          </div>
+          <MDBCol md={12}>
+            <div className="full-width text-left">
+              <MDBBtn size="sm" color="warning" onClick={handleGoBack}>
+                {t("COMMON.BUTTON.BACK")}
+              </MDBBtn>
+            </div>
+          </MDBCol>
         </MDBRow>
         <MDBRow>
           <MDBCol md={8}>

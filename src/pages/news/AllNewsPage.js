@@ -5,6 +5,7 @@ import {useTranslation} from "react-i18next";
 import {animateScroll as scroll} from "react-scroll";
 import {Helmet} from "react-helmet";
 import {CSSTransition} from "react-transition-group";
+import {sprintf} from "sprintf-js";
 
 import News from "components/News";
 import Loading from "components/Loading";
@@ -13,6 +14,7 @@ import Pagination from "components/Pagination";
 import NewsService from "services/NewsService";
 import {ALERT_DANGER, SUCCESS, TRANSITION_TIME} from "core/globals";
 import routes from "core/routes";
+import apis from "core/apis";
 
 import "./AllNewsPage.scss";
 
@@ -37,6 +39,9 @@ export default () => {
       .then(res => {
         if (res.result === SUCCESS) {
           setPageCount(res.pageCount);
+          for (let item of res.data) {
+            item["media"] = (item["media"].startsWith("http://") || item["media"].startsWith("https://")) ? item["media"] : sprintf("%s%s", apis.assetsBaseUrl, item["media"]);
+          }
           setItems(res.data);
         } else {
           setAlert({

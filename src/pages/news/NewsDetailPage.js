@@ -16,6 +16,8 @@ import LatestPosts from "components/LatestPosts";
 import LatestNews from "components/LatestNews";
 
 import "./NewsDetailPage.scss";
+import {sprintf} from "sprintf-js";
+import apis from "../../core/apis";
 
 
 export default ({}) => {
@@ -36,6 +38,7 @@ export default ({}) => {
     NewsService.get({id, userId: !!auth.user ? auth.user.id : undefined})
       .then(res => {
         if (res.result === SUCCESS) {
+          res.data["media"] = (res.data["media"].startsWith("http://") || res.data["media"].startsWith("https://")) ? res.data["media"] : sprintf("%s%s", apis.assetsBaseUrl, res.data["media"]);
           setData(res.data);
         } else {
           setAlert({
@@ -74,11 +77,13 @@ export default ({}) => {
       {!loading && (!data || !data.id) && <Error404 />}
       {!loading && !!data && !!data.id && <Fragment>
         <MDBRow>
-          <div className="full-width text-left">
-            <MDBBtn size="sm" color="warning" onClick={handleGoBack}>
-              {t("COMMON.BUTTON.BACK")}
-            </MDBBtn>
-          </div>
+          <MDBCol md={12}>
+            <div className="full-width text-left">
+              <MDBBtn size="sm" color="warning" onClick={handleGoBack}>
+                {t("COMMON.BUTTON.BACK")}
+              </MDBBtn>
+            </div>
+          </MDBCol>
         </MDBRow>
         <MDBRow>
           <MDBCol md={8}>

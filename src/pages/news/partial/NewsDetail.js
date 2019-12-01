@@ -23,6 +23,9 @@ export default ({data}) => {
         {/*  {`${data.firstName} ${data.lastName}`}*/}
         {/*</p>*/}
       </div>
+      <div className="text-center">
+        <img src={data.media} className="post-detail-media view overlay rounded z-depth-1-half mb-4"/>
+      </div>
       <div>
         <div className="text-left">
           {data.description}

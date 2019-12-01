@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {Fragment, useEffect, useState} from "react";
 import {MDBBreadcrumb, MDBBreadcrumbItem, MDBBtn, MDBCol, MDBRow} from "mdbreact";
 import {Link, useHistory, useParams} from "react-router-dom";
 import {useTranslation} from "react-i18next";
@@ -70,19 +70,25 @@ export default ({}) => {
       </MDBBreadcrumb>
       {!!loading && <Loading/>}
       {!loading && (!data || !data.id) && <Error404 />}
-      {!loading && !!data && !!data.id && <MDBRow>
-        <MDBCol md={9}>
-          <div className="full-width text-left">
-            <MDBBtn size="sm" color="warning" onClick={handleGoBack}>
-              {t("COMMON.BUTTON.BACK")}
-            </MDBBtn>
-          </div>
-          <VideoDetail data={data}/>
-        </MDBCol>
-        <MDBCol md={3}>
+      {!loading && !!data && !!data.id && <Fragment>
+        <MDBRow>
+          <MDBCol md={12}>
+            <div className="full-width text-left">
+              <MDBBtn size="sm" color="warning" onClick={handleGoBack}>
+                {t("COMMON.BUTTON.BACK")}
+              </MDBBtn>
+            </div>
+          </MDBCol>
+        </MDBRow>
+        <MDBRow>
+          <MDBCol md={9}>
+            <VideoDetail data={data}/>
+          </MDBCol>
+          <MDBCol md={3}>
 
-        </MDBCol>
-      </MDBRow>}
+          </MDBCol>
+        </MDBRow>
+      </Fragment>}
     </div>
   )
 };
