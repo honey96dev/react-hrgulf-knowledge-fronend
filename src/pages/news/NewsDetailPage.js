@@ -4,10 +4,12 @@ import {Link, useHistory, useParams} from "react-router-dom";
 import {useTranslation} from "react-i18next";
 import {useSelector} from "react-redux";
 import {animateScroll as scroll} from "react-scroll";
+import {sprintf} from "sprintf-js";
 import {Helmet} from "react-helmet";
 
 import routes from "core/routes";
 import {ALERT_DANGER, SUCCESS, TRANSITION_TIME} from "core/globals";
+import apis from "core/apis";
 import Loading from "components/Loading";
 import Error404 from "components/Error404";
 import NewsDetail from "./partial/NewsDetail";
@@ -16,8 +18,6 @@ import LatestPosts from "components/LatestPosts";
 import LatestNews from "components/LatestNews";
 
 import "./NewsDetailPage.scss";
-import {sprintf} from "sprintf-js";
-import apis from "../../core/apis";
 
 
 export default ({}) => {

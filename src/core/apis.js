@@ -30,7 +30,10 @@ export default {
     get: "video/get",
   },
   vote: {
-    list: "vote/list",
+    packages: "vote/packages",
+    getPackage: "vote/get-package",
+    questions: "vote/questions",
     update: "vote/update",
+    result: "vote/result",
   },
 };

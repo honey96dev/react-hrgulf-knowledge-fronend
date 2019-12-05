@@ -34,6 +34,10 @@ export const routes = {
   vote: {
     root: "/vote",
     all: "/vote",
+    current: "/vote/current",
+    questions: "/vote/questions",
+    previous: "/vote/previous",
+    result: "/vote/result",
   },
 };
 

@@ -1,23 +1,26 @@
-import React, {Fragment, useState} from "react";
+import React, {Fragment, useEffect, useState} from "react";
 import {MDBBtn, MDBInput} from "mdbreact";
 import {useTranslation} from "react-i18next";
 
-import "./CurrentVote.scss";
+import "./AnswerList.scss";
 
 export default ({data, onUpdate}) => {
 
   const {t} = useTranslation();
   const [value, setValue] = useState();
 
+  useEffect(e => {
+    setValue(data.answered);
+  }, [data]);
+
   const handleSubmit = e => {
     e.preventDefault();
 
-    onUpdate({questionId: data.id, answerId: value});
+    !!onUpdate && onUpdate({questionId: data.id, answerId: value});
   };
 
   return (
     <div className="text-left">
-      <h4 className="text-primary font-weight-bold mb-3 p-0">{data.question}</h4>
       <form onSubmit={handleSubmit}>
         {data.answers.map((item, index) => (
           <Fragment key={index}>

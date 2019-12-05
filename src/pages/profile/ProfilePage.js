@@ -21,8 +21,7 @@ export default (props) => {
       <MDBContainer className={"section"}>
         <Switch>
           <SignedInRoute path={routes.profile.main} exact component={MainPage}/>
-          <SignedInRoute path={`${routes.profile.myPosts.root}`} exact component={MyPostsPage}/>
-          <SignedInRoute path={`${routes.profile.myPosts.root}/:page`} exact component={MyPostsPage}/>
+          <SignedInRoute path={`${routes.profile.myPosts.root}/:page?`} exact component={MyPostsPage}/>
           <SignedInRoute path={`${routes.profile.myPosts.detail}/:id`} component={MyPostDetailPage}/>
           <SignedInRoute path={`${routes.profile.main}/:tab`} component={MainPage}/>
           <Route component={Error404}/>

@@ -10,6 +10,8 @@ import {ALERT_DANGER, SUCCESS, TEXTAREA_ROWS1, TRANSITION_TIME} from "core/globa
 import PostsService from "services/PostsService";
 import {CSSTransition} from "react-transition-group";
 
+import "./WriteComment.scss";
+
 export default ({commentId}) => {
   const {t} = useTranslation();
   const history = useHistory();

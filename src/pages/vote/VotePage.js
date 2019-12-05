@@ -5,8 +5,12 @@ import {MDBContainer} from "mdbreact";
 import Navbar from "components/Navbar";
 import Footer from "components/Footer";
 import BackToTop from "components/BackToTop";
-import AllVotePage from "./AllVotePage";
+import Error404 from "components/Error404";
+import SignedInRoute from "components/SignedInRoute";
 import routes from "core/routes";
+import PackagesPage from "./PackagesPage";
+import QuestionsPage from "./QuestionsPage";
+import ResultPage from "./ResultPage";
 
 import "./VotePage.scss";
 
@@ -16,8 +20,10 @@ export default () => {
       <Navbar/>
       <MDBContainer className={"section"}>
         <Switch>
-          <Route path={routes.vote.all} exact component={AllVotePage}/>
-          <Route path={`${routes.vote.all}/:page`} exact component={AllVotePage}/>
+          <Route path={`${routes.vote.all}/:scope/:page?`} exact component={PackagesPage}/>
+          <SignedInRoute path={`${routes.vote.questions}/:packageId/:page?/:page2?`} exact component={QuestionsPage}/>
+          <SignedInRoute path={`${routes.vote.result}/:packageId/:page?/:page2?`} exact component={ResultPage}/>
+          <Route component={Error404}/>
         </Switch>
       </MDBContainer>
       <Footer/>

@@ -65,6 +65,10 @@ export default {
       ERROR_MAXWIDTH: "عرض الصورة أكبر من اللازم ({{max}} بكسل كحد أقصى)",
       ERROR_MINWIDTH: "عرض الصورة صغير جدًا ({{min}} بكسل)",
     },
+    COMPLETE: {
+      COMPLETED: "منجز",
+      NOT_COMPLETED: "غير مكتمل",
+    },
   },
   NAVBAR: {
     HOME: "البداية",
@@ -75,7 +79,11 @@ export default {
     },
     NEWS: "الأخبار",
     VIDEO: "الفيديوهات",
-    VOTE: "الفيديوهات",
+    VOTE: {
+      VOTE: "تصويت",
+      CURRENT: "التصويت الحالي",
+      PREVIOUS: "التصويت السابق",
+    },
   },
   AUTH: {
     EMAIL: "البريد الإلكتروني",
@@ -155,5 +163,9 @@ export default {
   },
   VOTE: {
     VOTE: "تصويت",
+    PACKAGES: "صفقة",
+    PACKAGE: "Package",
+    QUESTIONS: "الأسئلة",
+    RESULT: "Result",
   },
 };

@@ -38,6 +38,8 @@ export const TRANSITION_TIME = 500;
 export const FILEUPLOAD_MAXSIZE1 = "5M";
 export const FILEUPLOAD_MAXSIZE2 = "10M";
 
+export const SCOPE_CURRENT = "current";
+
 export const DEFAULT_EMAIL = "honey96dev@gmail.com";
 export const DEFAULT_USERNAME = "honey96dev";
 export const DEFAULT_FIRST_NAME = "Zhenlong";

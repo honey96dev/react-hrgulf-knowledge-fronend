@@ -65,6 +65,10 @@ export default {
       ERROR_MAXWIDTH: "The image width is too big ({{max}}px max)",
       ERROR_MINWIDTH: "The image width is too small ({{min}}px min)",
     },
+    COMPLETE: {
+      COMPLETED: "Completed",
+      NOT_COMPLETED: "Not completed",
+    },
   },
   NAVBAR: {
     HOME: "Home",
@@ -75,7 +79,11 @@ export default {
     },
     NEWS: "News",
     VIDEO: "Video",
-    VOTE: "Vote",
+    VOTE: {
+      VOTE: "Vote",
+      CURRENT: "Current Vote",
+      PREVIOUS: "Previous Vote",
+    },
   },
   AUTH: {
     EMAIL: "Email",
@@ -155,5 +163,9 @@ export default {
   },
   VOTE: {
     VOTE: "Vote",
+    PACKAGES: "Packages",
+    PACKAGE: "Package",
+    QUESTIONS: "Questions",
+    RESULT: "Result",
   },
 };

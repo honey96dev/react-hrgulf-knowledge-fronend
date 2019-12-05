@@ -73,8 +73,8 @@ export default ({thresholdY}) => {
                 <span className="mr-2">{t("NAVBAR.POSTS.POSTS")}</span>
               </MDBDropdownToggle>
               <MDBDropdownMenu className="text-left">
-                <MDBDropdownItem onClick={() => history.push(routes.posts.add)}>{t("NAVBAR.POSTS.ADD")}</MDBDropdownItem>
                 <MDBDropdownItem onClick={() => history.push(routes.posts.all)}>{t("NAVBAR.POSTS.ALL")}</MDBDropdownItem>
+                <MDBDropdownItem onClick={() => history.push(routes.posts.add)}>{t("NAVBAR.POSTS.ADD")}</MDBDropdownItem>
               </MDBDropdownMenu>
             </MDBDropdown>
           </MDBNavItem>
@@ -85,7 +85,16 @@ export default ({thresholdY}) => {
             <MDBNavLink to={routes.video.root}>{t("NAVBAR.VIDEO")}</MDBNavLink>
           </MDBNavItem>
           <MDBNavItem active={pathname.startsWith(routes.vote.root)}>
-            <MDBNavLink to={routes.vote.root}>{t("NAVBAR.VOTE")}</MDBNavLink>
+            {/*<MDBNavLink to={routes.vote.root}>{t("NAVBAR.VOTE")}</MDBNavLink>*/}
+            <MDBDropdown onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+              <MDBDropdownToggle nav caret>
+                <span className="mr-2">{t("NAVBAR.VOTE.VOTE")}</span>
+              </MDBDropdownToggle>
+              <MDBDropdownMenu className="text-left">
+                <MDBDropdownItem onClick={() => history.push(routes.vote.current)}>{t("NAVBAR.VOTE.CURRENT")}</MDBDropdownItem>
+                <MDBDropdownItem onClick={() => history.push(routes.vote.previous)}>{t("NAVBAR.VOTE.PREVIOUS")}</MDBDropdownItem>
+              </MDBDropdownMenu>
+            </MDBDropdown>
           </MDBNavItem>
         </MDBNavbarNav>
         <MDBNavbarNav right>

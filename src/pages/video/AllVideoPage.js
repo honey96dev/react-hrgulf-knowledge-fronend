@@ -58,7 +58,7 @@ export default () => {
   }, [page, t]);
 
   const handlePageChange = page => {
-    history.push(`${routes.posts.all}/${page}`);
+    history.push(`${routes.video.all}/${page}`);
   };
   
   return (
