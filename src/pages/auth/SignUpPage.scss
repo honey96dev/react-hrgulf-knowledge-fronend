@@ -1,1 +1,17 @@
 @import "../../assets/consts.scss";
+
+.logo-img {
+  max-height: 115px;
+}
+
+.auth-bg {
+  background: url(../../assets/img/auth-bg.png);
+}
+
+.underlined {
+  border-bottom: 1px solid;
+}
+
+.white-border {
+  border-color: white;
+}

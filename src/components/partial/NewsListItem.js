@@ -13,7 +13,7 @@ export default ({id, date, time, author, comments, media, title, description, de
 
   return (
     <MDBRow>
-      <MDBCol lg="5" xl="4">
+      <MDBCol md="5" lg="5" xl="4">
         <MDBView hover className="rounded z-depth-1-half mb-lg-0 mb-4">
           <img
             className="img-fluid post-media"
@@ -25,7 +25,7 @@ export default ({id, date, time, author, comments, media, title, description, de
           </Link>
         </MDBView>
       </MDBCol>
-      <MDBCol lg="7" xl="8">
+      <MDBCol md="7" lg="7" xl="8">
         <h3 className="font-weight-bold mb-3 p-0">
           <Link to={`${detailLink}/${id}`}>
             <strong>{title}</strong>
@@ -48,7 +48,7 @@ export default ({id, date, time, author, comments, media, title, description, de
         {/*  by <a href="#!" className="font-weight-bold">Jessica Clark</a>, 19/04/2018*/}
         {/*</p>*/}
         <Link to={`${detailLink}/${id}`}>
-          <MDBBtn size="sm" color="indigo">
+          <MDBBtn size="sm" color="indigo" flat>
             {detailLabel}
           </MDBBtn>
         </Link>

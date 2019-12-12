@@ -20,8 +20,11 @@ import useWindowScrollPosition from "@rehooks/window-scroll-position";
 
 import {changeLanguage} from "core/i18n";
 import routes from "core/routes";
+import images from "core/images";
 import authActions from "actions/auth";
-import UserService from "../services/UserService";
+import UserService from "services/UserService";
+
+import "./Navbar.scss";
 
 export default ({thresholdY}) => {
   const {t} = useTranslation();
@@ -59,13 +62,16 @@ export default ({thresholdY}) => {
   return (
     <MDBNavbar color={flag ? "mdb-color" : "white"} light={!flag} dark={flag} expand="md" scrolling fixed="top">
       <MDBNavbarBrand href="/">
-        <strong>{t("SITE_NAME")}</strong>
+        {/*<strong>{t("SITE_NAME")}</strong>*/}
+        <strong><img className="navbar-logo-icon" src={images.logo}/></strong>
       </MDBNavbarBrand>
       <MDBNavbarToggler onClick={toggleCollapse}/>
+      {/*<MDBCollapse isOpen={collapse} navbar className="text-left font-weight-bold">*/}
       <MDBCollapse isOpen={collapse} navbar className="text-left">
         <MDBNavbarNav left>
           <MDBNavItem active={pathname === routes.root}>
             <MDBNavLink to={routes.root}>{t("NAVBAR.HOME")}</MDBNavLink>
+            {/*<MDBNavLink to={routes.root}><img src={images.logo}/></MDBNavLink>*/}
           </MDBNavItem>
           <MDBNavItem active={pathname.startsWith(routes.posts.root)}>
             <MDBDropdown onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
@@ -84,8 +90,18 @@ export default ({thresholdY}) => {
           <MDBNavItem active={pathname.startsWith(routes.video.root)}>
             <MDBNavLink to={routes.video.root}>{t("NAVBAR.VIDEO")}</MDBNavLink>
           </MDBNavItem>
+          <MDBNavItem active={pathname.startsWith(routes.questionnaire.root)}>
+            <MDBDropdown onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+              <MDBDropdownToggle nav caret>
+                <span className="mr-2">{t("NAVBAR.QUESTIONNAIRE.QUESTIONNAIRE")}</span>
+              </MDBDropdownToggle>
+              <MDBDropdownMenu className="text-left">
+                <MDBDropdownItem onClick={() => history.push(routes.questionnaire.current)}>{t("NAVBAR.QUESTIONNAIRE.CURRENT")}</MDBDropdownItem>
+                <MDBDropdownItem onClick={() => history.push(routes.questionnaire.previous)}>{t("NAVBAR.QUESTIONNAIRE.PREVIOUS")}</MDBDropdownItem>
+              </MDBDropdownMenu>
+            </MDBDropdown>
+          </MDBNavItem>
           <MDBNavItem active={pathname.startsWith(routes.vote.root)}>
-            {/*<MDBNavLink to={routes.vote.root}>{t("NAVBAR.VOTE")}</MDBNavLink>*/}
             <MDBDropdown onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
               <MDBDropdownToggle nav caret>
                 <span className="mr-2">{t("NAVBAR.VOTE.VOTE")}</span>

@@ -7,7 +7,7 @@ export default {
     return re.test(String(value).toLowerCase());
   },
   isUsername: (value) => {
-    const re = /^[a-zA-Z_][0-9a-zA-Z_.-]+$/;
+    const re = /^[0-9a-zA-Z_][0-9a-zA-Z_.-]+$/;
     return value.length <= USERNAME_MAX_LENGTH && re.test(String(value).toLowerCase());
   },
   isPhoneNumber: (value) => {

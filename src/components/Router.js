@@ -12,7 +12,9 @@ const FrontPage = lazy(() => import("pages/front/FrontPage"));
 const PostsPage = lazy(() => import("pages/posts/PostsPage"));
 const NewsPage = lazy(() => import("pages/news/NewsPage"));
 const VideoPage = lazy(() => import("pages/video/VideoPage"));
+const QuestionnairePage = lazy(() => import("pages/questionnaire/RootPage"));
 const VotePage = lazy(() => import("pages/vote/VotePage"));
+const ContactPage = lazy(() => import("pages/contact/ContactPage"));
 
 export default () => (
   <Switch>
@@ -22,7 +24,9 @@ export default () => (
     <Route path={routes.posts.root} component={PostsPage}/>
     <Route path={routes.news.root} component={NewsPage}/>
     <Route path={routes.video.root} component={VideoPage}/>
+    <Route path={routes.questionnaire.root} component={QuestionnairePage}/>
     <Route path={routes.vote.root} component={VotePage}/>
+    <Route path={routes.contact.root} component={ContactPage}/>
     {/*<Route path={routes.admin} exact render={() => (window.location.href = `${routes.admin}/`)}/>*/}
     <Route component={Error404Page}/>
   </Switch>

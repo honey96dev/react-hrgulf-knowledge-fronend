@@ -19,7 +19,7 @@ export default () => {
       <MDBContainer>
         <MDBRow className={"section mb-5"}>
           <MDBCol lg="3" md="0"/>
-          <MDBCol lg="6">
+          <MDBCol lg="6" md="12">
             <Switch>
               <Route path={routes.auth.signIn} component={SignInPage}/>
               <Route path={routes.auth.signUp} component={SignUpPage}/>

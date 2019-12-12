@@ -29,11 +29,21 @@ export default {
     list: "video/list",
     get: "video/get",
   },
+  questionnaire: {
+    packages: "questionnaire/packages",
+    getPackage: "questionnaire/get-package",
+    questions: "questionnaire/questions",
+    update: "questionnaire/update",
+    result: "questionnaire/result",
+  },
   vote: {
     packages: "vote/packages",
     getPackage: "vote/get-package",
     questions: "vote/questions",
     update: "vote/update",
     result: "vote/result",
+  },
+  contact: {
+    us: "contact/us",
   },
 };

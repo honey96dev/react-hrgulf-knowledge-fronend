@@ -2,7 +2,7 @@ export default {
   NAME: "English",
   CODE: "en",
   DIRECTION: "ltr",
-  SITE_NAME: 'SITE_NAME',
+  SITE_NAME: "Knowledge gate",
   COMMON: {
     BUTTON: {
       HOME: "Home",
@@ -26,6 +26,8 @@ export default {
       LAST: "Last",
       READ_MORE: "Read more",
       MODIFY: "Modify",
+      SUBMIT: "Submit",
+      QUESTIONS: "Questions",
     },
     VALIDATION: {
       REQUIRED: "{{field}} is required",
@@ -73,12 +75,17 @@ export default {
   NAVBAR: {
     HOME: "Home",
     POSTS: {
-      POSTS: "Posts",
-      ADD: "Add post",
-      ALL: "All posts",
+      POSTS: "Articles",
+      ADD: "Add Articles",
+      ALL: "All Articles",
     },
     NEWS: "News",
     VIDEO: "Video",
+    QUESTIONNAIRE: {
+      QUESTIONNAIRE: "Questionnaire",
+      CURRENT: "Current Questionnaire",
+      PREVIOUS: "Previous Questionnaire",
+    },
     VOTE: {
       VOTE: "Vote",
       CURRENT: "Current Vote",
@@ -124,6 +131,14 @@ export default {
       NEW_PASSWORD: "New Password",
     },
   },
+  FRONT: {
+    WELCOME_MESSAGE: "Welcome to the Gulf Knowledge Gateway",
+    POST_DESCRIPTION: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultrices velit id velit vestibulum tincidunt. Suspendisse nec tincidunt diam. Praesent euismod, elit eget tempus eleifendLorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultrices velit id velit vestibulum tincidunt. Suspendisse nec tincidunt diam. Praesent euismod, elit eget tempus eleifend",
+    NEWS_DESCRIPTION: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultrices velit id velit vestibulum tincidunt. Suspendisse nec tincidunt diam. Praesent euismod, elit eget tempus eleifend",
+    VIDEO_DESCRIPTION: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultrices velit id velit vestibulum tincidunt. Suspendisse nec tincidunt diam. Praesent euismod, elit eget tempus eleifend",
+    QUESTIONNAIRE_DESCRIPTION: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultrices velit id velit vestibulum tincidunt. Suspendisse nec tincidunt diam. Praesent euismod, elit eget tempus eleifend",
+    VOTE_DESCRIPTION: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultrices velit id velit vestibulum tincidunt. Suspendisse nec tincidunt diam. Praesent euismod, elit eget tempus eleifend",
+  },
   POSTS: {
     TITLE: "Title",
     TEXT: "Text",
@@ -161,11 +176,29 @@ export default {
       VIDEO_DETAIL: "Video Detail",
     },
   },
+  QUESTIONNAIRE: {
+    QUESTIONNAIRE: "Questionnaire",
+    PACKAGES: "Questionnaire Packages",
+    PACKAGE: "Questionnaire Package",
+    QUESTIONS: "Questionnaire Questions",
+    RESULT: "Questionnaire Result",
+  },
   VOTE: {
     VOTE: "Vote",
-    PACKAGES: "Packages",
-    PACKAGE: "Package",
-    QUESTIONS: "Questions",
-    RESULT: "Result",
+    PACKAGES: "Vote Packages",
+    PACKAGE: "Vote Package",
+    QUESTIONS: "Vote Questions",
+    RESULT: "Vote Result",
+  },
+  CONTACT: {
+    US: {
+      TITLE: "Connect with us",
+      DESCRIPTION1: "For all inquiries and more information about our services and solutions, please contact us",
+      DESCRIPTION2: "Your preferred way through the following means of communication:",
+      NAME: "Name",
+      EMAIL: "Email",
+      SUBJECT: "Subject",
+      MESSAGE: "Message",
+    },
   },
 };

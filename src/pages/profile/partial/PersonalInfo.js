@@ -86,7 +86,7 @@ export default () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(id, auth.user);
+
     const params = {id, email, username, firstName, lastName, gender, birthday: birthday1, jobTitle, sector, company, city, phone};
     ProfileService.save(params)
       .then(res => {
@@ -225,7 +225,7 @@ export default () => {
           <MDBAlert color={alert.color} dismiss onClosed={() => setAlert({})}>{alert.message}</MDBAlert>
         </CSSTransition>
         {!!editing && <div className="mt-4 mb-3 text-left">
-          <MDBBtn type="submit" color="indigo" className="z-depth-1a" disabled={loading || !validators.isEmail(email) || !username.length || username.length > USERNAME_MAX_LENGTH || !validators.isUsername(username) || !firstName.length || !lastName.length || !gender.length || !jobTitle.length || !sector.length || !company.length || !city.length || !phone.length }>
+          <MDBBtn type="submit" color="indigo" className="z-depth-1a" disabled={loading || !validators.isEmail(email) || !username.length || username.length > USERNAME_MAX_LENGTH || !validators.isUsername(username) || !firstName.length || !lastName.length || !gender.length || !jobTitle.length || !sector.length || !company.length || !city.length || !phone.length || !validators.isPhoneNumber(SAUDI_PHONE_PREFIX + phone)}>
             {!loading && <MDBIcon icon={"save"} />}
             {!!loading && <div className="spinner-grow spinner-grow-sm" role="status"/>}
             {t("COMMON.BUTTON.SAVE")}

@@ -1,17 +1,39 @@
 @import "../../assets/consts";
 
-.post-media {
+.card-container {
+  height: calc(#{$postitem-media-maxheight} + 52px);
+}
+
+.video-media {
   width: 100%;
-  max-height: $postitem-media-maxheight;
+  height: $postitem-media-maxheight;
+  min-height: $postitem-media-maxheight;
   object-fit: cover;
 }
 
-.post-media2 {
+.video-media2 {
   width: 100%;
   height: $postitem-media-maxheight;
-  object-fit: cover;
+  min-height: $postitem-media-maxheight;
+}
+
+.video-item-body {
+  padding: .5rem;
 }
 
 .infor-section {
   display: inline-flex;
+}
+
+.video-item-title {
+  font-size: 14px;
+  line-height: 1.3;
+  margin: 0;
+  padding: 0 10px;
+  font-weight: 600;
+  overflow: hidden;
+}
+
+.video-item-title strong {
+  color: rgb(85, 85, 85);
 }

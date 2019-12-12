@@ -146,8 +146,6 @@ export default () => {
         </MDBCol>
         <MDBCol md={12} className="text-left my-3">
           <div className="full-width">
-            {packageData.endDate >= packageData.today && <MDBBtn size="sm" color="primary" disabled>{t("COMMON.BUTTON.NOT_FINISHED")}</MDBBtn>}
-            {packageData.endDate < packageData.today && <MDBBtn size="sm" color={!!releasedDate.length ? "danger" : "primary"} onClick={handleRelease}>{!!releasedDate.length ? t("COMMON.BUTTON.UNPUBLISH") : t("COMMON.BUTTON.PUBLISH")}</MDBBtn>}
             <MDBBtn size="sm" color="warning" onClick={handleGoBack}>{t("COMMON.BUTTON.BACK")}</MDBBtn>
           </div>
         </MDBCol>

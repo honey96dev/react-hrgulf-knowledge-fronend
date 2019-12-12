@@ -31,6 +31,14 @@ export const routes = {
     all: "/video",
     detail: "/video/detail",
   },
+  questionnaire: {
+    root: "/questionnaire",
+    all: "/questionnaire",
+    current: "/questionnaire/current",
+    questions: "/questionnaire/questions",
+    previous: "/questionnaire/previous",
+    result: "/questionnaire/result",
+  },
   vote: {
     root: "/vote",
     all: "/vote",
@@ -38,6 +46,10 @@ export const routes = {
     questions: "/vote/questions",
     previous: "/vote/previous",
     result: "/vote/result",
+  },
+  contact: {
+    root: "/contact",
+    us: "/contact/us",
   },
 };
 

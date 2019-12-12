@@ -12,7 +12,7 @@ import PackagesPage from "./PackagesPage";
 import QuestionsPage from "./QuestionsPage";
 import ResultPage from "./ResultPage";
 
-import "./VotePage.scss";
+import "./RootPage.scss";
 
 export default () => {
   return (
@@ -20,9 +20,9 @@ export default () => {
       <Navbar/>
       <MDBContainer className={"section"}>
         <Switch>
-          <Route path={`${routes.vote.all}/:scope/:page?`} exact component={PackagesPage}/>
-          <SignedInRoute path={`${routes.vote.questions}/:packageId/:page?/:page2?`} exact component={QuestionsPage}/>
-          <Route path={`${routes.vote.result}/:packageId/:page?/:page2?`} exact component={ResultPage}/>
+          <Route path={`${routes.questionnaire.all}/:scope/:page?`} exact component={PackagesPage}/>
+          <SignedInRoute path={`${routes.questionnaire.questions}/:packageId/:page?/:page2?`} exact component={QuestionsPage}/>
+          <Route path={`${routes.questionnaire.result}/:packageId/:page?/:page2?`} exact component={ResultPage}/>
           <Route component={Error404}/>
         </Switch>
       </MDBContainer>

@@ -10,7 +10,7 @@ import AppPage from "pages/AppPage";
 import Loading from "components/Loading";
 
 import "@fortawesome/fontawesome-pro/css/all.min.css";
-import "bootstrap-css-only/css/bootstrap.min.css";
+import "bootstrap-css-only/css/bootstrap.css";
 import "assets/scss/mdb.scss";
 import "assets/index.scss";
 

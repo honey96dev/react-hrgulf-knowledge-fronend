@@ -10,7 +10,7 @@ import {CSSTransition} from "react-transition-group";
 import Loading from "components/Loading";
 import ErrorNoData from "components/ErrorNoData";
 import Pagination from "components/Pagination";
-import VoteService from "services/VoteService";
+import Service from "services/QuestionnaireService";
 import {ALERT_DANGER, SCOPE_CURRENT, SUCCESS, TRANSITION_TIME} from "core/globals";
 import routes from "core/routes";
 
@@ -39,7 +39,7 @@ export default () => {
   }, [scope, page, t]);
 
   const loadData = e => {
-    VoteService.packages({scope, page, userId: (auth.user ? auth.user.id : undefined)})
+    Service.packages({scope, page, userId: (auth.user ? auth.user.id : undefined)})
       .then(res => {
         if (res.result === SUCCESS) {
           setPageCount(res.pageCount);
@@ -68,23 +68,23 @@ export default () => {
   };
 
   const handlePageChange = page => {
-    history.push(`${routes.vote.all}/${scope}/${page}`);
+    history.push(`${routes.questionnaire.all}/${scope}/${page}`);
   };
 
   return (
     <Fragment>
       <Helmet>
-        <title>{t("VOTE.VOTE")} - {t("SITE_NAME")}</title>
+        <title>{t("QUESTIONNAIRE.QUESTIONNAIRE")} - {t("SITE_NAME")}</title>
       </Helmet>
       <MDBBreadcrumb>
-        <MDBBreadcrumbItem>{t('NAVBAR.VOTE.VOTE')}</MDBBreadcrumbItem>
-        <MDBBreadcrumbItem active>{scope === SCOPE_CURRENT ? t('NAVBAR.VOTE.CURRENT') : t("NAVBAR.VOTE.PREVIOUS")}</MDBBreadcrumbItem>
+        <MDBBreadcrumbItem>{t('NAVBAR.QUESTIONNAIRE.QUESTIONNAIRE')}</MDBBreadcrumbItem>
+        <MDBBreadcrumbItem active>{scope === SCOPE_CURRENT ? t('NAVBAR.QUESTIONNAIRE.CURRENT') : t("NAVBAR.QUESTIONNAIRE.PREVIOUS")}</MDBBreadcrumbItem>
       </MDBBreadcrumb>
       {!!loading && <Loading/>}
       {!loading && !items.length && <ErrorNoData/>}
       {!loading && !!items.length && <MDBRow>
         <MDBCol md={12}>
-          <h3 className="mt-4 font-weight-bold text-center">{scope === SCOPE_CURRENT ? t('NAVBAR.VOTE.CURRENT') : t("NAVBAR.VOTE.PREVIOUS")}</h3>
+          <h3 className="mt-4 font-weight-bold text-center">{scope === SCOPE_CURRENT ? t('NAVBAR.QUESTIONNAIRE.CURRENT') : t("NAVBAR.QUESTIONNAIRE.PREVIOUS")}</h3>
         </MDBCol>
         <MDBCol md={12}>
           <CSSTransition in={alert.show} classNames="fade-transition" timeout={TRANSITION_TIME} unmountOnExit appear>
@@ -99,7 +99,7 @@ export default () => {
         <MDBCol md={12}>
           {items.map((item, index) => (
             <div key={index} className="text-left">
-              <h4 className="text-primary font-weight-bold mb-2 p-0"><Link to={`${scope === SCOPE_CURRENT ? routes.vote.questions : routes.vote.result}/${item.id}/1/${page || 1}`}>{item.name}</Link></h4>
+              <h4 className="text-primary font-weight-bold mb-2 p-0"><Link to={`${scope === SCOPE_CURRENT ? routes.questionnaire.questions : routes.questionnaire.result}/${item.id}/1/${page || 1}`}>{item.name}</Link></h4>
               <p>{t("COMMON.BUTTON.QUESTIONS")}: <span className="font-weight-bold">{item.questions}</span></p>
               {index < itemsCount && <hr className="my-3"/>}
             </div>

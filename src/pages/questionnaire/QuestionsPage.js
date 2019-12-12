@@ -1,22 +1,32 @@
 import React, {Fragment, useEffect, useState} from "react";
 import {Link, useHistory, useParams} from "react-router-dom";
 import {useSelector} from "react-redux";
-import {MDBAlert, MDBBreadcrumb, MDBBreadcrumbItem, MDBCol, MDBIcon, MDBRow, MDBStep, MDBStepper} from "mdbreact";
+import {
+  MDBAlert,
+  MDBBreadcrumb,
+  MDBBreadcrumbItem,
+  MDBBtn,
+  MDBCol,
+  MDBIcon,
+  MDBRow,
+  MDBStep,
+  MDBStepper
+} from "mdbreact";
 import {useTranslation} from "react-i18next";
 import {animateScroll as scroll} from "react-scroll";
 import {Helmet} from "react-helmet";
 import {CSSTransition} from "react-transition-group";
 
 import Loading from "components/Loading";
-import VoteService from "services/VoteService";
-import {ALERT_DANGER, SUCCESS, TRANSITION_TIME} from "core/globals";
+import Service from "services/QuestionnaireService";
+import {ALERT_DANGER, SCOPE_CURRENT, SUCCESS, TRANSITION_TIME} from "core/globals";
 import routes from "core/routes";
 import AnswerList from "./partial/AnswerList";
 
 import "./QuestionsPage.scss";
 
 export default () => {
-  const {packageId, page, page2} = useParams();
+  const {scope, packageId, page, page2} = useParams();
   const {t} = useTranslation();
   const history = useHistory();
   const {auth} = useSelector(state => state);
@@ -27,8 +37,7 @@ export default () => {
   const [pageCount, setPageCount] = useState(0);
   const [packageName, setPackageName] = useState("");
   const [items, setItems] = useState([]);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [lastIndex, setLastIndex] = useState(0);
+  const [answers, setAnswers] = useState({});
 
   const currentPage = page ? parseInt(page) : 1;
   const itemsCount = items.length - 1;
@@ -41,7 +50,7 @@ export default () => {
   }, [page, t]);
 
   const loadData = e => {
-    VoteService.getPackage({packageId})
+    Service.getPackage({packageId})
       .then(res => {
         if (res.result === SUCCESS) {
           setPackageName(res.data.name);
@@ -64,16 +73,9 @@ export default () => {
           message: t('COMMON.ERROR.UNKNOWN_SERVER_ERROR'),
         });
       });
-    VoteService.questions({packageId, page, userId: auth.user.id})
+    Service.questions({packageId, page, userId: auth.user.id})
       .then(res => {
         if (res.result === SUCCESS) {
-          let lastIndex = 0;
-          for (let item of res.data) {
-            if (!item.answered) break;
-            lastIndex++;
-          }
-          setCurrentIndex(lastIndex);
-          setLastIndex(lastIndex);
           setItems(res.data);
           setPageCount(res.pageCount);
           setAlert({
@@ -99,17 +101,40 @@ export default () => {
       });
   };
 
-  const handleUpdate = ({questionId, answerId}) => {
-    VoteService.update({page, userId: auth.user.id, packageId, questionId, answerId})
+  const handleUpdate = ({questionId, answeredIds}) => {
+    setAnswers(Object.assign({}, answers, {[questionId]: answeredIds}));
+    // Service.update({page, userId: auth.user.id, packageId, questionId, answerId})
+    //   .then(res => {
+    //     if (res.result === SUCCESS) {
+    //       setItems(res.data);
+    //       setPageCount(res.pageCount);
+    //       setAlert({
+    //         ...alert,
+    //         show: false,
+    //       });
+    //     } else {
+    //       setAlert({
+    //         show: true,
+    //         color: ALERT_DANGER,
+    //         message: res.message,
+    //       });
+    //     }
+    //     setLoading(false);
+    //   })
+    //   .catch(err => {
+    //     setAlert({
+    //       show: true,
+    //       color: ALERT_DANGER,
+    //       message: t('COMMON.ERROR.UNKNOWN_SERVER_ERROR'),
+    //     });
+    //     setLoading(false);
+    //   });
+  };
+
+  const handleSubmit = e => {
+    Service.update({page, userId: auth.user.id, packageId, answers})
       .then(res => {
         if (res.result === SUCCESS) {
-          let lastIndex = 0;
-          for (let item of res.data) {
-            if (!item.answered) break;
-            lastIndex++;
-          }
-          setCurrentIndex(currentIndex + 1);
-          setLastIndex(lastIndex);
           setItems(res.data);
           setPageCount(res.pageCount);
           setAlert({
@@ -133,21 +158,17 @@ export default () => {
         });
         setLoading(false);
       });
-  };
-
-  const handlePageChange = page => {
-    history.push(`${routes.vote.all}/${page}`);
   };
 
   return (
     <Fragment>
       <Helmet>
-        <title>{t("VOTE.QUESTIONS")} - {t("SITE_NAME")}</title>
+        <title>{t("QUESTIONNAIRE.QUESTIONS")} - {t("SITE_NAME")}</title>
       </Helmet>
       <MDBBreadcrumb>
-        <MDBBreadcrumbItem>{t('VOTE.VOTE')}</MDBBreadcrumbItem>
-        <MDBBreadcrumbItem><Link to={`${routes.vote.current}/${page2}`}>{t('NAVBAR.VOTE.CURRENT')}</Link></MDBBreadcrumbItem>
-        <MDBBreadcrumbItem active>{t('VOTE.QUESTIONS')}</MDBBreadcrumbItem>
+        <MDBBreadcrumbItem>{t('QUESTIONNAIRE.QUESTIONNAIRE')}</MDBBreadcrumbItem>
+        <MDBBreadcrumbItem><Link to={`${routes.questionnaire.current}/${page2}`}>{t('NAVBAR.QUESTIONNAIRE.CURRENT')}</Link></MDBBreadcrumbItem>
+        <MDBBreadcrumbItem active>{t('QUESTIONNAIRE.QUESTIONS')}</MDBBreadcrumbItem>
       </MDBBreadcrumb>
       {!!loading && <Loading/>}
       {!loading && !items.length && <Fragment>
@@ -155,8 +176,8 @@ export default () => {
       </Fragment>}
       {!loading && !!items.length && <MDBRow>
         <MDBCol md={12}>
-          <h3 className="mt-4 font-weight-bold text-center">{t('VOTE.VOTE')}</h3>
-          <p className="text-left"><span className="font-weight-bold">{t("VOTE.PACKAGE")}: </span>{packageName}</p>
+          <h3 className="mt-4 font-weight-bold text-center">{t('QUESTIONNAIRE.QUESTIONNAIRE')}</h3>
+          <p className="text-left"><span className="font-weight-bold">{t("QUESTIONNAIRE.PACKAGE")}: </span>{packageName}</p>
         </MDBCol>
         <MDBCol md={12}>
           <CSSTransition in={alert.show} classNames="fade-transition" timeout={TRANSITION_TIME} unmountOnExit appear>
@@ -166,22 +187,25 @@ export default () => {
         <MDBCol md={12}>
           <MDBStepper vertical className="text-left">
             {items.map((item, index) => (
-              <MDBStep key={index} className={`${!!item.answered || index <= lastIndex ? "completed" : ""}`}>
-                <a onClick={e => (!!item.answered || index <= lastIndex) && setCurrentIndex(index)}>
+              <MDBStep key={index} className="completed">
+                <a>
                   <span className="circle">{index + 1}</span>
-                  {!!item.answered && <span className="label text-left">{t("COMMON.COMPLETE.COMPLETED")}</span>}
+                  {/*{<span className="label text-left">{t("COMMON.COMPLETE.COMPLETED")}</span>}*/}
                 </a>
-                {index === currentIndex && <Fragment>
+                <Fragment>
                   <div className="step-content grey lighten-4">
                     <h6 className="mb-0">{item.question}</h6>
                   </div>
                   <div className="step-content mt-3">
                     <AnswerList data={item} onUpdate={handleUpdate}/>
                   </div>
-                </Fragment>}
+                </Fragment>
               </MDBStep>
             ))}
           </MDBStepper>
+          <div className="text-left">
+            <MDBBtn size="sm" rounded color="indigo" onClick={handleSubmit}>{t("COMMON.BUTTON.SUBMIT")}</MDBBtn>
+          </div>
         </MDBCol>
       </MDBRow>}
     </Fragment>

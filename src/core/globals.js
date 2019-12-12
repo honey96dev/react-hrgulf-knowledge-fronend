@@ -40,6 +40,12 @@ export const FILEUPLOAD_MAXSIZE2 = "10M";
 
 export const SCOPE_CURRENT = "current";
 
+export const CONTACT_PHONE = "011-2304705";
+export const CONTACT_MOBILE = "+966 56 665 5007";
+export const CONTACT_EMAIL = "PM@eliteresources.co";
+export const CONTACT_WEBSITE = "www.eliteresources.co";
+export const CONTACT_ADDRESS = "شارع عثمان بن عفان حي الندى الرياض ص.ب 4423 - 13701 المملكة العربية السعودية";
+
 export const DEFAULT_EMAIL = "honey96dev@gmail.com";
 export const DEFAULT_USERNAME = "honey96dev";
 export const DEFAULT_FIRST_NAME = "Zhenlong";
