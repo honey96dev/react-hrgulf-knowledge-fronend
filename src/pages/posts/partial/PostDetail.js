@@ -4,7 +4,7 @@ import {MDBIcon} from "mdbreact";
 
 import "./PostDetail.scss";
 
-export default ({data, comments}) => {
+export default ({data, comments, topics}) => {
   const {t} = useTranslation();
   return (
     <Fragment>

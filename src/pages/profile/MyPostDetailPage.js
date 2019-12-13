@@ -22,8 +22,10 @@ import routes from "core/routes";
 import apis from "core/apis";
 import {ALERT_DANGER, FILEUPLOAD_MAXSIZE1, SUCCESS, TEXTAREA_ROWS2, TRANSITION_TIME} from "core/globals";
 import PostsService from "services/PostsService";
+import TopicsList from "components/TopicsList";
 
 import "./MyPostDetailPage.scss";
+import Service from "../../services/PostsService";
 
 export default ({}) => {
   const {id} = useParams();
@@ -35,14 +37,28 @@ export default ({}) => {
   const [touched, setTouched] = useState({});
   const [loading, setLoading] = useState(true);
 
+  const [topicList, setTopicList] = useState([]);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [media, setMedia] = useState("");
   const [file, setFile] = useState(null);
+  const [topicChecked, setTopicChecked] = useState([]);
+  const [topics, setTopics] = useState([]);
 
   const extensions = ["jpg", "jpeg", "png"];
 
   useEffect(e => {
+    Service.topics()
+      .then(res => {
+        if (res.result === SUCCESS) {
+          setTopicList(res.data);
+        } else {
+          setTopicList([]);
+        }
+      })
+      .catch(err => {
+        setTopicList([]);
+      });
     PostsService.get({id})
       .then(res => {
         if (res.result === SUCCESS) {
@@ -50,6 +66,7 @@ export default ({}) => {
           setTitle(data["title"]);
           setDescription(data["description"]);
           setMedia((data["media"].startsWith("http://") || data["media"].startsWith("https://")) ? data["media"] : sprintf("%s%s", apis.assetsBaseUrl, data["media"]));
+          setTopicChecked(data["topicIds"].split(","));
           setLoading(false);
         } else {
           setAlert({
@@ -68,6 +85,10 @@ export default ({}) => {
       });
   }, [id]);
 
+  const handleTopicUpdate = e => {
+    setTopics(e);
+  };
+
   const handleSubmit = async e => {
     e.preventDefault();
 
@@ -78,6 +99,7 @@ export default ({}) => {
       params.append('title', title);
       params.append('description', description);
       params.append('file', file);
+      params.append("topicIds", topics);
       let res = await PostsService.save(params);
       setAlert({
         show: true,
@@ -134,6 +156,9 @@ export default ({}) => {
                                  messageRemove={t("COMMON.FILE_UPLOAD.REMOVE")} messageError={t("COMMON.FILE_UPLOAD.ERROR")}
                                  errorFileSize={t("COMMON.FILE_UPLOAD.ERROR_FILESIZE", {max: FILEUPLOAD_MAXSIZE1})}
                                  errorFileExtension={t("COMMON.FILE_UPLOAD.ERROR_FILEEXTENSION", {extensions: extensions.join(", ")})} />
+                </div>
+                <div className="md-form">
+                  <TopicsList topics={topicList} initChecked={topicChecked} onUpdate={handleTopicUpdate}/>
                 </div>
               </MDBCol>
             </MDBRow>

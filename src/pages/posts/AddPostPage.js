@@ -1,4 +1,4 @@
-import React, {Fragment, useState} from "react";
+import React, {Fragment, useEffect, useState} from "react";
 import {
   MDBAlert,
   MDBBreadcrumb,
@@ -19,8 +19,9 @@ import {CSSTransition} from "react-transition-group";
 import {Helmet} from "react-helmet";
 
 import routes from "core/routes";
-import {ALERT_DANGER, FILEUPLOAD_MAXSIZE1, TEXTAREA_ROWS2, TRANSITION_TIME} from "core/globals";
-import PostsService from "services/PostsService";
+import {ALERT_DANGER, FILEUPLOAD_MAXSIZE1, SUCCESS, TEXTAREA_ROWS2, TRANSITION_TIME} from "core/globals";
+import Service from "services/PostsService";
+import TopicsList from "components/TopicsList";
 
 import "./AddPostPage.scss";
 
@@ -30,15 +31,37 @@ export default ({}) => {
   const history = useHistory();
 
   const [alert, setAlert] = useState({});
+  const [topicList, setTopicList] = useState([]);
   const [postId, setPostId] = useState(undefined);
   const [formState, {text, textarea}] = useFormState();
   const [file, setFile] = useState(null);
+  const [topics, setTopics] = useState([]);
 
   const {values: {title, description}, touched} = formState;
   const extensions = ["jpg", "jpeg", "png"];
 
+  useEffect(e => {
+    Service.topics()
+      .then(res => {
+        if (res.result === SUCCESS) {
+          setTopicList(res.data);
+        } else {
+          setTopicList([]);
+        }
+      })
+      .catch(err => {
+        setTopicList([]);
+      });
+  }, [t]);
+
+  const handleTopicUpdate = e => {
+    setTopics(e);
+  };
+  
   const handleSubmit = async e => {
     e.preventDefault();
+
+    console.log(topics);
 
     try {
       let params = new FormData();
@@ -47,7 +70,8 @@ export default ({}) => {
       params.append('title', title);
       params.append('description', description);
       params.append('file', file);
-      let res = await PostsService.save(params);
+      params.append("topicIds", topics);
+      let res = await Service.save(params);
       !postId && setPostId(res.data.insertId);
       setAlert({
         show: true,
@@ -100,6 +124,9 @@ export default ({}) => {
                                  messageRemove={t("COMMON.FILE_UPLOAD.REMOVE")} messageError={t("COMMON.FILE_UPLOAD.ERROR")}
                                  errorFileSize={t("COMMON.FILE_UPLOAD.ERROR_FILESIZE", {max: FILEUPLOAD_MAXSIZE1})}
                                  errorFileExtension={t("COMMON.FILE_UPLOAD.ERROR_FILEEXTENSION", {extensions: extensions.join(", ")})} />
+                </div>
+                <div className="md-form">
+                  <TopicsList topics={topicList} onUpdate={handleTopicUpdate}/>
                 </div>
               </MDBCol>
             </MDBRow>

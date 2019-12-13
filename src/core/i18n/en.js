@@ -144,6 +144,8 @@ export default {
     TEXT: "Text",
     DESCRIPTION: "Description",
     MEDIA: "Image",
+    TOPICS: "Topics",
+    RELATED_TOPICS: "Related Topics",
     ADD: {
 
     },

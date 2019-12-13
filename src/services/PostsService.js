@@ -48,6 +48,17 @@ export default {
     });
   },
 
+  post2Topics: (params) => {
+    return new Promise((resolve, reject) => {
+      fetch(POST, apis.posts.post2Topics, params)
+        .then(res => {
+          resolve(res);
+        }, err => {
+          reject(err);
+        });
+    });
+  },
+
   commentList: (params) => {
     return new Promise((resolve, reject) => {
       fetch(POST, apis.posts.commentList, params)
@@ -62,6 +73,17 @@ export default {
   writeComment: (params) => {
     return new Promise((resolve, reject) => {
       fetch(POST, apis.posts.writeComment, params)
+        .then(res => {
+          resolve(res);
+        }, err => {
+          reject(err);
+        });
+    });
+  },
+
+  topics: (params) => {
+    return new Promise((resolve, reject) => {
+      fetch(POST, apis.posts.topics, params)
         .then(res => {
           resolve(res);
         }, err => {

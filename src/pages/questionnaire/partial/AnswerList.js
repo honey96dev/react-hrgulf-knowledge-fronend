@@ -35,9 +35,9 @@ export default ({data, onUpdate}) => {
     <div className="text-left">
       <form>
         {data.answers.map((item, index) => (
-          <Fragment key={index}>
+          <div key={index} className="my-2">
             <MDBInput onClick={e => handleCheck(Object.assign({}, values, {[item.id]: !values[item.id]}))} checked={values[item.id] || false} label={item.answer} type="checkbox" filled id={`checkbox${item.id}`} />
-          </Fragment>
+          </div>
         ))}
       </form>
     </div>

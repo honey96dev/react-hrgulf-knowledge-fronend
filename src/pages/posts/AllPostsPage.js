@@ -1,15 +1,17 @@
 import React, {Fragment, useEffect, useState} from "react";
 import {Link, useHistory, useParams} from "react-router-dom";
-import {MDBBreadcrumb, MDBBreadcrumbItem, MDBBtn, MDBCol, MDBRow} from "mdbreact";
+import {MDBAlert, MDBBreadcrumb, MDBBreadcrumbItem, MDBBtn, MDBCol, MDBRow} from "mdbreact";
 import {useTranslation} from "react-i18next";
 import {sprintf} from "sprintf-js";
 import {animateScroll as scroll} from "react-scroll";
 import {Helmet} from "react-helmet";
+import {CSSTransition} from "react-transition-group";
 
 import Posts from "components/Posts";
 import Loading from "components/Loading";
 import ErrorNoData from "components/ErrorNoData";
 import Pagination from "components/Pagination";
+import TopicsList from "components/TopicsList";
 import PostsService from "services/PostsService";
 import {ALERT_DANGER, SUCCESS, TRANSITION_TIME} from "core/globals";
 import routes from "core/routes";
@@ -24,6 +26,8 @@ export default ({}) => {
 
   const [loading, setLoading] = useState(true);
   const [alert, setAlert] = useState({});
+  const [topicList, setTopicList] = useState([]);
+  const [topicChecked, setTopicChecked] = useState([]);
   const [pageCount, setPageCount] = useState(0);
   const [posts, setPosts] = useState([]);
 
@@ -37,7 +41,23 @@ export default ({}) => {
     scroll.scrollToTop({
       duration: TRANSITION_TIME,
     });
-    PostsService.list({page})
+    setAlert({});
+    PostsService.topics()
+      .then(res => {
+        if (res.result === SUCCESS) {
+          setTopicList(res.data);
+        } else {
+          setTopicList([]);
+        }
+      })
+      .catch(err => {
+        setTopicList([]);
+      });
+    loadItems();
+  }, [page, t, topicChecked]);
+
+  const loadItems = e => {
+    PostsService.list({page, topics: topicChecked})
       .then(res => {
         if (res.result === SUCCESS) {
           setPageCount(res.pageCount);
@@ -62,8 +82,11 @@ export default ({}) => {
         });
         setLoading(false);
       });
-  }, [page, t]);
+  };
 
+  const handleTopicChange = e => {
+    setTopicChecked(e);
+  };
   return (
     <Fragment>
       <Helmet>
@@ -74,31 +97,37 @@ export default ({}) => {
         <MDBBreadcrumbItem active>{t('NAVBAR.POSTS.ALL')}</MDBBreadcrumbItem>
       </MDBBreadcrumb>
       {!!loading && <Loading/>}
-      {!loading && !posts.length && <ErrorNoData/>}
-      {!loading && !!posts.length && <MDBRow>
-        <MDBCol md={12} className="text-center">
-          <div className="mt-5">
-            <Pagination circle current={currentPage} pageCount={pageCount} width={10} onChange={handlePageChange}/>
-          </div>
-        </MDBCol>
-        <MDBCol md={12} className="text-left mt-3">
-          <div className="full-width">
-            <Link to={routes.posts.add}>
-              <MDBBtn size="sm" color="primary">
-                {t("NAVBAR.POSTS.ADD")}
-              </MDBBtn>
-            </Link>
-          </div>
-        </MDBCol>
+      <MDBRow>
         <MDBCol md={12}>
-          <Posts items={posts} detailLabel={t("COMMON.BUTTON.READ_MORE")} detailLink={routes.posts.detail} />
+          <CSSTransition in={alert.show} classNames="fade-transition" timeout={TRANSITION_TIME} unmountOnExit appear>
+            <MDBAlert color={alert.color} dismiss onClosed={() => setAlert({})}>{alert.message}</MDBAlert>
+          </CSSTransition>
         </MDBCol>
-        <MDBCol md={12} className="text-center">
-          <div className="mt-5">
-            <Pagination circle current={currentPage} pageCount={pageCount} width={10} onChange={handlePageChange}/>
+        <MDBCol md={9} className="order-1 order-md-0">
+          {!loading && !posts.length && <ErrorNoData/>}
+          {!loading && !!posts.length && <Fragment>
+            <div className="mt-5 text-center">
+              <Pagination circle current={currentPage} pageCount={pageCount} onChange={handlePageChange}/>
+            </div>
+            <div className="full-width text-left">
+              <Link to={routes.posts.add}>
+                <MDBBtn size="sm" color="primary" rounded >
+                  {t("NAVBAR.POSTS.ADD")}
+                </MDBBtn>
+              </Link>
+            </div>
+            <Posts items={posts} detailLabel={t("COMMON.BUTTON.READ_MORE")} detailLink={routes.posts.detail} />
+            <div className="mt-5 text-center">
+              <Pagination circle current={currentPage} pageCount={pageCount} onChange={handlePageChange}/>
+            </div>
+          </Fragment>}
+        </MDBCol>
+        <MDBCol md={3} className="order-0 order-md-1">
+          <div className="topic-list text-left">
+            <TopicsList topics={topicList} onUpdate={handleTopicChange} />
           </div>
         </MDBCol>
-      </MDBRow>}
+      </MDBRow>
     </Fragment>
   )
 };

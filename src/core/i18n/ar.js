@@ -144,6 +144,8 @@ export default {
     TEXT: "نص",
     DESCRIPTION: "وصف",
     MEDIA: "صورة",
+    TOPICS: "المواضيع",
+    RELATED_TOPICS: "مواضيع ذات صلة",
     ADD: {
 
     },
