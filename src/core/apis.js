@@ -48,5 +48,6 @@ export default {
   contact: {
     us: "contact/us",
     consultants: "contact/consultants",
+    // consultants: "https://eliteresources.co/api/director-board/list",
   },
 };

@@ -110,7 +110,7 @@ export default () => {
                             </MDBAvatar>
                             <h4 className="font-weight-bold mt-4 text-center">{lang === "en" ? item.nameEn : item.nameAr}</h4>
                             <h6 className="font-weight-bold my-3 text-center">{lang === "en" ? item.titleEn : item.titleAr}</h6>
-                            <p className="font-weight-normal">{lang === "en" ? item.descriptionEn2 : item.descriptionAr2}</p>
+                            <p className="font-weight-normal text-left">{lang === "en" ? item.descriptionEn2 : item.descriptionAr2}</p>
                           </MDBTestimonial>
                         </MDBCol>
                       ))}
