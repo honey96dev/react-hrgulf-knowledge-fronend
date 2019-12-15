@@ -1,38 +1,27 @@
 import React, {Fragment, useEffect, useState} from "react";
 import {Helmet} from "react-helmet";
 import {useTranslation} from "react-i18next";
-import {
-  MDBAlert, MDBBtn,
-  MDBCard,
-  MDBCardBody,
-  MDBCardImage,
-  MDBCardText,
-  MDBCol,
-  MDBContainer, MDBIcon,
-  MDBInput,
-  MDBRow
-} from "mdbreact";
-import {Link} from "react-router-dom";
+import {CSSTransition} from "react-transition-group";
+import {MDBAlert, MDBBtn, MDBCol, MDBContainer, MDBIcon, MDBInput, MDBRow} from "mdbreact";
 
 import {
-  ALERT_DANGER, CONTACT_ADDRESS, CONTACT_EMAIL, CONTACT_MOBILE, CONTACT_PHONE, CONTACT_WEBSITE,
+  ALERT_DANGER,
+  CONTACT_ADDRESS,
+  CONTACT_EMAIL,
+  CONTACT_MOBILE,
+  CONTACT_PHONE,
+  CONTACT_WEBSITE,
   DEFAULT_EMAIL,
-  DEFAULT_PASSWORD,
   DEFAULT_USERNAME,
   isDev,
-  PASSWORD_MIN_LENGTH, SUCCESS,
+  SUCCESS,
   TEXTAREA_ROWS1,
   TRANSITION_TIME
 } from "core/globals";
-import routes from "core/routes";
-import images from "core/images";
-import Navbar from "components/Navbar";
-import Footer from "components/Footer";
+import validators from "core/validators";
 import Service from "services/ContactService";
 
 import "./ContactUsPage.scss";
-import validators from "../../core/validators";
-import {CSSTransition} from "react-transition-group";
 
 export default () => {
   const {t} = useTranslation();
@@ -85,7 +74,6 @@ export default () => {
       <Helmet>
         <title>{t("CONTACT.US.TITLE")} - {t("SITE_NAME")}</title>
       </Helmet>
-      <Navbar/>
       <MDBContainer className="section">
         <MDBRow>
           <MDBCol md={12}>
@@ -162,7 +150,7 @@ export default () => {
               <span className="contact-item">{CONTACT_WEBSITE}</span>
             </div>
             <div className="mb-5">
-              <MDBIcon icon="map" className="contact-icon mr-4-f"/>
+              <MDBIcon icon="map-marker-alt" className="contact-icon mr-4-f"/>
               <span className="contact-item">{CONTACT_ADDRESS}</span>
             </div>
           </MDBCol>

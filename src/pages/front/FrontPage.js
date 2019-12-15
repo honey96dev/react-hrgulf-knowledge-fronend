@@ -31,6 +31,7 @@ export default () => {
               <MDBCard className="section-card">
                 <MDBCardImage className="img-fluid card-image mx-auto" src={images.post} waves />
                 <MDBCardBody>
+                  <p className="h5 text-center text-black-50">{t("NAVBAR.POSTS.POSTS")}</p>
                   <MDBCardText>{t("FRONT.POST_DESCRIPTION")}</MDBCardText>
                 </MDBCardBody>
               </MDBCard>
@@ -41,6 +42,7 @@ export default () => {
               <MDBCard className="section-card">
                 <MDBCardImage className="img-fluid card-image mx-auto" src={images.news} waves />
                 <MDBCardBody>
+                  <p className="h5 text-center text-black-50">{t("NAVBAR.NEWS")}</p>
                   <MDBCardText>{t("FRONT.NEWS_DESCRIPTION")}</MDBCardText>
                 </MDBCardBody>
               </MDBCard>
@@ -51,16 +53,18 @@ export default () => {
               <MDBCard className="section-card">
                 <MDBCardImage className="img-fluid card-image mx-auto" src={images.video} waves />
                 <MDBCardBody>
+                  <p className="h5 text-center text-black-50">{t("NAVBAR.VIDEO")}</p>
                   <MDBCardText>{t("FRONT.VIDEO_DESCRIPTION")}</MDBCardText>
                 </MDBCardBody>
               </MDBCard>
             </Link>
           </MDBCol>
           <MDBCol md={4} lg={2}>
-            <Link to={routes.posts.all}>
+            <Link to={routes.questionnaire.result}>
               <MDBCard className="section-card">
                 <MDBCardImage className="img-fluid card-image mx-auto" src={images.questionnaire} waves />
                 <MDBCardBody>
+                  <p className="h5 text-center text-black-50">{t("NAVBAR.QUESTIONNAIRE.QUESTIONNAIRE")}</p>
                   <MDBCardText>{t("FRONT.QUESTIONNAIRE_DESCRIPTION")}</MDBCardText>
                 </MDBCardBody>
               </MDBCard>
@@ -71,6 +75,7 @@ export default () => {
               <MDBCard className="section-card">
                 <MDBCardImage className="img-fluid card-image mx-auto" src={images.vote} waves />
                 <MDBCardBody>
+                  <p className="h5 text-center text-black-50">{t("NAVBAR.VOTE.VOTE")}</p>
                   <MDBCardText>{t("FRONT.VOTE_DESCRIPTION")}</MDBCardText>
                 </MDBCardBody>
               </MDBCard>

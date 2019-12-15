@@ -13,4 +13,15 @@ export default {
         });
     });
   },
+
+  consultants: (params) => {
+    return new Promise((resolve, reject) => {
+      fetch(POST, apis.contact.consultants, params)
+        .then(res => {
+          resolve(res);
+        }, err => {
+          reject(err);
+        });
+    });
+  },
 };

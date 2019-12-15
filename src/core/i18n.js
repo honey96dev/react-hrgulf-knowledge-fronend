@@ -2,11 +2,11 @@ import i18n from "i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 import {initReactI18next} from "react-i18next";
 
-import en from "./i18n/en";
-import ar from "./i18n/ar";
-import {setHeader} from "../apis/fetch";
+import {setHeader} from "apis/fetch";
+import en from "core/i18n/en";
+import ar from "core/i18n/ar";
 
-const fallbackLng = ["en"];
+const fallbackLng = ["ar"];
 const availableLanguages = ["en", "ar"];
 
 i18n

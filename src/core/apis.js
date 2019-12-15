@@ -47,5 +47,6 @@ export default {
   },
   contact: {
     us: "contact/us",
+    consultants: "contact/consultants",
   },
 };

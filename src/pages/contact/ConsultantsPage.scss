@@ -1,0 +1,23 @@
+@import "../../assets/consts.scss";
+
+.section {
+  margin-top: $page-margin-top;
+  margin-bottom: $page-margin-top;
+}
+
+.testimonial {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.my-carousel {
+  height: 700px;
+}
+
+.my-carousel .controls-top, .my-carousel .carousel-indicators {
+  direction: ltr;
+}
+
+.carousel-multi-item .carousel-inner .carousel-item.active {
+  position: absolute !important;
+}

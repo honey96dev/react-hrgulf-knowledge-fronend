@@ -91,6 +91,11 @@ export default {
       CURRENT: "التصويت الحالي",
       PREVIOUS: "التصويت السابق",
     },
+    CONTACT: {
+      CONTACT: "اتصل",
+      US: "تواصل معنا",
+      CONSULTANTS: "المجلس الاستشاري",
+    },
   },
   AUTH: {
     EMAIL: "البريد الإلكتروني",
@@ -201,6 +206,9 @@ export default {
       EMAIL: "البريد الالكتروني",
       SUBJECT: "عنوان الرسالة",
       MESSAGE: "الرسالة",
+    },
+    CONSULTANTS: {
+      CONSULTANTS: "المجلس الاستشاري",
     },
   },
 };

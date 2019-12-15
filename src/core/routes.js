@@ -50,6 +50,7 @@ export const routes = {
   contact: {
     root: "/contact",
     us: "/contact/us",
+    consultants: "/contact/consultants",
   },
 };
 

@@ -91,6 +91,11 @@ export default {
       CURRENT: "Current Vote",
       PREVIOUS: "Previous Vote",
     },
+    CONTACT: {
+      CONTACT: "Contact",
+      US: "Contact Us",
+      CONSULTANTS: "Board of Consultancy",
+    },
   },
   AUTH: {
     EMAIL: "Email",
@@ -201,6 +206,9 @@ export default {
       EMAIL: "Email",
       SUBJECT: "Subject",
       MESSAGE: "Message",
+    },
+    CONSULTANTS: {
+      CONSULTANTS: "Board of Consultancy",
     },
   },
 };

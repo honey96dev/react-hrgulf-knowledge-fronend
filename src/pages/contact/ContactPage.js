@@ -8,6 +8,7 @@ import BackToTop from "components/BackToTop";
 import Error404 from "components/Error404";
 import routes from "core/routes";
 import ContactUsPage from "./ContactUsPage";
+import ConsultantsPage from "./ConsultantsPage";
 
 import "./ContactUsPage.scss";
 
@@ -18,6 +19,7 @@ export default () => {
       <MDBContainer className={"section"}>
         <Switch>
           <Route path={`${routes.contact.us}`} exact component={ContactUsPage}/>
+          <Route path={`${routes.contact.consultants}`} exact component={ConsultantsPage}/>
           <Route component={Error404}/>
         </Switch>
       </MDBContainer>
