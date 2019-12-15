@@ -106,7 +106,8 @@ export default () => {
                         <MDBCol md="4" key={`${index}-${index2}`}>
                           <MDBTestimonial>
                             <MDBAvatar className="mx-auto text-center">
-                              <img src={item.media} alt="" className="rounded-circle img-fluid" />
+                              {/*<img src={item.media} alt="" className="img-fluid card-avatar" />*/}
+                              <div className="mx-auto card-avatar z-depth-1" style={{backgroundImage: `url(${item.media})`}}/>
                             </MDBAvatar>
                             <h4 className="font-weight-bold mt-4 text-center">{lang === "en" ? item.nameEn : item.nameAr}</h4>
                             <h6 className="font-weight-bold my-3 text-center">{lang === "en" ? item.titleEn : item.titleAr}</h6>

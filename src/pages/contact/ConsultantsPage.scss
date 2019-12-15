@@ -21,3 +21,12 @@
 .carousel-multi-item .carousel-inner .carousel-item.active {
   position: absolute !important;
 }
+
+.card-avatar {
+  //max-width: unset !important;
+  width: 200px;
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 100px;
+}
