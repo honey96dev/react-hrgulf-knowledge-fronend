@@ -143,6 +143,8 @@ export default {
     VIDEO_DESCRIPTION: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultrices velit id velit vestibulum tincidunt. Suspendisse nec tincidunt diam. Praesent euismod, elit eget tempus eleifend",
     QUESTIONNAIRE_DESCRIPTION: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultrices velit id velit vestibulum tincidunt. Suspendisse nec tincidunt diam. Praesent euismod, elit eget tempus eleifend",
     VOTE_DESCRIPTION: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultrices velit id velit vestibulum tincidunt. Suspendisse nec tincidunt diam. Praesent euismod, elit eget tempus eleifend",
+    CONTACT_US_DESCRIPTION: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultrices velit id velit vestibulum tincidunt. Suspendisse nec tincidunt diam. Praesent euismod, elit eget tempus eleifend",
+    CONSULTANTS_DESCRIPTION: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultrices velit id velit vestibulum tincidunt. Suspendisse nec tincidunt diam. Praesent euismod, elit eget tempus eleifend",
   },
   POSTS: {
     TITLE: "عنوان",

@@ -112,17 +112,23 @@ export default ({thresholdY}) => {
               </MDBDropdownMenu>
             </MDBDropdown>
           </MDBNavItem>
-          <MDBNavItem active={pathname.startsWith(routes.contact.root)}>
-            <MDBDropdown onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-              <MDBDropdownToggle nav caret>
-                <span className="mr-2">{t("NAVBAR.CONTACT.CONTACT")}</span>
-              </MDBDropdownToggle>
-              <MDBDropdownMenu className="text-left">
-                <MDBDropdownItem onClick={() => history.push(routes.contact.us)}>{t("NAVBAR.CONTACT.US")}</MDBDropdownItem>
-                <MDBDropdownItem onClick={() => history.push(routes.contact.consultants)}>{t("NAVBAR.CONTACT.CONSULTANTS")}</MDBDropdownItem>
-              </MDBDropdownMenu>
-            </MDBDropdown>
+          <MDBNavItem active={pathname.startsWith(routes.contact.us)}>
+            <MDBNavLink to={routes.contact.us}>{t("NAVBAR.CONTACT.US")}</MDBNavLink>
           </MDBNavItem>
+          <MDBNavItem active={pathname.startsWith(routes.contact.consultants)}>
+            <MDBNavLink to={routes.contact.consultants}>{t("NAVBAR.CONTACT.CONSULTANTS")}</MDBNavLink>
+          </MDBNavItem>
+          {/*<MDBNavItem active={pathname.startsWith(routes.contact.root)}>*/}
+          {/*  <MDBDropdown onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>*/}
+          {/*    <MDBDropdownToggle nav caret>*/}
+          {/*      <span className="mr-2">{t("NAVBAR.CONTACT.CONTACT")}</span>*/}
+          {/*    </MDBDropdownToggle>*/}
+          {/*    <MDBDropdownMenu className="text-left">*/}
+          {/*      <MDBDropdownItem onClick={() => history.push(routes.contact.us)}>{t("NAVBAR.CONTACT.US")}</MDBDropdownItem>*/}
+          {/*      <MDBDropdownItem onClick={() => history.push(routes.contact.consultants)}>{t("NAVBAR.CONTACT.CONSULTANTS")}</MDBDropdownItem>*/}
+          {/*    </MDBDropdownMenu>*/}
+          {/*  </MDBDropdown>*/}
+          {/*</MDBNavItem>*/}
         </MDBNavbarNav>
         <MDBNavbarNav right>
           <MDBNavItem>

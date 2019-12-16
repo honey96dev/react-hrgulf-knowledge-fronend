@@ -25,8 +25,8 @@ export default () => {
             <h2 className="welcome-message text-center font-weight-bold mb-5">{t("FRONT.WELCOME_MESSAGE")}</h2>
           </MDBCol>
         </MDBRow>
-        <MDBRow className="mt-5">
-          <MDBCol md={4} lg={2}>
+        <MDBRow className="mt-5 row-only-in-sm">
+          <MDBCol className="mb-5">
             <Link to={routes.posts.all}>
               <MDBCard className="section-card">
                 <MDBCardImage className="img-fluid card-image mx-auto" src={images.post} waves />
@@ -37,7 +37,7 @@ export default () => {
               </MDBCard>
             </Link>
           </MDBCol>
-          <MDBCol md={4} lg={2}>
+          <MDBCol className="mb-5">
             <Link to={routes.news.all}>
               <MDBCard className="section-card">
                 <MDBCardImage className="img-fluid card-image mx-auto" src={images.news} waves />
@@ -48,7 +48,7 @@ export default () => {
               </MDBCard>
             </Link>
           </MDBCol>
-          <MDBCol md={4} lg={2}>
+          <MDBCol className="mb-5">
             <Link to={routes.video.all}>
               <MDBCard className="section-card">
                 <MDBCardImage className="img-fluid card-image mx-auto" src={images.video} waves />
@@ -59,7 +59,7 @@ export default () => {
               </MDBCard>
             </Link>
           </MDBCol>
-          <MDBCol md={4} lg={2}>
+          <MDBCol className="mb-5">
             <Link to={routes.questionnaire.result}>
               <MDBCard className="section-card">
                 <MDBCardImage className="img-fluid card-image mx-auto" src={images.questionnaire} waves />
@@ -70,13 +70,35 @@ export default () => {
               </MDBCard>
             </Link>
           </MDBCol>
-          <MDBCol md={4} lg={2}>
+          <MDBCol className="mb-5">
             <Link to={routes.vote.result}>
               <MDBCard className="section-card">
                 <MDBCardImage className="img-fluid card-image mx-auto" src={images.vote} waves />
                 <MDBCardBody>
                   <p className="h5 text-center text-black-50">{t("NAVBAR.VOTE.VOTE")}</p>
                   <MDBCardText>{t("FRONT.VOTE_DESCRIPTION")}</MDBCardText>
+                </MDBCardBody>
+              </MDBCard>
+            </Link>
+          </MDBCol>
+          <MDBCol className="mb-5">
+            <Link to={routes.contact.us}>
+              <MDBCard className="section-card">
+                <MDBCardImage className="img-fluid card-image mx-auto" src={images.contactUs} waves />
+                <MDBCardBody>
+                  <p className="h5 text-center text-black-50">{t("NAVBAR.CONTACT.US")}</p>
+                  <MDBCardText>{t("FRONT.CONTACT_US_DESCRIPTION")}</MDBCardText>
+                </MDBCardBody>
+              </MDBCard>
+            </Link>
+          </MDBCol>
+          <MDBCol className="mb-5">
+            <Link to={routes.contact.consultants}>
+              <MDBCard className="section-card">
+                <MDBCardImage className="img-fluid card-image mx-auto" src={images.consultants} waves />
+                <MDBCardBody>
+                  <p className="h5 text-center text-black-50">{t("NAVBAR.CONTACT.CONSULTANTS")}</p>
+                  <MDBCardText>{t("FRONT.CONSULTANTS_DESCRIPTION")}</MDBCardText>
                 </MDBCardBody>
               </MDBCard>
             </Link>

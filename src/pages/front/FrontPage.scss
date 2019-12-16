@@ -20,6 +20,16 @@
   }
 }
 
+.row-only-in-sm {
+
+}
+
+@media (max-width: $screen-breakpoint-md) {
+  .row-only-in-sm {
+    display: block;
+  }
+}
+
 .section-card {
   box-shadow: unset;
 }

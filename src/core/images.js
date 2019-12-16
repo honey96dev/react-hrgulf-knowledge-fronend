@@ -7,4 +7,6 @@ export default {
   video: require("assets/img/video.png"),
   questionnaire: require("assets/img/questionnaire.png"),
   vote: require("assets/img/vote.png"),
+  contactUs: require("assets/img/contact-us.png"),
+  consultants: require("assets/img/consultants.png"),
 };
