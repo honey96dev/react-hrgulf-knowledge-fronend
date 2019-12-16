@@ -1,7 +1,7 @@
 import React, {Fragment, useEffect, useState} from "react";
 import {useTranslation} from "react-i18next";
 import {Link, useHistory} from "react-router-dom";
-import {MDBAlert, MDBBtn, MDBCard, MDBCardBody, MDBCol, MDBIcon, MDBInput, MDBModalFooter, MDBRow} from "mdbreact";
+import {MDBAlert, MDBBtn, MDBCard, MDBCardBody, MDBCol, MDBIcon, MDBInput, MDBRow} from "mdbreact";
 import {useDispatch, useSelector} from "react-redux";
 import {CSSTransition} from "react-transition-group";
 import {animateScroll as scroll} from "react-scroll";
@@ -37,6 +37,7 @@ export default (props) => {
 
   const [email, setEmail] = useState(isDev ? DEFAULT_EMAIL : "");
   const [password, setPassword] = useState(isDev ? DEFAULT_PASSWORD : "");
+  const [rememberMe, setRememberMe] = useState(isDev);
 
   useEffect(() => {
     scroll.scrollToTop({
@@ -47,7 +48,7 @@ export default (props) => {
   const handleSubmit = async event => {
     event.preventDefault();
     try {
-      const params = {email, password};
+      const params = {email, password, rememberMe};
       dispatch(auth.requestSignIn({user: params}));
       setLoading(true);
       let res = await UserService.signIn(params);
@@ -116,6 +117,9 @@ export default (props) => {
                   length: PASSWORD_MIN_LENGTH
                 })}</div>}
               </MDBInput>
+              <div className="text-left">
+                <MDBInput onClick={e => setRememberMe(!rememberMe)} checked={rememberMe || false} label={t("AUTH.REMEMBER_ME")} type="checkbox" filled id="rememberMe" containerClass="mt-4" />
+              </div>
             </div>
             <CSSTransition in={alert.show} classNames="fade-transition" timeout={TRANSITION_TIME} unmountOnExit appear>
               <MDBAlert color={alert.color} dismiss onClosed={() => setAlert({})}>{alert.message}</MDBAlert>

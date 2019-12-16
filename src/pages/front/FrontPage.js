@@ -8,6 +8,9 @@ import Footer from "components/Footer";
 import routes from "core/routes";
 import images from "core/images";
 
+import ContactUsPage from "pages/contact/ContactUsPage";
+import ConsultantsPage from "pages/contact/ConsultantsPage";
+
 import "./FrontPage.scss";
 
 export default () => {
@@ -19,7 +22,7 @@ export default () => {
         <title>{t("NAVBAR.HOME")} - {t("SITE_NAME")}</title>
       </Helmet>
       <Navbar/>
-      <MDBContainer className="section no-max-width">
+      <MDBContainer className="section front-section no-max-width">
         <MDBRow>
           <MDBCol md={12}>
             <h2 className="welcome-message text-center font-weight-bold mb-5">{t("FRONT.WELCOME_MESSAGE")}</h2>
@@ -104,6 +107,14 @@ export default () => {
             </Link>
           </MDBCol>
         </MDBRow>
+        {/*<MDBRow>*/}
+        {/*  <MDBCol md={12}>*/}
+        {/*    <ContactUsPage/>*/}
+        {/*  </MDBCol>*/}
+        {/*  <MDBCol md={12}>*/}
+        {/*    <ConsultantsPage/>*/}
+        {/*  </MDBCol>*/}
+        {/*</MDBRow>*/}
       </MDBContainer>
       <Footer/>
       {/*<Loader />*/}

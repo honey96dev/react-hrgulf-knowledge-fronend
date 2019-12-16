@@ -112,6 +112,7 @@ export default {
     PHONE: "الهاتف النقال",
     PASSWORD: "كلمه السر",
     PASSWORD2: "تأكيد كلمة المرور",
+    REMEMBER_ME: "تذكرني",
     SIGN_IN: "إنشاء حساب",
     SIGN_UP: "تسجيل الدخول",
     SIGN_OUT: "خروج",

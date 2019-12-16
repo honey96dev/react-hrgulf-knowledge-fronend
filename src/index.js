@@ -1,6 +1,7 @@
 import React, {Suspense} from "react";
 import ReactDOM from "react-dom";
 import {Provider} from "react-redux";
+import {initStateWithPrevTab} from "redux-state-sync";
 import {PersistGate} from "redux-persist/integration/react";
 
 import configureStore from "core/store";
@@ -15,14 +16,24 @@ import "assets/scss/mdb.scss";
 import "assets/index.scss";
 
 
-const {store, persistor} = configureStore();
+// const {store, persistor} = configureStore();
+//
+// ReactDOM.render(
+//   <Suspense fallback={<Loading/>}>
+//     <Provider store={store}>
+//       <PersistGate loading={null} persistor={persistor}>
+//         <AppPage/>
+//       </PersistGate>
+//     </Provider>
+//   </Suspense>,
+//   document.getElementById("root")
+// );
 
+initStateWithPrevTab(configureStore);
 ReactDOM.render(
   <Suspense fallback={<Loading/>}>
-    <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-        <AppPage/>
-      </PersistGate>
+    <Provider store={configureStore}>
+      <AppPage/>
     </Provider>
   </Suspense>,
   document.getElementById("root")

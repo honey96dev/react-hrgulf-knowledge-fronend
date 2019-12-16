@@ -112,6 +112,7 @@ export default {
     PHONE: "Phone Number",
     PASSWORD: "Password",
     PASSWORD2: "Confirm Password",
+    REMEMBER_ME: "Remember Me",
     SIGN_IN: "Sign in",
     SIGN_UP: "Sign up",
     SIGN_OUT: "Sign out",

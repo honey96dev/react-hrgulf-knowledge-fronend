@@ -7,6 +7,11 @@
   }
 }
 
+input[type]:-webkit-autofill:not(.browser-default):not([type=search])+label {
+  -webkit-transform: unset !important;
+  transform: unset !important;
+}
+
 @keyframes autofill {
   to {
     //background: transparent;
