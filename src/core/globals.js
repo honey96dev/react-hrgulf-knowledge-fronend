@@ -46,6 +46,12 @@ export const CONTACT_EMAIL = "PM@eliteresources.co";
 export const CONTACT_WEBSITE = "www.eliteresources.co";
 export const CONTACT_ADDRESS = "شارع عثمان بن عفان حي الندى الرياض ص.ب 4423 - 13701 المملكة العربية السعودية";
 
+export const SOCIAL_TWITTER = "https://twitter.com/elite_resources";
+export const SOCIAL_YOUTUBE = "https://www.youtube.com/channel/UCQdmdXSNkSJoZOwimDxz61g";
+export const SOCIAL_LINKEDIN = "https://www.linkedin.com/company/elite-resources-center";
+export const SOCIAL_SNAPCHAT = "https://www.snapchat.com/add/g_chcs";
+export const SOCIAL_WHATSAPP = "https://iwtsp.com/966566655007";
+
 export const DEFAULT_EMAIL = "honey96dev@gmail.com";
 export const DEFAULT_USERNAME = "honey96dev";
 export const DEFAULT_FIRST_NAME = "Zhenlong";

@@ -80,22 +80,35 @@ export default {
       ALL: "All Articles",
     },
     NEWS: "News",
-    VIDEO: "Video",
+    VIDEO: "Educational Clips",
     QUESTIONNAIRE: {
       QUESTIONNAIRE: "Questionnaire",
       CURRENT: "Current Questionnaire",
       PREVIOUS: "Previous Questionnaire",
     },
     VOTE: {
-      VOTE: "Vote",
-      CURRENT: "Current Vote",
-      PREVIOUS: "Previous Vote",
+      VOTE: "Your Voice Matters",
+      CURRENT: "Current Voice Matters",
+      PREVIOUS: "Previous Voice Matters",
     },
     CONTACT: {
-      CONTACT: "Contact",
+      CONTACT: "Contact Us",
       US: "Contact Us",
       CONSULTANTS: "Board of Consultancy",
     },
+  },
+  FOOTER: {
+    COMPANY_NAME: "Gulf Human Capital Society",
+    CONTACT: "Contact",
+    ADDRESS: "Othman Bin Affin St, Al Nada, Riyadh 7544, Saudi Arabia",
+    MOBILE: "+966566655007",
+    PHONE: "0112304705",
+    EMAIL: "pm@eliteresources.co",
+    TWITTER: "Twitter",
+    YOUTUBE: "Youtube",
+    LINKEDIN: "Linkedin",
+    SNAPCHAT: "Snapchat",
+    WHATSAPP: "Whatsapp",
   },
   AUTH: {
     EMAIL: "Email",
@@ -138,7 +151,7 @@ export default {
     },
   },
   FRONT: {
-    WELCOME_MESSAGE: "Welcome to the Gulf Knowledge Gateway",
+    WELCOME_MESSAGE: "Welcome to the Gulf Human Capital Society – Knowledge Portal",
     POST_DESCRIPTION: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultrices velit id velit vestibulum tincidunt. Suspendisse nec tincidunt diam. Praesent euismod, elit eget tempus eleifendLorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultrices velit id velit vestibulum tincidunt. Suspendisse nec tincidunt diam. Praesent euismod, elit eget tempus eleifend",
     NEWS_DESCRIPTION: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultrices velit id velit vestibulum tincidunt. Suspendisse nec tincidunt diam. Praesent euismod, elit eget tempus eleifend",
     VIDEO_DESCRIPTION: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultrices velit id velit vestibulum tincidunt. Suspendisse nec tincidunt diam. Praesent euismod, elit eget tempus eleifend",
@@ -167,7 +180,7 @@ export default {
       COMMENTS: "Comments",
       NO_COMMENT: "There is no comment yet",
     },
-    LATEST_POSTS: "Latest Posts",
+    LATEST_POSTS: "Latest Articles",
   },
   NEWS: {
     NEWS: "News",
@@ -179,11 +192,11 @@ export default {
     LATEST_NEWS: "Latest News",
   },
   VIDEO: {
-    VIDEO: "Video",
+    VIDEO: "Educational Clips",
     TITLE: "Title",
     DESCRIPTION: "Description",
     DETAIL: {
-      VIDEO_DETAIL: "Video Detail",
+      VIDEO_DETAIL: "Educational Clip Detail",
     },
   },
   QUESTIONNAIRE: {

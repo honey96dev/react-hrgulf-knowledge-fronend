@@ -76,23 +76,23 @@ export default ({}) => {
       {!!loading && <Loading/>}
       {!loading && (!data || !data.id) && <Error404 />}
       {!loading && !!data && !!data.id && <Fragment>
-        <MDBRow>
-          <MDBCol md={12}>
-            <div className="full-width text-left">
-              <MDBBtn size="sm" color="warning" onClick={handleGoBack}>
-                {t("COMMON.BUTTON.BACK")}
-              </MDBBtn>
-            </div>
-          </MDBCol>
-        </MDBRow>
+        {/*<MDBRow>*/}
+        {/*  <MDBCol md={12}>*/}
+        {/*    <div className="full-width text-left">*/}
+        {/*      <MDBBtn size="sm" color="warning" onClick={handleGoBack}>*/}
+        {/*        {t("COMMON.BUTTON.BACK")}*/}
+        {/*      </MDBBtn>*/}
+        {/*    </div>*/}
+        {/*  </MDBCol>*/}
+        {/*</MDBRow>*/}
         <MDBRow>
           <MDBCol md={8}>
             <NewsDetail data={data}/>
           </MDBCol>
           <MDBCol md={4}>
-            <div className="mt-10">
-              <LatestPosts detailLink={routes.posts.detail} detailLabel={t("COMMON.BUTTON.DETAILS")}/>
-            </div>
+            {/*<div className="mt-10">*/}
+            {/*  <LatestPosts detailLink={routes.posts.detail} detailLabel={t("COMMON.BUTTON.DETAILS")}/>*/}
+            {/*</div>*/}
             <div className="mt-10">
               <LatestNews detailLink={routes.news.detail} detailLabel={t("COMMON.BUTTON.DETAILS")}/>
             </div>

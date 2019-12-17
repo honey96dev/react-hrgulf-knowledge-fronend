@@ -73,29 +73,42 @@ export default {
     },
   },
   NAVBAR: {
-    HOME: "الرئيسية",
+    HOME: "الصفحة الرئيسية",
     POSTS: {
       POSTS: "المقالات",
       ADD: "أضف مقال",
       ALL: "جميع المقالات",
     },
-    NEWS: "أخبار",
-    VIDEO: "الفيديو",
+    NEWS: "الأخبار",
+    VIDEO: "المقاطع التعليمية",
     QUESTIONNAIRE: {
-      QUESTIONNAIRE: "استطلاع",
+      QUESTIONNAIRE: "الاستبيانات",
       CURRENT: "الاستبيان الحالي",
       PREVIOUS: "الاستبيان السابق",
     },
     VOTE: {
-      VOTE: "التصويت",
+      VOTE: "صوتك يهمنا",
       CURRENT: "التصويت الحالي",
       PREVIOUS: "التصويت السابق",
     },
     CONTACT: {
-      CONTACT: "اتصل",
+      CONTACT: "تواصل معنا",
       US: "تواصل معنا",
       CONSULTANTS: "المجلس الاستشاري",
     },
+  },
+  FOOTER: {
+    COMPANY_NAME: "المجتمع الخليجي لرأس المال البشري",
+    CONTACT: "تواصل معنا",
+    ADDRESS: "شارع عثمان بن عفان - حي الندى - الرياض 7544 المملكة العربية السعودية",
+    MOBILE: "966566655007+",
+    PHONE: "0112304705",
+    EMAIL: "pm@eliteresources.co",
+    TWITTER: "Twitter",
+    YOUTUBE: "Youtube",
+    LINKEDIN: "Linkedin",
+    SNAPCHAT: "Snapchat",
+    WHATSAPP: "Whatsapp",
   },
   AUTH: {
     EMAIL: "البريد الإلكتروني",
@@ -138,7 +151,7 @@ export default {
     },
   },
   FRONT: {
-    WELCOME_MESSAGE: "مرحبا بكمالبوابة الخليجية للمعرفة",
+    WELCOME_MESSAGE: "المجتمع الخليجي لرأس المال البشري – بوابة المعرفة",
     POST_DESCRIPTION: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultrices velit id velit vestibulum tincidunt. Suspendisse nec tincidunt diam. Praesent euismod, elit eget tempus eleifend",
     NEWS_DESCRIPTION: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultrices velit id velit vestibulum tincidunt. Suspendisse nec tincidunt diam. Praesent euismod, elit eget tempus eleifend",
     VIDEO_DESCRIPTION: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultrices velit id velit vestibulum tincidunt. Suspendisse nec tincidunt diam. Praesent euismod, elit eget tempus eleifend",
@@ -152,7 +165,7 @@ export default {
     TEXT: "نص",
     DESCRIPTION: "وصف",
     MEDIA: "صورة",
-    TOPICS: "المواضيع",
+    TOPICS: "الأقسام",
     RELATED_TOPICS: "مواضيع ذات صلة",
     ADD: {
 
@@ -170,7 +183,7 @@ export default {
     LATEST_POSTS: "آخر المشاركات",
   },
   NEWS: {
-    NEWS: "أخبار",
+    NEWS: "الأخبار",
     TITLE: "عنوان",
     DESCRIPTION: "وصف",
     DETAIL: {
@@ -179,7 +192,7 @@ export default {
     LATEST_NEWS: "أحدث الأخبار",
   },
   VIDEO: {
-    VIDEO: "فيديو",
+    VIDEO: "المقاطع التعليمية",
     TITLE: "عنوان",
     DESCRIPTION: "وصف",
     DETAIL: {
@@ -187,7 +200,7 @@ export default {
     },
   },
   QUESTIONNAIRE: {
-    QUESTIONNAIRE: "استطلاع",
+    QUESTIONNAIRE: "الاستبيانات",
     PACKAGES: "حزم الاستبيان",
     PACKAGE: "حزمة الاستبيان",
     QUESTIONS: "أسئلة الاستبيان",

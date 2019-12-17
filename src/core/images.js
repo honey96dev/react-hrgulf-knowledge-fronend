@@ -1,6 +1,8 @@
 export default {
   logo: require("assets/logo.png"),
-  ghcs_200: require("assets/img/ghcs-200.png"),
+  ghcs200: require("assets/img/ghcs-200.png"),
+  ghcs300: require("assets/img/ghcs-300.png"),
+  ghcsNoTitle300: require("assets/img/ghcs-no-title-300.png"),
   authBG: require("assets/img/auth-bg.png"),
   post: require("assets/img/post.png"),
   news: require("assets/img/news.png"),

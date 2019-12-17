@@ -66,20 +66,20 @@ export default ({}) => {
       </Helmet>
       <MDBBreadcrumb>
         <MDBBreadcrumbItem><Link to={routes.video.all}>{t('VIDEO.VIDEO')}</Link></MDBBreadcrumbItem>
-        <MDBBreadcrumbItem active>{t('VIDEO.DETAIL.VIDEO_DETAIL')}</MDBBreadcrumbItem>
+        {/*<MDBBreadcrumbItem active>{t('VIDEO.DETAIL.VIDEO_DETAIL')}</MDBBreadcrumbItem>*/}
       </MDBBreadcrumb>
       {!!loading && <Loading/>}
       {!loading && (!data || !data.id) && <Error404 />}
       {!loading && !!data && !!data.id && <Fragment>
-        <MDBRow>
-          <MDBCol md={12}>
-            <div className="full-width text-left">
-              <MDBBtn size="sm" color="warning" onClick={handleGoBack}>
-                {t("COMMON.BUTTON.BACK")}
-              </MDBBtn>
-            </div>
-          </MDBCol>
-        </MDBRow>
+        {/*<MDBRow>*/}
+        {/*  <MDBCol md={12}>*/}
+        {/*    <div className="full-width text-left">*/}
+        {/*      <MDBBtn size="sm" color="warning" onClick={handleGoBack}>*/}
+        {/*        {t("COMMON.BUTTON.BACK")}*/}
+        {/*      </MDBBtn>*/}
+        {/*    </div>*/}
+        {/*  </MDBCol>*/}
+        {/*</MDBRow>*/}
         <MDBRow>
           <MDBCol md={9}>
             <VideoDetail data={data}/>

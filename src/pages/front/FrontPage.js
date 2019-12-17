@@ -35,7 +35,7 @@ export default () => {
                 <MDBCardImage className="img-fluid card-image mx-auto" src={images.post} waves />
                 <MDBCardBody>
                   <p className="h5 text-center text-black-50">{t("NAVBAR.POSTS.POSTS")}</p>
-                  <MDBCardText>{t("FRONT.POST_DESCRIPTION")}</MDBCardText>
+                  {/*<MDBCardText>{t("FRONT.POST_DESCRIPTION")}</MDBCardText>*/}
                 </MDBCardBody>
               </MDBCard>
             </Link>
@@ -46,7 +46,7 @@ export default () => {
                 <MDBCardImage className="img-fluid card-image mx-auto" src={images.news} waves />
                 <MDBCardBody>
                   <p className="h5 text-center text-black-50">{t("NAVBAR.NEWS")}</p>
-                  <MDBCardText>{t("FRONT.NEWS_DESCRIPTION")}</MDBCardText>
+                  {/*<MDBCardText>{t("FRONT.NEWS_DESCRIPTION")}</MDBCardText>*/}
                 </MDBCardBody>
               </MDBCard>
             </Link>
@@ -57,7 +57,7 @@ export default () => {
                 <MDBCardImage className="img-fluid card-image mx-auto" src={images.video} waves />
                 <MDBCardBody>
                   <p className="h5 text-center text-black-50">{t("NAVBAR.VIDEO")}</p>
-                  <MDBCardText>{t("FRONT.VIDEO_DESCRIPTION")}</MDBCardText>
+                  {/*<MDBCardText>{t("FRONT.VIDEO_DESCRIPTION")}</MDBCardText>*/}
                 </MDBCardBody>
               </MDBCard>
             </Link>
@@ -68,7 +68,7 @@ export default () => {
                 <MDBCardImage className="img-fluid card-image mx-auto" src={images.questionnaire} waves />
                 <MDBCardBody>
                   <p className="h5 text-center text-black-50">{t("NAVBAR.QUESTIONNAIRE.QUESTIONNAIRE")}</p>
-                  <MDBCardText>{t("FRONT.QUESTIONNAIRE_DESCRIPTION")}</MDBCardText>
+                  {/*<MDBCardText>{t("FRONT.QUESTIONNAIRE_DESCRIPTION")}</MDBCardText>*/}
                 </MDBCardBody>
               </MDBCard>
             </Link>
@@ -79,7 +79,7 @@ export default () => {
                 <MDBCardImage className="img-fluid card-image mx-auto" src={images.vote} waves />
                 <MDBCardBody>
                   <p className="h5 text-center text-black-50">{t("NAVBAR.VOTE.VOTE")}</p>
-                  <MDBCardText>{t("FRONT.VOTE_DESCRIPTION")}</MDBCardText>
+                  {/*<MDBCardText>{t("FRONT.VOTE_DESCRIPTION")}</MDBCardText>*/}
                 </MDBCardBody>
               </MDBCard>
             </Link>
@@ -90,7 +90,7 @@ export default () => {
                 <MDBCardImage className="img-fluid card-image mx-auto" src={images.contactUs} waves />
                 <MDBCardBody>
                   <p className="h5 text-center text-black-50">{t("NAVBAR.CONTACT.US")}</p>
-                  <MDBCardText>{t("FRONT.CONTACT_US_DESCRIPTION")}</MDBCardText>
+                  {/*<MDBCardText>{t("FRONT.CONTACT_US_DESCRIPTION")}</MDBCardText>*/}
                 </MDBCardBody>
               </MDBCard>
             </Link>
@@ -101,7 +101,7 @@ export default () => {
                 <MDBCardImage className="img-fluid card-image mx-auto" src={images.consultants} waves />
                 <MDBCardBody>
                   <p className="h5 text-center text-black-50">{t("NAVBAR.CONTACT.CONSULTANTS")}</p>
-                  <MDBCardText>{t("FRONT.CONSULTANTS_DESCRIPTION")}</MDBCardText>
+                  {/*<MDBCardText>{t("FRONT.CONSULTANTS_DESCRIPTION")}</MDBCardText>*/}
                 </MDBCardBody>
               </MDBCard>
             </Link>
