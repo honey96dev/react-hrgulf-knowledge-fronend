@@ -7,6 +7,7 @@ import Router from "components/Router";
 import apis from "core/apis";
 import {setBaseUrl, setHeader} from "apis/fetch";
 import i18n from "core/i18n";
+import {PERSIST_KEY} from "core/globals";
 
 setBaseUrl(apis.baseUrl);
 setHeader({lang: i18n.language});
@@ -14,6 +15,12 @@ setHeader({lang: i18n.language});
 export default () => {
   const {t} = useTranslation();
   const {auth} = useSelector(state => state);
+
+  sessionStorage.setItem(PERSIST_KEY, JSON.stringify({
+    signedIn: auth.signedIn,
+    user: auth.user,
+    token: auth.token,
+  }));
 
   setHeader({Authorization: `Bearer ${auth.token}`});
   const direction = t("DIRECTION");
