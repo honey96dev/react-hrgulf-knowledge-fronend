@@ -26,40 +26,40 @@ export default (props) => {
             <p className="mt-4">{t("FOOTER.COMPANY_NAME")}</p>
           </MDBCol>
           <hr className="w-100 clearfix d-md-none" />
-          <MDBCol md="2" lg="2" xl="2" className={`mx-auto mt-3 ${classTextAlignRight}`}>
-            {/*<h6 className="text-uppercase mb-4 font-weight-bold">Products</h6>*/}
-            {/*<p>*/}
-            {/*  <a>MDBootstrap</a>*/}
-            {/*</p>*/}
-            {/*<p>*/}
-            {/*  <a>MDWordPress</a>*/}
-            {/*</p>*/}
-            {/*<p>*/}
-            {/*  <a>BrandFlow</a>*/}
-            {/*</p>*/}
-            {/*<p>*/}
-            {/*  <a>Bootstrap Angular</a>*/}
-            {/*</p>*/}
-          </MDBCol>
-          <hr className="w-100 clearfix d-md-none" />
-          <MDBCol md="3" lg="2" xl="2" className={`mx-auto mt-3 ${classTextAlignRight}`}>
-            {/*<h6 className="text-uppercase mb-4 font-weight-bold">*/}
-            {/*  Useful links*/}
-            {/*</h6>*/}
-            {/*<p>*/}
-            {/*  <a>Your Account</a>*/}
-            {/*</p>*/}
-            {/*<p>*/}
-            {/*  <a>Become an Affiliate</a>*/}
-            {/*</p>*/}
-            {/*<p>*/}
-            {/*  <a>Shipping Rates</a>*/}
-            {/*</p>*/}
-            {/*<p>*/}
-            {/*  <a>Help</a>*/}
-            {/*</p>*/}
-          </MDBCol>
-          <hr className="w-100 clearfix d-md-none" />
+          {/*<MDBCol md="2" lg="2" xl="2" className={`mx-auto mt-3 ${classTextAlignRight}`}>*/}
+          {/*  /!*<h6 className="text-uppercase mb-4 font-weight-bold">Products</h6>*!/*/}
+          {/*  /!*<p>*!/*/}
+          {/*  /!*  <a>MDBootstrap</a>*!/*/}
+          {/*  /!*</p>*!/*/}
+          {/*  /!*<p>*!/*/}
+          {/*  /!*  <a>MDWordPress</a>*!/*/}
+          {/*  /!*</p>*!/*/}
+          {/*  /!*<p>*!/*/}
+          {/*  /!*  <a>BrandFlow</a>*!/*/}
+          {/*  /!*</p>*!/*/}
+          {/*  /!*<p>*!/*/}
+          {/*  /!*  <a>Bootstrap Angular</a>*!/*/}
+          {/*  /!*</p>*!/*/}
+          {/*</MDBCol>*/}
+          {/*<hr className="w-100 clearfix d-md-none" />*/}
+          {/*<MDBCol md="3" lg="2" xl="2" className={`mx-auto mt-3 ${classTextAlignRight}`}>*/}
+          {/*  /!*<h6 className="text-uppercase mb-4 font-weight-bold">*!/*/}
+          {/*  /!*  Useful links*!/*/}
+          {/*  /!*</h6>*!/*/}
+          {/*  /!*<p>*!/*/}
+          {/*  /!*  <a>Your Account</a>*!/*/}
+          {/*  /!*</p>*!/*/}
+          {/*  /!*<p>*!/*/}
+          {/*  /!*  <a>Become an Affiliate</a>*!/*/}
+          {/*  /!*</p>*!/*/}
+          {/*  /!*<p>*!/*/}
+          {/*  /!*  <a>Shipping Rates</a>*!/*/}
+          {/*  /!*</p>*!/*/}
+          {/*  /!*<p>*!/*/}
+          {/*  /!*  <a>Help</a>*!/*/}
+          {/*  /!*</p>*!/*/}
+          {/*</MDBCol>*/}
+          {/*<hr className="w-100 clearfix d-md-none" />*/}
           <MDBCol md="4" lg="3" xl="3" className={`mx-auto mt-3 ${classTextAlignRight}`}>
             <h6 className="text-uppercase mb-4 font-weight-bold">{t("FOOTER.CONTACT")}</h6>
             <p>
