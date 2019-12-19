@@ -88,7 +88,7 @@ export default (props) => {
           <MDBBtn type="submit" color="indigo" className="z-depth-1a" disabled={loading || !password0.length || password0.length < PASSWORD_MIN_LENGTH || !password.length || password.length < PASSWORD_MIN_LENGTH || password2 !== password || password.length < PASSWORD_MIN_LENGTH }>
             {!loading && <MDBIcon icon={"edit"} />}
             {!!loading && <div className="spinner-grow spinner-grow-sm" role="status"/>}
-            {t("COMMON.BUTTON.CHANGE")}
+            {t("PROFILE.PASSWORD.CHANGE_PASSWORD")}
           </MDBBtn>
         </div>
       </form>

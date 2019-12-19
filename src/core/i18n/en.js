@@ -151,6 +151,7 @@ export default {
     PASSWORD: {
       CURRENT_PASSWORD: "Current Password",
       NEW_PASSWORD: "New Password",
+      CHANGE_PASSWORD: "Change Password",
     },
   },
   FRONT: {

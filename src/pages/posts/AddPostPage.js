@@ -134,7 +134,7 @@ export default ({}) => {
               <MDBAlert color={alert.color} dismiss onClosed={() => setAlert({})}>{alert.message}</MDBAlert>
             </CSSTransition>
             <Fragment>
-              <MDBBtn type="submit" color="indigo" size="sm" disabled={!title || !title.length || !description || !description.length || !file}>{t("COMMON.BUTTON.ADD")}</MDBBtn>
+              <MDBBtn type="submit" color="indigo" size="sm" disabled={!title || !title.length || !description || !description.length}>{t("COMMON.BUTTON.ADD")}</MDBBtn>
               <MDBBtn flat size="sm" onClick={handleGoBack}>{t("COMMON.BUTTON.BACK")}</MDBBtn>
             </Fragment>
           </form>

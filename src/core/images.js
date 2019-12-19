@@ -15,4 +15,6 @@ export default {
   vision: require("assets/img/vision.png"),
   mission: require("assets/img/mission.png"),
   goal: require("assets/img/goal.png"),
+  postListitem: require("assets/img/post-listitem.png"),
+  newsListitem: require("assets/img/news-listitem.png"),
 };

@@ -151,6 +151,7 @@ export default {
     PASSWORD: {
       CURRENT_PASSWORD: "كلمة المرور الحالي",
       NEW_PASSWORD: "كلمة مرور جديدة",
+      CHANGE_PASSWORD: "تغيير كلمة السر",
     },
   },
   FRONT: {
