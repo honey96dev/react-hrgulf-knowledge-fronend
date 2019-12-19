@@ -14,6 +14,7 @@ import {useTranslation} from "react-i18next";
 import {Helmet} from "react-helmet";
 
 import routes from "core/routes";
+import Avatar from "./partial/Avatar";
 import PersonalInfo from "./partial/PersonalInfo";
 // import MyPosts from "./partial/MyPosts";
 import ChangePassword from "./partial/ChangePassword";
@@ -62,7 +63,7 @@ export default (props) => {
       </MDBBreadcrumb>
       <MDBRow>
         <MDBCol md={3}>
-
+          <Avatar/>
         </MDBCol>
         <MDBCol md={9}>
           <div className="classic-tabs">

@@ -16,7 +16,7 @@ export default {
 
   latest: (params) => {
     return new Promise((resolve, reject) => {
-      fetch(POST, apis.news.list, params)
+      fetch(POST, apis.news.latest, params)
         .then(res => {
           resolve(res);
         }, err => {

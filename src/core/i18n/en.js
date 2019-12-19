@@ -96,6 +96,9 @@ export default {
       US: "Contact Us",
       CONSULTANTS: "Board of Consultancy",
     },
+    ABOUT: {
+      ABOUT: "About",
+    },
   },
   FOOTER: {
     COMPANY_NAME: "Gulf Human Capital Society",
@@ -226,5 +229,17 @@ export default {
     CONSULTANTS: {
       CONSULTANTS: "Board of Consultancy",
     },
+  },
+  ABOUT: {
+    ABOUT_THE_KNOWLEDGE_PORTAL: "About the Knowledge Portal",
+    VISION_TITLE: "Vision of the Gulf Human Capital Society",
+    VISION_DESCRIPTION: "Gulf leadership of the Human Capital theoretical, and practical solutions.",
+    MISSION_TITLE: "Mission of the Gulf Human Capital Society",
+    MISSION_DESCRIPTION: "Enablement, and empowerment of the leaders, and specialists of the field of Human Capital, and the participation of the theoretical, and practical empowerment, and establishment of the Gulf’s citizens. ",
+    GOAL_TITLE: "Goals of the Gulf Human Capital Society",
+    GOAL_DESCRIPTION: "Leading solution of the empowerment of individuals, and institutions.\n" +
+      "Strengthen the partnership with various partners in aspects of increasing the development indicators.\n" +
+      "Enabling partners in aspects of knowledge.\n" +
+      "Raising the society’s professional intellect.\n",
   },
 };

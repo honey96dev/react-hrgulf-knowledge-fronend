@@ -129,6 +129,9 @@ export default ({thresholdY}) => {
               </MDBDropdownMenu>
             </MDBDropdown>
           </MDBNavItem>
+          <MDBNavItem active={pathname.startsWith(routes.about.root)}>
+            <MDBNavLink to={routes.about.portal}>{t("NAVBAR.ABOUT.ABOUT")}</MDBNavLink>
+          </MDBNavItem>
         </MDBNavbarNav>
         <MDBNavbarNav right>
           <MDBNavItem>

@@ -52,6 +52,10 @@ export const routes = {
     us: "/contact/us",
     consultants: "/contact/consultants",
   },
+  about: {
+    root: "/about",
+    portal: "/about/portal",
+  },
 };
 
 export default routes;

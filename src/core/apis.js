@@ -8,6 +8,8 @@ export default {
     signUp: "auth/sign-up",
   },
   profile: {
+    avatar: "profile/avatar",
+    saveAvatar: "profile/save-avatar",
     save: "profile/save",
     changePassword: "profile/change-password",
   },

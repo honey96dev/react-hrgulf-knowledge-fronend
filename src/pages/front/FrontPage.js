@@ -1,15 +1,12 @@
 import React, {Fragment} from "react";
 import {Helmet} from "react-helmet";
 import {useTranslation} from "react-i18next";
-import {MDBCard, MDBCardBody, MDBCardImage, MDBCardText, MDBCol, MDBContainer, MDBRow} from "mdbreact";
+import {MDBCard, MDBCardBody, MDBCardImage, MDBCol, MDBContainer, MDBRow} from "mdbreact";
 import {Link} from "react-router-dom";
 import Navbar from "components/Navbar";
 import Footer from "components/Footer";
 import routes from "core/routes";
 import images from "core/images";
-
-import ContactUsPage from "pages/contact/ContactUsPage";
-import ConsultantsPage from "pages/contact/ConsultantsPage";
 
 import "./FrontPage.scss";
 
@@ -101,6 +98,17 @@ export default () => {
                 <MDBCardImage className="img-fluid card-image mx-auto" src={images.consultants} waves />
                 <MDBCardBody>
                   <p className="h5 text-center text-black-50">{t("NAVBAR.CONTACT.CONSULTANTS")}</p>
+                  {/*<MDBCardText>{t("FRONT.CONSULTANTS_DESCRIPTION")}</MDBCardText>*/}
+                </MDBCardBody>
+              </MDBCard>
+            </Link>
+          </MDBCol>
+          <MDBCol className="mb-5">
+            <Link to={routes.about.portal}>
+              <MDBCard className="section-card">
+                <MDBCardImage className="img-fluid card-image mx-auto" src={images.about} waves />
+                <MDBCardBody>
+                  <p className="h5 text-center text-black-50">{t("ABOUT.ABOUT_THE_KNOWLEDGE_PORTAL")}</p>
                   {/*<MDBCardText>{t("FRONT.CONSULTANTS_DESCRIPTION")}</MDBCardText>*/}
                 </MDBCardBody>
               </MDBCard>

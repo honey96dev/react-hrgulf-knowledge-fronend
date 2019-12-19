@@ -11,4 +11,8 @@ export default {
   vote: require("assets/img/vote.png"),
   contactUs: require("assets/img/contact-us.png"),
   consultants: require("assets/img/consultants.png"),
+  about: require("assets/img/about.png"),
+  vision: require("assets/img/vision.png"),
+  mission: require("assets/img/mission.png"),
+  goal: require("assets/img/goal.png"),
 };
