@@ -204,7 +204,7 @@ export default () => {
             ))}
           </MDBStepper>
           <div className="text-left">
-            <MDBBtn size="sm" rounded color="indigo" onClick={handleSubmit}>{t("COMMON.BUTTON.SUBMIT")}</MDBBtn>
+            <MDBBtn size="sm" rounded color="indigo" onClick={handleSubmit}>{t("COMMON.BUTTON.DELIVERY")}</MDBBtn>
           </div>
         </MDBCol>
       </MDBRow>}

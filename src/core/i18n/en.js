@@ -28,6 +28,7 @@ export default {
       MODIFY: "Modify",
       SUBMIT: "Submit",
       QUESTIONS: "Questions",
+      DELIVERY: "Delivery",
     },
     VALIDATION: {
       REQUIRED: "{{field}} is required",
@@ -233,14 +234,12 @@ export default {
   },
   ABOUT: {
     ABOUT_THE_KNOWLEDGE_PORTAL: "About the Knowledge Portal",
-    VISION_TITLE: "Vision of the Gulf Human Capital Society",
+    HEADING: "Gulf Human Capital Society",
+    VISION_TITLE: "Vision",
     VISION_DESCRIPTION: "Gulf leadership of the Human Capital theoretical, and practical solutions.",
-    MISSION_TITLE: "Mission of the Gulf Human Capital Society",
-    MISSION_DESCRIPTION: "Enablement, and empowerment of the leaders, and specialists of the field of Human Capital, and the participation of the theoretical, and practical empowerment, and establishment of the Gulf’s citizens. ",
-    GOAL_TITLE: "Goals of the Gulf Human Capital Society",
-    GOAL_DESCRIPTION: "Leading solution of the empowerment of individuals, and institutions.\n" +
-      "Strengthen the partnership with various partners in aspects of increasing the development indicators.\n" +
-      "Enabling partners in aspects of knowledge.\n" +
-      "Raising the society’s professional intellect.\n",
+    MISSION_TITLE: "Mission",
+    MISSION_DESCRIPTION: "Enablement, empowerment of the leaders and specialists of the field of human capital. Also the participation of the theoretical, practical empowerment and establishment of the gulf’s citizens.",
+    GOAL_TITLE: "Goals",
+    GOAL_DESCRIPTION: "Leading solution of the empowerment of individuals and institutions. Also, strengthen the partnership with various partners in aspects of increasing the development indicators, enabling partners in aspects of knowledge and raising the society’s professional intellect.",
   },
 };

@@ -184,7 +184,7 @@ export default (props) => {
                   </div> }
                 </MDBCol>
                 <MDBCol md={6}>
-                  <MDBDatePicker format={DATE_FORMAT_ISO}  autoOk /*locale={moment.locale(t("CODE"))}*/ className="date-picker white grey-text" value={birthday} getValue={val => setBirthday(val)}
+                  <MDBDatePicker format={DATE_FORMAT_ISO}  autoOk keyboard /*locale={moment.locale(t("CODE"))}*/ className="date-picker white grey-text" value={birthday} getValue={val => setBirthday(val)}
                                  // TextFieldComponent={<MDBInput label={t("AUTH.BIRTHDAY")}/>}
                   />
                   <label className="date-picker-label">{t("AUTH.BIRTHDAY")}</label>
