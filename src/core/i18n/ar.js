@@ -51,7 +51,7 @@ export default {
       FEMALE: 'أنثى',
     },
     LANGUAGE: {
-      LANGUAGE: 'لغة',
+      LANGUAGE: 'اللغة',
       ENGLISH: 'English',
       ARABIC: 'عربى',
     },
@@ -98,7 +98,7 @@ export default {
       CONSULTANTS: "المجلس الاستشاري",
     },
     ABOUT: {
-      ABOUT: "حول",
+      ABOUT: "رؤية ورسالة المجتمع",
     },
   },
   FOOTER: {

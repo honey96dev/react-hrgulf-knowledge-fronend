@@ -4,6 +4,8 @@ export default {
   ghcs300: require("assets/img/ghcs-300.png"),
   ghcsNoTitle300: require("assets/img/ghcs-no-title-300.png"),
   authBG: require("assets/img/auth-bg.png"),
+  frontTopLeft: require("assets/img/front-top-left.png"),
+  frontTopRight: require("assets/img/front-top-right.png"),
   post: require("assets/img/post.png"),
   news: require("assets/img/news.png"),
   video: require("assets/img/video.png"),

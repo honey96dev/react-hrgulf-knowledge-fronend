@@ -1,10 +1,14 @@
-import React, {Fragment} from "react";
+import React, {Fragment, useRef} from "react";
+import ReactDOM from "react-dom";
 import {Helmet} from "react-helmet";
 import {useTranslation} from "react-i18next";
 import {MDBCard, MDBCardBody, MDBCardImage, MDBCol, MDBContainer, MDBRow} from "mdbreact";
 import {Link} from "react-router-dom";
+import useComponentSize from "@rehooks/component-size";
+
 import Navbar from "components/Navbar";
 import Footer from "components/Footer";
+import BackToTop from "components/BackToTop";
 import routes from "core/routes";
 import images from "core/images";
 
@@ -13,19 +17,31 @@ import "./FrontPage.scss";
 export default () => {
   const {t} = useTranslation();
 
+  const leftRef = useRef(null);
+  const rightRef = useRef(null);
+  const navBar = document.getElementById("nav-bar");
+  const navContainer = document.getElementById("nav-container");
+
+  const leftSize = useComponentSize(leftRef);
+  const rightSize = useComponentSize(rightRef);
+
+  const y1 = !!navBar ? navBar.offsetHeight : 0;
+  const y2 = !!navContainer ? navContainer.offsetTop : 0;
   return (
     <Fragment>
       <Helmet>
         <title>{t("NAVBAR.HOME")} - {t("SITE_NAME")}</title>
       </Helmet>
       <Navbar/>
-      <MDBContainer className="section front-section no-max-width">
-        <MDBRow>
+      <MDBContainer className="section front-section no-max-width my-0">
+        <img src={images.frontTopLeft} ref={leftRef} className="banner-img-left" style={{top: y2 - leftSize.height, height: y2 - y1}} />
+        <img src={images.frontTopRight} ref={rightRef} className="banner-img-right" style={{top: y2 - rightSize.height, height: y2 - y1}} />
+        <MDBRow className="banner">
           <MDBCol md={12}>
-            <h2 className="welcome-message text-center font-weight-bold mb-5">{t("FRONT.WELCOME_MESSAGE")}</h2>
+            <h2 className="welcome-message text-center font-weight-bold text-stroke-white-2">{t("FRONT.WELCOME_MESSAGE")}</h2>
           </MDBCol>
         </MDBRow>
-        <MDBRow className="mt-5 row-only-in-sm">
+        <MDBRow className="row-only-in-sm inner-container" id="nav-container">
           <MDBCol className="mb-5">
             <Link to={routes.posts.all}>
               <MDBCard className="section-card">
@@ -115,17 +131,10 @@ export default () => {
             </Link>
           </MDBCol>
         </MDBRow>
-        {/*<MDBRow>*/}
-        {/*  <MDBCol md={12}>*/}
-        {/*    <ContactUsPage/>*/}
-        {/*  </MDBCol>*/}
-        {/*  <MDBCol md={12}>*/}
-        {/*    <ConsultantsPage/>*/}
-        {/*  </MDBCol>*/}
-        {/*</MDBRow>*/}
       </MDBContainer>
+      <div className="bottom-spec"></div>
       <Footer/>
-      {/*<Loader />*/}
+      <BackToTop/>
     </Fragment>
   );
 }

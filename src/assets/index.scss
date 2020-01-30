@@ -247,6 +247,19 @@ textarea.form-control {
   margin-right: 1.5rem !important;
 }
 
+.text-stroke-white-2 {
+  text-shadow:
+          -2px -2px 0 #fff,
+          2px -2px 0 #fff,
+          -2px 2px 0 #fff,
+          2px 2px 0 #fff,
+          4px 4px 10px $gray;
+}
+
+.text-stroke-2 {
+  //-webkit-text-stroke-width: 2px;
+}
+
 .rtl-content {
   direction: rtl;
 

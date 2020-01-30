@@ -98,7 +98,7 @@ export default {
       CONSULTANTS: "Board of Consultancy",
     },
     ABOUT: {
-      ABOUT: "About",
+      ABOUT: "Vision & Mission of the Society",
     },
   },
   FOOTER: {

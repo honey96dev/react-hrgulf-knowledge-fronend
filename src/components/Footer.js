@@ -14,7 +14,7 @@ export default (props) => {
   const classTextAlignRight = dir === 'rtl' ? 'text-align-right-lg' : '';
 
   return (
-    <MDBFooter color="unique-color-dark" className="font-small pt-4 mt-4">
+    <MDBFooter color="unique-color-dark" className="font-small pt-4">
       <MDBContainer className="text-center text-md-left">
         <MDBRow className="text-center text-md-left mt-3 pb-3">
           <MDBCol md="3" lg="3" xl="3" className={`mx-auto mt-3 ${classTextAlignRight}`}>

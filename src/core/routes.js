@@ -1,4 +1,7 @@
+import {isDev} from "core/globals";
+
 export const routes = {
+  mainGateway: isDev ? "/" : "//hrgulf.org",
   root: "/",
   admin: "/admin",
   auth: {

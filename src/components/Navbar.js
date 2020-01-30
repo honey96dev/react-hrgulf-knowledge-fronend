@@ -60,8 +60,8 @@ export default ({thresholdY}) => {
   };
 
   return (
-    <MDBNavbar color={flag ? "mdb-color" : "white"} light={!flag} dark={flag} expand="md" scrolling fixed="top">
-      <MDBNavbarBrand href="/">
+    <MDBNavbar color={flag ? "mdb-color" : "white"} light={!flag} dark={flag} expand="md" scrolling fixed="top" id="nav-bar">
+      <MDBNavbarBrand href={routes.mainGateway}>
         {/*<strong>{t("SITE_NAME")}</strong>*/}
         <strong><img className="navbar-logo-icon" src={images.logo}/></strong>
       </MDBNavbarBrand>
