@@ -8,7 +8,7 @@ export default ({data}) => {
   const {t} = useTranslation();
   return (
     <Fragment>
-      <h3 className="font-weight-bold my-3 p-0 text-center">
+      <h3 className="font-weight-bold my-3 p-0 text-center h3-response">
         <strong>{data.title}</strong>
       </h3>
       <div className="infor-section text-left">

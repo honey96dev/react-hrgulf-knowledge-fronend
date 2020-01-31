@@ -58,6 +58,7 @@ export const routes = {
   about: {
     root: "/about",
     portal: "/about/portal",
+    us: "/about/us",
   },
 };
 

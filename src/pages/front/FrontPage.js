@@ -124,7 +124,7 @@ export default () => {
               <MDBCard className="section-card">
                 <MDBCardImage className="img-fluid card-image mx-auto" src={images.about} waves />
                 <MDBCardBody>
-                  <p className="h5 text-center text-black-50">{t("ABOUT.ABOUT_THE_KNOWLEDGE_PORTAL")}</p>
+                  <p className="h5 text-center text-black-50">{t("ABOUT.PORTAL.ABOUT_THE_KNOWLEDGE_PORTAL")}</p>
                   {/*<MDBCardText>{t("FRONT.CONSULTANTS_DESCRIPTION")}</MDBCardText>*/}
                 </MDBCardBody>
               </MDBCard>

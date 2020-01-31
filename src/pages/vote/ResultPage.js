@@ -131,7 +131,7 @@ export default () => {
       {!!loading && <Loading/>}
       {!loading && <MDBRow>
         <MDBCol md={12}>
-          <h3 className="mt-4 font-weight-bold text-center">{t("VOTE.RESULT")}</h3>
+          <h3 className="mt-4 font-weight-bold text-center h3-response">{t("VOTE.RESULT")}</h3>
           <p className="text-left"><span className="font-weight-bold">{t("VOTE.PACKAGE")}: </span>{packageData.name}</p>
         </MDBCol>
         <MDBCol md={12}>

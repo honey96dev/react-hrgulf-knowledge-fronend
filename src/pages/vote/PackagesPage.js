@@ -84,7 +84,7 @@ export default () => {
       {!loading && !items.length && <ErrorNoData/>}
       {!loading && !!items.length && <MDBRow>
         <MDBCol md={12}>
-          <h3 className="mt-4 font-weight-bold text-center">{scope === SCOPE_CURRENT ? t('NAVBAR.VOTE.CURRENT') : t("NAVBAR.VOTE.PREVIOUS")}</h3>
+          <h3 className="mt-4 font-weight-bold text-center h3-response">{scope === SCOPE_CURRENT ? t('NAVBAR.VOTE.CURRENT') : t("NAVBAR.VOTE.PREVIOUS")}</h3>
         </MDBCol>
         <MDBCol md={12}>
           <CSSTransition in={alert.show} classNames="fade-transition" timeout={TRANSITION_TIME} unmountOnExit appear>

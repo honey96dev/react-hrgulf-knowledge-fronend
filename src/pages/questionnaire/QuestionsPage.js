@@ -176,7 +176,7 @@ export default () => {
       </Fragment>}
       {!loading && !!items.length && <MDBRow>
         <MDBCol md={12}>
-          <h3 className="mt-4 font-weight-bold text-center">{t('QUESTIONNAIRE.QUESTIONNAIRE')}</h3>
+          <h3 className="mt-4 font-weight-bold text-center h3-response">{t('QUESTIONNAIRE.QUESTIONNAIRE')}</h3>
           <p className="text-left"><span className="font-weight-bold">{t("QUESTIONNAIRE.PACKAGE")}: </span>{packageName}</p>
         </MDBCol>
         <MDBCol md={12}>

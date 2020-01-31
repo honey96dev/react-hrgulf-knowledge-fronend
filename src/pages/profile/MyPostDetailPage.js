@@ -136,7 +136,7 @@ export default ({}) => {
         {!loading && <MDBCardBody className="mx-md-4 mx-sm-1 text-left">
           <form onSubmit={handleSubmit}>
             <div className="text-center">
-              <h3 className="dark-grey-text mt-3 mb-0">
+              <h3 className="dark-grey-text mt-3 mb-0 h3-response">
                 <strong>{t("PROFILE.MY_POSTS.DETAIL")}</strong>
               </h3>
             </div>

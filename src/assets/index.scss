@@ -31,20 +31,8 @@ input:-webkit-autofill {
   margin-right: auto;
 }
 
-.text-align-left {
-  text-align: left;
-}
-
-.text-align-center {
-  text-align: center;
-}
-
-.text-align-right {
-  text-align: right;
-}
-
 @media (min-width: $screen-breakpoint-lg) {
-  .text-align-right-lg {
+  .text-right-lg {
     text-align: right;
   }
 }
@@ -258,6 +246,24 @@ textarea.form-control {
 
 .text-stroke-2 {
   //-webkit-text-stroke-width: 2px;
+}
+
+.h3-response {
+  font-size: 1.75rem;
+}
+
+.h5-response {
+  font-size: 1.15rem;
+}
+
+@media (max-width: $screen-breakpoint-md) {
+  .h3-response {
+    font-size: 1.5rem;
+  }
+
+  .h5-response {
+    font-size: 1rem;
+  }
 }
 
 .rtl-content {

@@ -130,7 +130,15 @@ export default ({thresholdY}) => {
             </MDBDropdown>
           </MDBNavItem>
           <MDBNavItem active={pathname.startsWith(routes.about.root)}>
-            <MDBNavLink to={routes.about.portal}>{t("NAVBAR.ABOUT.ABOUT")}</MDBNavLink>
+            <MDBDropdown onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+              <MDBDropdownToggle nav caret>
+                <span className="mr-2">{t("NAVBAR.ABOUT.ABOUT")}</span>
+              </MDBDropdownToggle>
+              <MDBDropdownMenu className="text-left">
+                <MDBDropdownItem onClick={() => history.push(routes.about.portal)}>{t("NAVBAR.ABOUT.PORTAL")}</MDBDropdownItem>
+                <MDBDropdownItem onClick={() => history.push(routes.about.us)}>{t("NAVBAR.ABOUT.US")}</MDBDropdownItem>
+              </MDBDropdownMenu>
+            </MDBDropdown>
           </MDBNavItem>
         </MDBNavbarNav>
         <MDBNavbarNav right>
