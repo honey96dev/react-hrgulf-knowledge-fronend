@@ -25,6 +25,7 @@ import authActions from "actions/auth";
 import UserService from "services/UserService";
 
 import "./Navbar.scss";
+import {isDev} from "../core/globals";
 
 export default ({thresholdY}) => {
   const {t} = useTranslation();
@@ -46,6 +47,16 @@ export default ({thresholdY}) => {
     setCollapse(!collapse);
   };
 
+  const handleLogo = e => {
+    document.location.href = routes.mainGateway;
+    return;
+    if (isDev) {
+      history.push(routes.mainGateway);
+    } else {
+      document.location.href = routes.mainGateway;
+    }
+  };
+
   const handleMouseEnter = e => {
     console.log(e);
   };
@@ -61,7 +72,7 @@ export default ({thresholdY}) => {
 
   return (
     <MDBNavbar color={flag ? "mdb-color" : "white"} light={!flag} dark={flag} expand="md" scrolling fixed="top" id="nav-bar">
-      <MDBNavbarBrand href={routes.mainGateway}>
+      <MDBNavbarBrand href={routes.mainGateway} onClick={handleLogo}>
         {/*<strong>{t("SITE_NAME")}</strong>*/}
         <strong><img className="navbar-logo-icon" src={images.logo}/></strong>
       </MDBNavbarBrand>

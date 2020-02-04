@@ -1,6 +1,7 @@
 import React, {Fragment} from "react";
 import {Route, Switch} from "react-router-dom";
-import {MDBCol, MDBContainer, MDBRow} from "mdbreact";
+import {MDBBtn, MDBCol, MDBContainer, MDBRow} from "mdbreact";
+import {useTranslation} from "react-i18next";
 
 import routes from "core/routes";
 import Navbar from "components/Navbar";
@@ -13,10 +14,15 @@ import SignUpPage from "./SignUpPage";
 import "./AuthPage.scss";
 
 export default () => {
+  const {t} = useTranslation();
+
   return (
     <Fragment>
       <Navbar/>
       <MDBContainer>
+        <div className="admin-nav text-right">
+          <MDBBtn href={routes.admin2} size="sm" rounded color="indigo">{t("COMMON.BUTTON.ADMIN_PAGE")}</MDBBtn>
+        </div>
         <MDBRow className={"section mb-5"}>
           <MDBCol lg="3" md="0"/>
           <MDBCol lg="6" md="12">

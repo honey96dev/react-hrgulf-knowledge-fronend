@@ -4,6 +4,7 @@ export const routes = {
   mainGateway: isDev ? "/" : "//hrgulf.org",
   root: "/",
   admin: "/admin",
+  admin2: "//admin-knowledge.hrgulf.org",
   auth: {
     root: "/auth",
     signIn: "/auth/sign-in",

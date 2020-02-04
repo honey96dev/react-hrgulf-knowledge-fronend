@@ -1,7 +1,13 @@
 @import "../../assets/consts.scss";
 
+$admin-nav-margin-top: 90px;
+
+.admin-nav {
+  margin-top: $admin-nav-margin-top;
+}
+
 .section {
-  margin-top: $form-margin-top;
+  margin-top: calc(#{$form-margin-top} - #{$admin-nav-margin-top});
 }
 
 .back-to-top-container {

@@ -23,10 +23,15 @@ $about-us-img-width: 200px;
 }
 
 @media (max-width: $screen-breakpoint-md) {
-  .about-us-section {
-    padding-left: unset !important;
-    padding-right: unset !important;
-  }
+  //.about-us-section {
+  //  padding-left: calc(#{$about-us-padding});
+  //}
+  //
+  //.rtl-content {
+  //  .about-us-section {
+  //    padding-right: calc(#{$about-us-padding} / 2);
+  //  }
+  //}
 }
 
 .about-us-img {
@@ -38,7 +43,7 @@ $about-us-img-width: 200px;
 @media (max-width: $screen-breakpoint-md) {
   .about-us-img {
     position: absolute;
-    width: calc(#{$about-us-img-width} / 3);
+    width: calc(#{$about-us-img-width} / 2);
   }
 }
 

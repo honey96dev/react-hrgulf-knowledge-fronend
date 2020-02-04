@@ -149,7 +149,7 @@ export default (props) => {
                 <MDBCol md={6}>
                   <MDBInput id="username" name="username" type="text" label={t("AUTH.USERNAME")} background containerClass="mb-0" value={username} getValue={setUsername} onBlur={() => setTouched(Object.assign({}, touched, {username: true}))}>
                     {touched.username && !validators.isUsername(username) && <div className="invalid-field2">
-                      {username.length === 0 ? t("COMMON.VALIDATION.REQUIRED", {field: t("AUTH.USERNAME")}) : username.length > USERNAME_MAX_LENGTH ? t('COMMON.VALIDATION.MAX_LENGTH', {field: t('AUTH.USERNAME'), length: USERNAME_MAX_LENGTH}) : !validators.isUsername(username) ? t("COMMON.VALIDATION.INVALID", {field: t("AUTH.USERNAME")}) : ""}
+                      {username.length === 0 ? t("COMMON.VALIDATION.REQUIRED", {field: t("AUTH.USERNAME")}) : username.length > USERNAME_MAX_LENGTH ? t('COMMON.VALIDATION.MAX_LENGTH', {field: t('AUTH.USERNAME'), length: t("CODE") === "en" ? USERNAME_MAX_LENGTH : "٢٠"}) : !validators.isUsername(username) ? t("COMMON.VALIDATION.INVALID", {field: t("AUTH.USERNAME")}) : ""}
                     </div>}
                   </MDBInput>
                 </MDBCol>
@@ -172,7 +172,7 @@ export default (props) => {
               </MDBRow>
               <MDBRow>
                 <MDBCol md={6}>
-                  <MDBSelect label={t('AUTH.GENDER')} className="mt-3 mb-0 white" selected={[gender]} getValue={val => setGender(val[0])} >
+                  <MDBSelect /*label={t('AUTH.GENDER')}*/ className="mt-3 mb-0 white" selected={[gender]} getValue={val => setGender(val[0])} >
                     <MDBSelectInput selected={[gender]} />
                     <MDBSelectOptions>
                       <MDBSelectOption value={GENDER_MALE} checked={gender === GENDER_MALE}>{t("COMMON.GENDER.MALE")}</MDBSelectOption>

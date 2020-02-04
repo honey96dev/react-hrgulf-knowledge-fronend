@@ -29,12 +29,13 @@ export default {
       SUBMIT: "خضع",
       QUESTIONS: "الأسئلة",
       DELIVERY: "تسليم",
+      ADMIN_PAGE: "بوابة المشرف",
     },
     VALIDATION: {
       REQUIRED: "{{field}} مطلوب",
       INVALID: "{{field}} غير صالح",
-      MIN_LENGTH: "الحد الأدنى لطول {{field}} هو {{length}}",
-      MAX_LENGTH: "الحد الأقصى لطول {{field}} هو {{length}}",
+      MIN_LENGTH: "الحد الأدنى لطول {{field}} هو {{length}} حرف",
+      MAX_LENGTH: "الحد الأقصى لطول {{field}} هو {{length}} حرف",
       NOT_SAME: "تأكد من نفسه إلى {{field}}",
     },
     QUESTION: {
@@ -47,13 +48,13 @@ export default {
       ERROR_404: "لم يتم العثور على الصفحة",
     },
     GENDER: {
-      MALE: 'الذكر',
+      MALE: 'ذكر',
       FEMALE: 'أنثى',
     },
     LANGUAGE: {
       LANGUAGE: 'اللغة',
       ENGLISH: 'English',
-      ARABIC: 'عربى',
+      ARABIC: 'العربية',
     },
     FILE_UPLOAD: {
       DEFAULT: "سحب وإسقاط ملف هنا أو انقر فوق",
@@ -98,9 +99,9 @@ export default {
       CONSULTANTS: "المجلس الاستشاري",
     },
     ABOUT: {
-      ABOUT: "حول",
+      ABOUT: "ماهو المجتمع",
       PORTAL: "رؤية ورسالة المجتمع",
-      US: "معلومات عنا",
+      US: "نبذة عن بوابة المعرفة",
     },
   },
   FOOTER: {
@@ -124,7 +125,7 @@ export default {
     GENDER: "جنس",
     BIRTHDAY: "عيد الميلاد",
     JOB_TITLE: "المسمى الوظيفي",
-    SECTOR: "قطاع",
+    SECTOR: "القطاع",
     COMPANY: "المنشأة",
     COUNTRY: "البلد",
     CITY: "المدينة",
@@ -135,7 +136,7 @@ export default {
     SIGN_IN: "تسجيل الدخول",
     SIGN_UP: "تسجيل جديد",
     SIGN_OUT: "خروج",
-    MY_ACCOUNT: "الحساب",
+    MY_ACCOUNT: "حسابي الشخصي",
     FORGOT_PASSWORD: "هل نسيت كلمة المرور؟",
     ALREADY_REGISTERED: "مسجل بالفعل؟",
     NOT_REGISTERED: "غير مسجل؟",

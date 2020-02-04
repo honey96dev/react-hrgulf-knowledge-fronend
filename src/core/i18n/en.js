@@ -29,6 +29,7 @@ export default {
       SUBMIT: "Submit",
       QUESTIONS: "Questions",
       DELIVERY: "Delivery",
+      ADMIN_PAGE: "Admin Portal",
     },
     VALIDATION: {
       REQUIRED: "{{field}} is required",
@@ -53,7 +54,7 @@ export default {
     LANGUAGE: {
       LANGUAGE: 'Language',
       ENGLISH: 'English',
-      ARABIC: 'عربى',
+      ARABIC: 'العربية',
     },
     FILE_UPLOAD: {
       DEFAULT: "Drag and drop a file here or click",
@@ -98,9 +99,9 @@ export default {
       CONSULTANTS: "Board of Consultancy",
     },
     ABOUT: {
-      ABOUT: "About",
+      ABOUT: "What is the Society",
       PORTAL: "Vision & Mission of the Society",
-      US: "About Us",
+      US: "About The Knowledge Portal",
     },
   },
   FOOTER: {
@@ -135,7 +136,7 @@ export default {
     SIGN_IN: "Sign in",
     SIGN_UP: "Sign up",
     SIGN_OUT: "Sign out",
-    MY_ACCOUNT: "My account",
+    MY_ACCOUNT: "My Account",
     FORGOT_PASSWORD: "Forgot password?",
     ALREADY_REGISTERED: "Already registered?",
     NOT_REGISTERED: "Not registered?",
