@@ -44,7 +44,8 @@ export default () => {
         if (res.result === SUCCESS) {
           setItems(res.data);
           const arr = adjustItems(res.data);
-          setChunks(makeChunks(arr, isSmallScreen ? 1 : 3));
+          const chunks = makeChunks(arr, isSmallScreen ? 1 : 3);
+          setChunks([chunks[0]]);
         } else {
           setItems([]);
           setChunks([]);
@@ -104,10 +105,10 @@ export default () => {
                     <MDBCarouselItem itemId={index + 1} key={index}>
                       {chunk.map((item, index2) => (
                         <MDBCol md="4" key={`${index}-${index2}`}>
-                          <MDBTestimonial>
-                            <MDBAvatar className="mx-auto text-center">
+                          <MDBTestimonial className="text-center">
+                            <MDBAvatar className="white text-center">
                               {/*<img src={item.media} alt="" className="img-fluid card-avatar" />*/}
-                              <div className="mx-auto card-avatar z-depth-1" style={{backgroundImage: `url(${item.media})`}}/>
+                              <div className="card-avatar z-depth-1 mx-auto" style={{backgroundImage: `url(${item.media})`}}/>
                             </MDBAvatar>
                             <h4 className="font-weight-bold mt-4 text-center">{lang === "en" ? item.nameEn : item.nameAr}</h4>
                             <h6 className="font-weight-bold my-3 text-center">{lang === "en" ? item.titleEn : item.titleAr}</h6>

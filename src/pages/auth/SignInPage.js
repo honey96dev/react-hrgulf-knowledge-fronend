@@ -8,7 +8,6 @@ import {animateScroll as scroll} from "react-scroll";
 import {Helmet} from "react-helmet";
 
 import auth from "actions/auth";
-import UserService from "services/UserService";
 import {
   ALERT_DANGER,
   DEFAULT_EMAIL,
@@ -22,6 +21,7 @@ import {
 import routes from "core/routes";
 import validators from "core/validators";
 import images from "core/images";
+import Service from "services/UserService";
 
 import "./SignInPage.scss";
 
@@ -51,7 +51,7 @@ export default (props) => {
       const params = {email, password, rememberMe};
       dispatch(auth.requestSignIn({user: params}));
       setLoading(true);
-      let res = await UserService.signIn(params);
+      let res = await Service.signIn(params);
       setLoading(false);
       if (res.result === SUCCESS) {
         dispatch(auth.successSignIn(res.data));
@@ -104,7 +104,7 @@ export default (props) => {
             <div className="white-text mt-5">
               <MDBInput id="email" name="email" type="email" icon="envelope" label={t("AUTH.EMAIL")} background value={email}
                         getValue={setEmail} onBlur={() => setTouched(Object.assign({}, touched, {email: true}))}>
-                {touched.email && !validators.isEmail(email) && <div className="invalid-field2">
+                {touched.email && !validators.isEmail(email) && <div className="text-left invalid-field2">
                   {email.length === 0 ? t("COMMON.VALIDATION.REQUIRED", {field: t("AUTH.EMAIL")}) : !validators.isEmail(email) ? t("COMMON.VALIDATION.INVALID", {field: t("AUTH.EMAIL")}) : ""}
                 </div>}
               </MDBInput>
@@ -112,7 +112,7 @@ export default (props) => {
                         containerClass="mb-0" value={password} getValue={setPassword}
                         onBlur={() => setTouched(Object.assign({}, touched, {password: true}))}>
                 {touched.password && password.length < PASSWORD_MIN_LENGTH && <div
-                  className="invalid-field2">{password.length === 0 ? t("COMMON.VALIDATION.REQUIRED", {field: t("AUTH.PASSWORD")}) : t("COMMON.VALIDATION.MIN_LENGTH", {
+                  className="text-left invalid-field2">{password.length === 0 ? t("COMMON.VALIDATION.REQUIRED", {field: t("AUTH.PASSWORD")}) : t("COMMON.VALIDATION.MIN_LENGTH", {
                   field: t("AUTH.PASSWORD"),
                   length: PASSWORD_MIN_LENGTH
                 })}</div>}

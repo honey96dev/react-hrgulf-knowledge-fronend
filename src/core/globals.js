@@ -38,6 +38,10 @@ export const TRANSITION_TIME = 500;
 export const FILEUPLOAD_MAXSIZE1 = "5M";
 export const FILEUPLOAD_MAXSIZE2 = "10M";
 
+export const PREFIX_CHECKBOX = 'C';
+export const PREFIX_INPUT = 'I';
+export const PREFIX_RADIO = 'R';
+
 export const SCOPE_CURRENT = "current";
 
 export const CONTACT_PHONE = "011-2304705";

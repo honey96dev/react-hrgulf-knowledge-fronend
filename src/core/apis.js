@@ -52,4 +52,7 @@ export default {
     consultants: "contact/consultants",
     // consultants: "https://eliteresources.co/api/director-board/list",
   },
+  about: {
+    loadAboutUs: "about/load-aboutus",
+  },
 };

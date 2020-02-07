@@ -81,7 +81,7 @@ export default () => {
         <MDBBreadcrumbItem active>{scope === SCOPE_CURRENT ? t('NAVBAR.QUESTIONNAIRE.CURRENT') : t("NAVBAR.QUESTIONNAIRE.PREVIOUS")}</MDBBreadcrumbItem>
       </MDBBreadcrumb>
       {!!loading && <Loading/>}
-      {!loading && !items.length && <ErrorNoData/>}
+      {!loading && !items.length && <ErrorNoData message={t("QUESTIONNAIRE.NO_DATA")}/>}
       {!loading && !!items.length && <MDBRow>
         <MDBCol md={12}>
           <h3 className="mt-4 font-weight-bold text-center h3-response">{scope === SCOPE_CURRENT ? t('NAVBAR.QUESTIONNAIRE.CURRENT') : t("NAVBAR.QUESTIONNAIRE.PREVIOUS")}</h3>

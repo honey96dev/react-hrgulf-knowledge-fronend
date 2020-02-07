@@ -1,4 +1,4 @@
-import React, {Fragment, useEffect, useState} from "react";
+import React, {Fragment, useEffect, useMemo, useState} from "react";
 import {Link, useHistory, useParams} from "react-router-dom";
 import {useSelector} from "react-redux";
 import {
@@ -19,9 +19,18 @@ import {CSSTransition} from "react-transition-group";
 
 import Loading from "components/Loading";
 import Service from "services/QuestionnaireService";
-import {ALERT_DANGER, SCOPE_CURRENT, SUCCESS, TRANSITION_TIME} from "core/globals";
+import {
+  ALERT_DANGER,
+  ALERT_SUCCESS,
+  PREFIX_CHECKBOX,
+  PREFIX_INPUT,
+  SCOPE_CURRENT,
+  SUCCESS,
+  TRANSITION_TIME
+} from "core/globals";
 import routes from "core/routes";
-import AnswerList from "./partial/AnswerList";
+import AnswerCheckbox from "./partial/AnswerCheckbox";
+import AnswerInput from "./partial/AnswerInput";
 
 import "./QuestionsPage.scss";
 
@@ -38,6 +47,9 @@ export default () => {
   const [packageName, setPackageName] = useState("");
   const [items, setItems] = useState([]);
   const [answers, setAnswers] = useState({});
+  const [isValid, setIsValid] = useState({});
+
+  const [deliverable, setDeliverable] = useState(false);
 
   const currentPage = page ? parseInt(page) : 1;
   const itemsCount = items.length - 1;
@@ -48,6 +60,17 @@ export default () => {
     });
     loadData();
   }, [page, t]);
+
+  useMemo(e => {
+    const keys = Object.keys(isValid);
+    if (!!keys.length) {
+      let result = true;
+      keys.map(key => {
+        !isValid[key] && (result = false);
+      });
+      setDeliverable(result);
+    }
+  }, [isValid]);
 
   const loadData = e => {
     Service.getPackage({packageId})
@@ -101,8 +124,8 @@ export default () => {
       });
   };
 
-  const handleUpdate = ({questionId, answeredIds}) => {
-    setAnswers(Object.assign({}, answers, {[questionId]: answeredIds}));
+  const handleUpdate = ({questionId, type, answer}) => {
+    setAnswers(Object.assign({}, answers, {[questionId]: {type, answer}}));
     // Service.update({page, userId: auth.user.id, packageId, questionId, answerId})
     //   .then(res => {
     //     if (res.result === SUCCESS) {
@@ -138,8 +161,12 @@ export default () => {
           setItems(res.data);
           setPageCount(res.pageCount);
           setAlert({
-            ...alert,
-            show: false,
+            show: true,
+            color: ALERT_SUCCESS,
+            message: res.message,
+          });
+          scroll.scrollToTop({
+            duration: TRANSITION_TIME,
           });
         } else {
           setAlert({
@@ -197,14 +224,15 @@ export default () => {
                     <h6 className="mb-0">{item.question}</h6>
                   </div>
                   <div className="step-content mt-3">
-                    <AnswerList data={item} onUpdate={handleUpdate}/>
+                    {item.type === PREFIX_CHECKBOX && <AnswerCheckbox data={item} onUpdate={handleUpdate}/>}
+                    {item.type === PREFIX_INPUT && <AnswerInput data={item} onUpdate={handleUpdate} onIsValid={setIsValid}/>}
                   </div>
                 </Fragment>
               </MDBStep>
             ))}
           </MDBStepper>
           <div className="text-left">
-            <MDBBtn size="sm" rounded color="indigo" onClick={handleSubmit}>{t("COMMON.BUTTON.DELIVERY")}</MDBBtn>
+            <MDBBtn size="sm" rounded color="indigo" onClick={handleSubmit} disabled={!deliverable}>{t("COMMON.BUTTON.DELIVERY")}</MDBBtn>
           </div>
         </MDBCol>
       </MDBRow>}

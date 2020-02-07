@@ -11,6 +11,9 @@ export const cancelRequest = () => {
 };
 
 const getQueryString = (params) => {
+  if (!params)
+    return "";
+
   let esc = encodeURIComponent;
   return (
     "?" +
@@ -33,7 +36,7 @@ export const setHeader = (params) => {
     axios.defaults.headers.common[key] = value;
   });
 };
-export default (requestType, resourceURL, parameters, headers) => {
+export default (requestType, resourceURL, parameters, headers, config) => {
   // Object.entries(headers).forEach(([key, value]) => {
   //   axios.defaults.headers.common[key] = value;
   // });
@@ -44,6 +47,7 @@ export default (requestType, resourceURL, parameters, headers) => {
         const queryString = getQueryString(parameters);
         axios
           .get(resourceURL + queryString, {
+            ...config,
             cancelToken: new CancelToken(c => {
               cancel = c;
             }),
@@ -62,6 +66,7 @@ export default (requestType, resourceURL, parameters, headers) => {
         const jsonBody = getJsonBody(parameters);
         axios
           .post(resourceURL, jsonBody, {
+            ...config,
             cancelToken: new CancelToken(c => {
               cancel = c;
             }),
@@ -80,6 +85,7 @@ export default (requestType, resourceURL, parameters, headers) => {
         const jsonBody = getJsonBody(parameters);
         axios
           .put(resourceURL, jsonBody, {
+            ...config,
             cancelToken: new CancelToken(c => {
               cancel = c;
             }),
@@ -98,6 +104,7 @@ export default (requestType, resourceURL, parameters, headers) => {
         const jsonBody = getJsonBody(parameters);
         axios
           .patch(resourceURL, jsonBody, {
+            ...config,
             cancelToken: new CancelToken(c => {
               cancel = c;
             }),
@@ -116,6 +123,7 @@ export default (requestType, resourceURL, parameters, headers) => {
         const queryString = getQueryString(parameters);
         axios
           .delete(resourceURL + queryString, {
+            ...config,
             cancelToken: new CancelToken(c => {
               cancel = c;
             }),

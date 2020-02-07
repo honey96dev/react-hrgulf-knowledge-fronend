@@ -2,7 +2,9 @@ import React, {Fragment, useEffect, useState} from "react";
 import {MDBBtn, MDBInput} from "mdbreact";
 import {useTranslation} from "react-i18next";
 
-import "./AnswerList.scss";
+import {PREFIX_CHECKBOX} from "core/globals";
+
+import "./AnswerCheckbox.scss";
 
 export default ({data, onUpdate}) => {
 
@@ -28,7 +30,7 @@ export default ({data, onUpdate}) => {
         answeredIds.push(item);
       }
     });
-    onUpdate({questionId: data.id, answeredIds});
+    onUpdate({questionId: data.id, type:PREFIX_CHECKBOX, answer: answeredIds});
   };
 
   return (

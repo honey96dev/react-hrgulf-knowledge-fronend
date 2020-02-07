@@ -58,11 +58,11 @@ export default ({thresholdY}) => {
   };
 
   const handleMouseEnter = e => {
-    console.log(e);
+
   };
 
   const handleMouseLeave = e => {
-    console.log(e);
+
   };
 
   const handleSignOut = e => {

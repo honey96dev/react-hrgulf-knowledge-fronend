@@ -15,3 +15,8 @@
 .white-border {
   border-color: white;
 }
+
+.select-wrapper > label.mdb-main-label.active {
+  transform: translateY(-17px);
+  color: #ffffff !important;
+}

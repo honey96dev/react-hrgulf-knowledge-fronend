@@ -61,8 +61,6 @@ export default ({}) => {
   const handleSubmit = async e => {
     e.preventDefault();
 
-    console.log(topics);
-
     try {
       let params = new FormData();
       params.append('userId', auth.user.id);

@@ -45,7 +45,6 @@ export default ({}) => {
         setLoading(false);
       })
       .catch(err => {
-        console.log(err);
         setAlert({
           show: true,
           color: ALERT_DANGER,
