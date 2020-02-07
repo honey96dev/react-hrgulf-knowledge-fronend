@@ -73,6 +73,14 @@ export default {
       COMPLETED: "Completed",
       NOT_COMPLETED: "Not completed",
     },
+    GCC_COUNTRIES: {
+      BAHRAIN: "Bahrain",
+      KUWAIT: "Kuwait",
+      OMAN: "Oman",
+      QATAR: "Qatar",
+      SAUDI_ARABIA: "Saudi Arabia",
+      UAE: "UAE",
+    },
   },
   NAVBAR: {
     HOME: "Home",
@@ -129,6 +137,7 @@ export default {
     COMPANY: "Company",
     COUNTRY: "Country",
     CITY: "City",
+    COUNTRY_CODE: "Country Code",
     PHONE: "Phone Number",
     PASSWORD: "Password",
     PASSWORD2: "Confirm Password",

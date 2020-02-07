@@ -21,7 +21,7 @@ import {
 import routes from "core/routes";
 import validators from "core/validators";
 import images from "core/images";
-import Service from "services/UserService";
+import Service from "services/AuthService";
 
 import "./SignInPage.scss";
 

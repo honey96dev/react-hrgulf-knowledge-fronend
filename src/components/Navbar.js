@@ -22,7 +22,7 @@ import {changeLanguage} from "core/i18n";
 import routes from "core/routes";
 import images from "core/images";
 import authActions from "actions/auth";
-import UserService from "services/UserService";
+import AuthService from "services/AuthService";
 
 import "./Navbar.scss";
 import {isDev} from "../core/globals";
@@ -66,7 +66,7 @@ export default ({thresholdY}) => {
   };
 
   const handleSignOut = e => {
-    UserService.signOut();
+    AuthService.signOut();
     dispatch(authActions.signOut());
   };
 

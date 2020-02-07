@@ -73,6 +73,14 @@ export default {
       COMPLETED: "منجز",
       NOT_COMPLETED: "غير مكتمل",
     },
+    GCC_COUNTRIES: {
+      BAHRAIN: "البحرين",
+      KUWAIT: "الكويت",
+      OMAN: "سلطنة عمان",
+      QATAR: "دولة قطر",
+      SAUDI_ARABIA: "المملكة العربية السعودية",
+      UAE: "الإمارات العربية المتحدة",
+    },
   },
   NAVBAR: {
     HOME: "الصفحة الرئيسية",
@@ -129,6 +137,7 @@ export default {
     COMPANY: "المنشأة",
     COUNTRY: "البلد",
     CITY: "المدينة",
+    COUNTRY_CODE: "الرقم الدولي",
     PHONE: "رقم الجوال",
     PASSWORD: "كلمة المرور",
     PASSWORD2: "تأكيد كلمة المرور",

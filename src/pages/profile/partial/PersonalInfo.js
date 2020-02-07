@@ -22,8 +22,8 @@ import {
   ALERT_DANGER,
   DATE_FORMAT_ISO,
   GENDER_FEMALE,
-  GENDER_MALE,
-  SAUDI_PHONE_PREFIX, SUCCESS,
+  GENDER_MALE, isDev, PERSIST_KEY, PHONE_PREFIX_BAHRAIN, PHONE_PREFIX_KUWAIT, PHONE_PREFIX_OMAN,
+  PHONE_PREFIX_SAUDI_ARABIA, PHONE_PREFIX_UAE, SUCCESS,
   TRANSITION_TIME,
   USERNAME_MAX_LENGTH
 } from "core/globals";
@@ -56,6 +56,7 @@ export default () => {
   const [company, setCompany] = useState();
   // const [country, setCountry] = useState("");
   const [city, setCity] = useState();
+  const [countryCode, setCountryCode] = useState(isDev ? PHONE_PREFIX_SAUDI_ARABIA : "");
   const [phone, setPhone] = useState();
 
   const birthday1 = birthday ? sprintf("%04d-%02d-%02d", birthday.getFullYear(), birthday.getMonth() + 1, birthday.getDate()) : "";
@@ -76,6 +77,7 @@ export default () => {
     setSector(auth.user.sector);
     setCompany(auth.user.company);
     setCity(auth.user.city);
+    setCountryCode(auth.user.countryCode);
     setPhone(auth.user.phone);
   };
 
@@ -87,12 +89,19 @@ export default () => {
   const handleSubmit = e => {
     e.preventDefault();
 
-    const params = {id, email, username, firstName, lastName, gender, birthday: birthday1, jobTitle, sector, company, city, phone};
+    const params = {id, email, username, firstName, lastName, gender, birthday: birthday1, jobTitle, sector, company, city, countryCode, phone};
     ProfileService.save(params)
       .then(res => {
         if (res.result === SUCCESS) {
           dispatch(authActions.successSignIn(res.data));
         }
+        const authData = JSON.stringify({
+          signedIn: true,
+          user: res.data.user,
+          token: res.data.token,
+        });
+        sessionStorage.setItem(PERSIST_KEY, authData);
+        !!localStorage.getItem(PERSIST_KEY) && localStorage.setItem(PERSIST_KEY, authData);
         setAlert({
           show: true,
           color: res.result,
@@ -161,7 +170,7 @@ export default () => {
             </MDBCol>
             <MDBCol md={6}>
               {!!editing && <Fragment>
-                <MDBDatePicker format={DATE_FORMAT_ISO} autoOk disabled={!editing} className="date-picker" value={birthday} getValue={val => setBirthday(val)} />
+                <MDBDatePicker format={DATE_FORMAT_ISO} autoOk keyboard disabled={!editing} className="date-picker" value={birthday} getValue={val => setBirthday(val)} />
                 <label className="date-picker-label">{t("AUTH.BIRTHDAY")}</label>
               </Fragment>}
               {/*{!!editing && <MDBDatePicker format={DATE_FORMAT_ISO} className="date-picker" value={birthday} getValue={val => setBirthday(val)} />}*/}
@@ -201,23 +210,29 @@ export default () => {
             </MDBCol>
           </MDBRow>
           <MDBRow>
-            {/*<MDBCol md={6}>{t("AUTH.PHONE")}</MDBCol>*/}
-            <MDBCol md={12}>
-              {!!editing && <MDBInputGroup
-                material
-                type="text"
-                // outline
-                disabled={!editing}
-                prepend={<Fragment><span className="input-group-text md-addon">{t("AUTH.PHONE")}</span><span className="input-group-text md-addon">{SAUDI_PHONE_PREFIX}</span></Fragment>}
-                // inputs={
-                //   <MDBInput id="phone" name="phone" containerClass="mt-0 mb-0" value={phone} onChange={e => setPhone(e.target.value)} onBlur={() => setTouched(Object.assign({}, touched, {phone: true}))}/>}
-                containerClassName="mt-3 mb-4 ltr-force"
-                className="mt-0 mb-0" value={phone} getValue={setPhone} onBlur={() => setTouched(Object.assign({}, touched, {phone: true}))}>
-                {(phone.length === 0 || !validators.isPhoneNumber(SAUDI_PHONE_PREFIX + phone)) && <div className="invalid-field">
+
+            <MDBCol md={6}>
+              {!!editing && <MDBSelect label={t('AUTH.COUNTRY_CODE')} className="mt-3 mb-0" selected={[countryCode]} getValue={val => setCountryCode(val[0])} >
+                <MDBSelectInput selected={[countryCode]} />
+                <MDBSelectOptions>
+                  <MDBSelectOption value={PHONE_PREFIX_BAHRAIN} checked={countryCode === PHONE_PREFIX_BAHRAIN}>{PHONE_PREFIX_BAHRAIN} - {t("COMMON.GCC_COUNTRIES.BAHRAIN")}</MDBSelectOption>
+                  <MDBSelectOption value={PHONE_PREFIX_KUWAIT} checked={countryCode === PHONE_PREFIX_KUWAIT}>{PHONE_PREFIX_KUWAIT} - {t("COMMON.GCC_COUNTRIES.KUWAIT")}</MDBSelectOption>
+                  <MDBSelectOption value={PHONE_PREFIX_OMAN} checked={countryCode === PHONE_PREFIX_OMAN}>{PHONE_PREFIX_OMAN} - {t("COMMON.GCC_COUNTRIES.OMAN")}</MDBSelectOption>
+                  <MDBSelectOption value={PHONE_PREFIX_SAUDI_ARABIA} checked={countryCode === PHONE_PREFIX_SAUDI_ARABIA}>{PHONE_PREFIX_SAUDI_ARABIA} - {t("COMMON.GCC_COUNTRIES.SAUDI_ARABIA")}</MDBSelectOption>
+                  <MDBSelectOption value={PHONE_PREFIX_UAE} checked={countryCode === PHONE_PREFIX_UAE}>{PHONE_PREFIX_UAE} - {t("COMMON.GCC_COUNTRIES.UAWE")}</MDBSelectOption>
+                </MDBSelectOptions>
+              </MDBSelect>}
+              {!editing && <MDBInput label={t("AUTH.COUNTRY_CODE")} disabled background value={countryCode} />}
+              {!editing && !!countryCode && countryCode.length === 0 && <div className="text-left invalid-field">
+                {t("COMMON.VALIDATION.REQUIRED", {field: t("AUTH.COUNTRY_CODE")})}
+              </div> }
+            </MDBCol>
+            <MDBCol md={6}>
+              <MDBInput id="phone" name="phone" type="text" label={t("AUTH.PHONE")} disabled={!editing} outline={editing} background={!editing} value={phone} getValue={setPhone} onBlur={() => setTouched(Object.assign({}, touched, {phone: true}))}>
+                {touched.phone && (phone.length === 0 || !validators.isPhoneNumber(`${countryCode}${phone}`)) && <div className="text-left invalid-field2">
                   {!phone.length ? t("COMMON.VALIDATION.REQUIRED", {field: t("AUTH.PHONE")}) : t("COMMON.VALIDATION.INVALID", {field: t("AUTH.PHONE")})}
                 </div>}
-              </MDBInputGroup>}
-              {!editing && <MDBInput label={t("AUTH.PHONE")} disabled background value={!!phone ? `${SAUDI_PHONE_PREFIX}${phone}`: ""} />}
+              </MDBInput>
             </MDBCol>
           </MDBRow>
         </div>
@@ -225,7 +240,7 @@ export default () => {
           <MDBAlert color={alert.color} dismiss onClosed={() => setAlert({})}>{alert.message}</MDBAlert>
         </CSSTransition>
         {!!editing && <div className="mt-4 mb-3 text-left">
-          <MDBBtn type="submit" color="indigo" className="z-depth-1a" disabled={loading || !validators.isEmail(email) || !username.length || username.length > USERNAME_MAX_LENGTH || !validators.isUsername(username) || !firstName.length || !lastName.length || !gender.length || !jobTitle.length || !sector.length || !company.length || !city.length || !phone.length || !validators.isPhoneNumber(SAUDI_PHONE_PREFIX + phone)}>
+          <MDBBtn type="submit" color="indigo" className="z-depth-1a" disabled={loading || !validators.isEmail(email) || !username.length || username.length > USERNAME_MAX_LENGTH || !validators.isUsername(username) || !firstName.length || !lastName.length || !gender.length || !jobTitle.length || !sector.length || !company.length || !city.length || !countryCode.length || !phone.length || !validators.isPhoneNumber(`${countryCode}${phone}`)}>
             {!loading && <MDBIcon icon={"save"} />}
             {!!loading && <div className="spinner-grow spinner-grow-sm" role="status"/>}
             {t("COMMON.BUTTON.SAVE")}

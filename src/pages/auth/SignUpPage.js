@@ -10,8 +10,6 @@ import {
   MDBDatePicker,
   MDBIcon,
   MDBInput,
-  MDBInputGroup,
-  MDBModalFooter,
   MDBRow,
   MDBSelect,
   MDBSelectInput,
@@ -22,9 +20,6 @@ import {useDispatch} from "react-redux";
 import {CSSTransition} from "react-transition-group";
 import {animateScroll as scroll} from "react-scroll";
 import {Helmet} from "react-helmet";
-
-// import "moment/locale/ar";
-
 import {
   ALERT_DANGER,
   DATE_FORMAT_ISO,
@@ -42,7 +37,11 @@ import {
   GENDER_MALE,
   isDev,
   PASSWORD_MIN_LENGTH,
-  SAUDI_PHONE_PREFIX,
+  PHONE_PREFIX_BAHRAIN,
+  PHONE_PREFIX_KUWAIT,
+  PHONE_PREFIX_OMAN,
+  PHONE_PREFIX_SAUDI_ARABIA,
+  PHONE_PREFIX_UAE,
   SUCCESS,
   TRANSITION_TIME,
   UNKNOWN_SERVER_ERROR,
@@ -50,11 +49,13 @@ import {
 } from "core/globals";
 import routes from "core/routes";
 import validators from "core/validators";
-import UserService from "services/UserService";
+import Service from "services/AuthService";
 import auth from "actions/auth";
 
 import "./SignUpPage.scss";
 import images from "../../core/images";
+
+// import "moment/locale/ar";
 
 export default (props) => {
   const dispatch = useDispatch();
@@ -75,6 +76,7 @@ export default (props) => {
   const [company, setCompany] = useState(isDev ? DEFAULT_COMPANY : "");
   // const [country, setCountry] = useState("");
   const [city, setCity] = useState(isDev ? DEFAULT_CITY : "");
+  const [countryCode, setCountryCode] = useState(isDev ? PHONE_PREFIX_SAUDI_ARABIA : "");
   const [phone, setPhone] = useState(isDev ? DEFAULT_PHONE : "");
   const [password, setPassword] = useState(isDev ? DEFAULT_PASSWORD : "");
   const [password2, setPassword2] = useState(isDev ? DEFAULT_PASSWORD : "");
@@ -90,9 +92,9 @@ export default (props) => {
 
     try {
       const birthdayStr = birthday.toISOString().substr(0, 10);
-      const params = {email, username, firstName, lastName, gender, birthday: birthdayStr, jobTitle, sector, company, city, phone, password};
+      const params = {email, username, firstName, lastName, gender, birthday: birthdayStr, jobTitle, sector, company, city, countryCode, phone, password};
       dispatch(auth.requestSignUp(params));
-      let res = await UserService.signUp(params);
+      let res = await Service.signUp(params);
       if (res.result === SUCCESS) {
         dispatch(auth.successSignUp(res.data));
       } else {
@@ -184,7 +186,7 @@ export default (props) => {
                   </div> }
                 </MDBCol>
                 <MDBCol md={6}>
-                  <MDBDatePicker format={DATE_FORMAT_ISO}  autoOk keyboard /*locale={moment.locale(t("CODE"))}*/ className="date-picker white grey-text" value={birthday} getValue={val => setBirthday(val)}
+                  <MDBDatePicker format={DATE_FORMAT_ISO} autoOk keyboard /*locale={moment.locale(t("CODE"))}*/ className="date-picker white grey-text" value={birthday} getValue={val => setBirthday(val)}
                                  // TextFieldComponent={<MDBInput label={t("AUTH.BIRTHDAY")}/>}
                   />
                   <label className="date-picker-label">{t("AUTH.BIRTHDAY")}</label>
@@ -223,21 +225,27 @@ export default (props) => {
                 </MDBCol>
               </MDBRow>
               <MDBRow>
-                {/*<MDBCol md={6}>{t("AUTH.PHONE")}</MDBCol>*/}
-                <MDBCol md={12}>
-                  <MDBInputGroup
-                    material
-                    type="text"
-                    // background
-                    prepend={<Fragment><span className="input-group-text md-addon white-text">{t("AUTH.PHONE")}</span><span className="input-group-text md-addon white-text">{SAUDI_PHONE_PREFIX}</span></Fragment>}
-                    // inputs={
-                    //   <MDBInput id="phone" name="phone" containerClass="mt-0 mb-0" value={phone} onChange={e => setPhone(e.target.value)} onBlur={() => setTouched(Object.assign({}, touched, {phone: true}))}/>}
-                    containerClassName="mt-3 mb-4 ltr-force"
-                    className="mt-0 mb-0 white" value={phone} getValue={setPhone} onBlur={() => setTouched(Object.assign({}, touched, {phone: true}))}>
-                    {(phone.length === 0 || !validators.isPhoneNumber(SAUDI_PHONE_PREFIX + phone)) && <div className="text-left invalid-field2">
+                <MDBCol md={6}>
+                  <MDBSelect label={t('AUTH.COUNTRY_CODE')} className="mt-3 mb-0 white" selected={[countryCode]} getValue={val => setCountryCode(val[0])} >
+                    <MDBSelectInput selected={[countryCode]} />
+                    <MDBSelectOptions>
+                      <MDBSelectOption value={PHONE_PREFIX_BAHRAIN} checked={countryCode === PHONE_PREFIX_BAHRAIN}>{PHONE_PREFIX_BAHRAIN} - {t("COMMON.GCC_COUNTRIES.BAHRAIN")}</MDBSelectOption>
+                      <MDBSelectOption value={PHONE_PREFIX_KUWAIT} checked={countryCode === PHONE_PREFIX_KUWAIT}>{PHONE_PREFIX_KUWAIT} - {t("COMMON.GCC_COUNTRIES.KUWAIT")}</MDBSelectOption>
+                      <MDBSelectOption value={PHONE_PREFIX_OMAN} checked={countryCode === PHONE_PREFIX_OMAN}>{PHONE_PREFIX_OMAN} - {t("COMMON.GCC_COUNTRIES.OMAN")}</MDBSelectOption>
+                      <MDBSelectOption value={PHONE_PREFIX_SAUDI_ARABIA} checked={countryCode === PHONE_PREFIX_SAUDI_ARABIA}>{PHONE_PREFIX_SAUDI_ARABIA} - {t("COMMON.GCC_COUNTRIES.SAUDI_ARABIA")}</MDBSelectOption>
+                      <MDBSelectOption value={PHONE_PREFIX_UAE} checked={countryCode === PHONE_PREFIX_UAE}>{PHONE_PREFIX_UAE} - {t("COMMON.GCC_COUNTRIES.UAWE")}</MDBSelectOption>
+                    </MDBSelectOptions>
+                  </MDBSelect>
+                  {!!countryCode && countryCode.length === 0 && <div className="text-left invalid-field2">
+                    {t("COMMON.VALIDATION.REQUIRED", {field: t("AUTH.COUNTRY_CODE")})}
+                  </div> }
+                </MDBCol>
+                <MDBCol md={6}>
+                  <MDBInput id="phone" name="phone" type="text" label={t("AUTH.PHONE")} background containerClass="mt-3 mb-0" value={phone} getValue={setPhone} onBlur={() => setTouched(Object.assign({}, touched, {phone: true}))}>
+                    {touched.phone && (phone.length === 0 || !validators.isPhoneNumber(`${countryCode}${phone}`)) && <div className="text-left invalid-field2">
                       {!phone.length ? t("COMMON.VALIDATION.REQUIRED", {field: t("AUTH.PHONE")}) : t("COMMON.VALIDATION.INVALID", {field: t("AUTH.PHONE")})}
                     </div>}
-                  </MDBInputGroup>
+                  </MDBInput>
                 </MDBCol>
               </MDBRow>
               <MDBRow>
@@ -265,7 +273,7 @@ export default (props) => {
               <MDBAlert color={alert.color} dismiss onClosed={() => setAlert({})}>{alert.message}</MDBAlert>
             </CSSTransition>
             <div className="text-center mt-4 mb-3 mx-5">
-              <MDBBtn type="submit" color="white" rounded className="full-width z-depth-1a blue-grey-text" disabled={loading || !validators.isEmail(email) || !username.length || username.length > USERNAME_MAX_LENGTH || !validators.isUsername(username) || !firstName.length || !lastName.length || !gender.length || !jobTitle.length || !sector.length || !company.length || !city.length || !phone.length || !password.length || password.length < PASSWORD_MIN_LENGTH || password2 !== password || password.length < PASSWORD_MIN_LENGTH }>
+              <MDBBtn type="submit" color="white" rounded className="full-width z-depth-1a blue-grey-text" disabled={loading || !validators.isEmail(email) || !username.length || username.length > USERNAME_MAX_LENGTH || !validators.isUsername(username) || !firstName.length || !lastName.length || !gender.length || !jobTitle.length || !sector.length || !company.length || !city.length || !countryCode.length || !phone.length || !validators.isPhoneNumber(`${countryCode}${phone}`) || !password.length || password.length < PASSWORD_MIN_LENGTH || password2 !== password || password.length < PASSWORD_MIN_LENGTH }>
                 {!loading && <MDBIcon icon={"user-plus"} />}
                 {!!loading && <div className="spinner-grow spinner-grow-sm" role="status"/>}
                 {t("AUTH.SIGN_UP")}
