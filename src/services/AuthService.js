@@ -40,5 +40,38 @@ export default {
     setHeader({Authorization: null});
     sessionStorage.removeItem(PERSIST_KEY);
     localStorage.removeItem(PERSIST_KEY);
-  }
+  },
+
+  sendForgotPasswordMail: (params) => {
+    return new Promise((resolve, reject) => {
+      fetch(POST, apis.auth.sendForgotPasswordMail, params)
+        .then(res => {
+          resolve(res);
+        }, err => {
+          reject(err);
+        });
+    });
+  },
+
+  validateToken: (params) => {
+    return new Promise((resolve, reject) => {
+      fetch(POST, apis.auth.validateToken, params)
+        .then(res => {
+          resolve(res);
+        }, err => {
+          reject(err);
+        });
+    });
+  },
+
+  resetPassword: (params) => {
+    return new Promise((resolve, reject) => {
+      fetch(POST, apis.auth.resetPassword, params)
+        .then(res => {
+          resolve(res);
+        }, err => {
+          reject(err);
+        });
+    });
+  },
 };

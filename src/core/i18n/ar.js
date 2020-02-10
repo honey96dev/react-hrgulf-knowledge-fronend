@@ -57,7 +57,7 @@ export default {
       ARABIC: 'العربية',
     },
     FILE_UPLOAD: {
-      DEFAULT: "انقر هنا أو اسحب وأسقاط الملف هنا",
+      DEFAULT: "انقر هنا أو اسحب وأسقط الملف هنا",
       REPLACE: "سحب وإسقاط أو انقر لاستبدال",
       REMOVE: "إزالة",
       ERROR: "عفوًا ، حدث خطأ ما",
@@ -129,6 +129,7 @@ export default {
     EMAIL: "البريد الإلكتروني",
     USERNAME: "اسم المستخدم",
     FIRST_NAME: "الاسم الاول",
+    FATHER_NAME: "اسم الأب",
     LAST_NAME: "اسم العائلة",
     GENDER: "الجنس",
     BIRTHDAY: "تاريخ الميلاد",
@@ -149,6 +150,7 @@ export default {
     FORGOT_PASSWORD: "هل نسيت كلمة المرور؟",
     ALREADY_REGISTERED: "مسجل بالفعل؟",
     NOT_REGISTERED: "غير مسجل؟",
+    RESET_PASSWORD: "إعادة تعيين كلمة المرور",
   },
   PROFILE: {
     PROFILE: "الملف الشخصي",

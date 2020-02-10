@@ -12,7 +12,7 @@ import MainPage from "./MainPage";
 import MyPostsPage from "./MyPostsPage";
 import MyPostDetailPage from "./MyPostDetailPage";
 
-import "./ProfilePage.scss";
+import "./RootPage.scss";
 
 export default (props) => {
   return (

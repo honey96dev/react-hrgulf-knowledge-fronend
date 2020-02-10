@@ -1,7 +1,7 @@
 import React, {Fragment, useEffect, useState} from "react";
 import {useTranslation} from "react-i18next";
 import {Link, useHistory} from "react-router-dom";
-import {MDBAlert, MDBBtn, MDBCard, MDBCardBody, MDBCol, MDBIcon, MDBInput, MDBRow} from "mdbreact";
+import {MDBAlert, MDBBtn, MDBCard, MDBCardBody, MDBCol, MDBContainer, MDBIcon, MDBInput, MDBRow} from "mdbreact";
 import {useDispatch, useSelector} from "react-redux";
 import {CSSTransition} from "react-transition-group";
 import {animateScroll as scroll} from "react-scroll";
@@ -82,8 +82,11 @@ export default (props) => {
       <Helmet>
         <title>{t("AUTH.SIGN_IN")} - {t("SITE_NAME")}</title>
       </Helmet>
+      <div className="admin-nav text-right">
+        <MDBBtn href={routes.admin2} size="sm" rounded color="indigo">{t("COMMON.BUTTON.ADMIN_PAGE")}</MDBBtn>
+      </div>
       <div className="text-center">
-        <img className="logo-img mb-5" src={images.ghcs_200}/>
+        <img className="logo-img mb-5" src={images.ghcs200}/>
       </div>
       <MDBCard className="auth-bg">
         <MDBCardBody className="mx-md-4 mx-sm-1">
@@ -133,7 +136,7 @@ export default (props) => {
               </MDBBtn>
             </div>
             <p className="font-small white-text d-flex justify-content-end pb-3">
-              <a className="ml-1">{t("AUTH.FORGOT_PASSWORD")}</a>
+              <Link className="ml-1 white-text" to={routes.auth.forgotPassword}>{t("AUTH.FORGOT_PASSWORD")}</Link>
             </p>
           </form>
         </MDBCardBody>

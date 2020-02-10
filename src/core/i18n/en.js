@@ -129,6 +129,7 @@ export default {
     EMAIL: "Email",
     USERNAME: "Username",
     FIRST_NAME: "First Name",
+    FATHER_NAME: "Father's Name",
     LAST_NAME: "Last Name",
     GENDER: "Gender",
     BIRTHDAY: "Birthday",
@@ -149,6 +150,7 @@ export default {
     FORGOT_PASSWORD: "Forgot password?",
     ALREADY_REGISTERED: "Already registered?",
     NOT_REGISTERED: "Not registered?",
+    RESET_PASSWORD: "Reset Password",
   },
   PROFILE: {
     PROFILE: "Profile",

@@ -18,6 +18,7 @@ export const UNKNOWN_SERVER_ERROR = "unknownServerError";
 export const PHONE_PREFIX_BAHRAIN = "+973";
 export const PHONE_PREFIX_KUWAIT = "+965";
 export const PHONE_PREFIX_OMAN = "+968";
+export const PHONE_PREFIX_QATAR = "+974";
 export const PHONE_PREFIX_SAUDI_ARABIA = "+966";
 export const PHONE_PREFIX_UAE = "+971";
 
@@ -42,9 +43,14 @@ export const TRANSITION_TIME = 500;
 export const FILEUPLOAD_MAXSIZE1 = "5M";
 export const FILEUPLOAD_MAXSIZE2 = "10M";
 
-export const PREFIX_CHECKBOX = 'C';
-export const PREFIX_INPUT = 'I';
-export const PREFIX_RADIO = 'R';
+export const PREFIX_CHECKBOX = "C";
+export const PREFIX_INPUT = "I";
+export const PREFIX_RADIO = "R";
+
+export const REQUIRED = "REQUIRED";
+export const INVALID = "INVALID";
+export const MIN_LENGTH = "MIN_LENGTH";
+export const MAX_LENGTH = "MAX_LENGTH";
 
 export const SCOPE_CURRENT = "current";
 
@@ -63,6 +69,7 @@ export const SOCIAL_WHATSAPP = "https://iwtsp.com/966566655007";
 export const DEFAULT_EMAIL = "honey96dev@gmail.com";
 export const DEFAULT_USERNAME = "honey96dev";
 export const DEFAULT_FIRST_NAME = "Zhenlong";
+export const DEFAULT_FATHER_NAME = "Xuan";
 export const DEFAULT_LAST_NAME = "Jin";
 // export const DEFAULT_GENDER = "M";
 // export const DEFAULT_BIRTHDAY = "1994-1-22";

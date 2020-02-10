@@ -10,6 +10,10 @@ $admin-nav-margin-top: 90px;
   margin-top: calc(#{$form-margin-top} - #{$admin-nav-margin-top});
 }
 
+.auth-bg .md-form .prefix.active {
+  color: #a1c2f4;
+}
+
 .back-to-top-container {
   right: 24px;
   bottom: 45px;

@@ -6,6 +6,9 @@ export default {
   auth: {
     signIn: "auth/sign-in",
     signUp: "auth/sign-up",
+    sendForgotPasswordMail: "auth/send-forgot-password-mail",
+    validateToken: "auth/validate-token",
+    resetPassword: "auth/reset-password",
   },
   profile: {
     avatar: "profile/avatar",

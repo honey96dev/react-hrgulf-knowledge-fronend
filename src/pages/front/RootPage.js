@@ -12,7 +12,7 @@ import BackToTop from "components/BackToTop";
 import routes from "core/routes";
 import images from "core/images";
 
-import "./FrontPage.scss";
+import "./RootPage.scss";
 
 export default () => {
   const {t} = useTranslation();
