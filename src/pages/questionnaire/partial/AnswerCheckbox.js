@@ -38,7 +38,7 @@ export default ({data, onUpdate}) => {
       <form>
         {data.answers.map((item, index) => (
           <div key={index} className="my-2">
-            <MDBInput onClick={e => handleCheck(Object.assign({}, values, {[item.id]: !values[item.id]}))} checked={values[item.id] || false} label={item.answer} type="checkbox" filled id={`checkbox${item.id}`} />
+            <MDBInput onClick={e => handleCheck(Object.assign({}, values, {[item.id]: !values[item.id]}))} checked={values[item.id] || false} label={item.answer} type="checkbox" filled id={`checkbox${item.id}`} labelClass="white-text" />
           </div>
         ))}
       </form>

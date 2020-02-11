@@ -25,7 +25,7 @@ export default ({data, onUpdate}) => {
         {data.answers.map((item, index) => (
           <Fragment key={index}>
             <MDBInput onClick={e => setValue(item.id)} checked={value === item.id} label={item.answer} type="radio"
-                      id={`radio${item.id}`} />
+                      id={`radio${item.id}`} labelClass="white-text"/>
           </Fragment>
         ))}
         <MDBBtn type="submit" size="sm" color="indigo" rounded className="mt-3" disabled={!value}>{t("VOTE.VOTE")}</MDBBtn>

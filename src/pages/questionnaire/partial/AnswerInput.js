@@ -36,7 +36,7 @@ export default ({data, onUpdate, onIsValid}) => {
       <form>
         <MDBInput id={`answer${data.id}`} name={`answer${data.id}`} type="text" background containerClass="my-0" label={t("QUESTIONNAIRE.ANSWER")} value={value}
                   getValue={handleUpdate} onBlur={() => setTouched(true)}>
-          {touched && !value.length && <div className="invalid-field">
+          {touched && !value.length && <div className="invalid-field2">
             {t("COMMON.VALIDATION.REQUIRED", {field: t("AUTH.EMAIL")})}
           </div>}
         </MDBInput>

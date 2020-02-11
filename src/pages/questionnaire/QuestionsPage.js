@@ -211,7 +211,7 @@ export default () => {
             <MDBAlert color={alert.color} dismiss onClosed={() => setAlert({})}>{alert.message}</MDBAlert>
           </CSSTransition>
         </MDBCol>
-        <MDBCol md={12}>
+        <MDBCol md={12} className="survey-card z-depth-1">
           <MDBStepper vertical className="text-left">
             {items.map((item, index) => (
               <MDBStep key={index} className="completed">
@@ -220,7 +220,7 @@ export default () => {
                   {/*{<span className="label text-left">{t("COMMON.COMPLETE.COMPLETED")}</span>}*/}
                 </a>
                 <Fragment>
-                  <div className="step-content grey lighten-4">
+                  <div className="step-content lighten-4 white-text">
                     <h6 className="mb-0">{item.question}</h6>
                   </div>
                   <div className="step-content mt-3">
