@@ -64,7 +64,7 @@ export default () => {
             <MDBIcon icon="file-pdf"/> {t("ABOUT.US.BROCHURE")}
           </MDBBtn>
         </div>}
-        {!!video.length && <video className="w-100 mx-auto mt-4" autoPlay={true} controls={true}>
+        {!!video.length && <video className="w-100 mx-auto mt-4" autoPlay={true} controls={true} loop={true}>
           <source src={video}/>
         </video>}
       </div>
