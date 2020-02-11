@@ -268,7 +268,7 @@ export default {
       QUESTIONNAIRE_DESCRIPTION: "One of the most important platforms in the knowledge portal aims to enable the Gulf community of human capital to determine the orientation of individuals through participation in the submitted questionnaires.",
       VOTE_DESCRIPTION: "As one of our goals is the Gulf leadership in human capital management solutions, the participation of individuals in us in improving and developing the services provided is invaluable.",
       CONTACT_US_DESCRIPTION: "This platform contains an easy-access method to communicate with those in charge of serving you in the Gulf Human Capital Society.",
-      BROCHURE: "Brochure",
+      BROCHURE: "Downloading Introduction File (PDF)",
     },
   },
 };
