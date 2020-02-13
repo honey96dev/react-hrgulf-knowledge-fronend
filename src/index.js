@@ -2,7 +2,10 @@ import React, {Suspense} from "react";
 import ReactDOM from "react-dom";
 import {Provider} from "react-redux";
 import {initStateWithPrevTab} from "redux-state-sync";
-import {PersistGate} from "redux-persist/integration/react";
+
+import "@fortawesome/fontawesome-pro/css/all.min.css";
+import "bootstrap-css-only/css/bootstrap.css";
+import "assets/mdb/scss/mdb.scss";
 
 import configureStore from "core/store";
 import registerServiceWorker from "core/registerServiceWorker";
@@ -10,9 +13,6 @@ import "core/i18n";
 import AppPage from "pages/AppPage";
 import Loading from "components/Loading";
 
-import "@fortawesome/fontawesome-pro/css/all.min.css";
-import "bootstrap-css-only/css/bootstrap.css";
-import "assets/scss/mdb.scss";
 import "assets/index.scss";
 
 
