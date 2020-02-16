@@ -225,6 +225,9 @@ export default {
     DETAIL: {
       VIDEO_DETAIL: "Educational Clip Detail",
     },
+    SECTIONS: {
+      SECTIONS: "Sections",
+    },
   },
   QUESTIONNAIRE: {
     QUESTIONNAIRE: "Questionnaire",

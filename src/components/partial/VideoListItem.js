@@ -41,7 +41,8 @@ export default ({id, date, time, author, url, title, isFile, detailLabel, detail
 
   return (
     <Fragment>
-      <MDBCol md={4} lg={3} className="mb-3">
+      <MDBCol md={4} className="mb-3">
+      {/*<MDBCol md={4} lg={3} className="mb-3">*/}
         <MDBCard className="card-container">
           {!!isFile && <MDBView hover className="rounded-top mb-0" onMouseEnter={play} onMouseLeave={pause}>
             <video ref={videoRef} className="video-fluid video-media" loop>

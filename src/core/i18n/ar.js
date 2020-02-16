@@ -225,6 +225,9 @@ export default {
     DETAIL: {
       VIDEO_DETAIL: "فيديو التفاصيل",
     },
+    SECTIONS: {
+      SECTIONS: "الأقسام",
+    },
   },
   QUESTIONNAIRE: {
     QUESTIONNAIRE: "الاستبيانات",

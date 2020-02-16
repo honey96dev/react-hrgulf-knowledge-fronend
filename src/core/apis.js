@@ -38,6 +38,7 @@ export default {
   video: {
     list: "video/list",
     get: "video/get",
+    sections: "video/sections",
   },
   questionnaire: {
     packages: "questionnaire/packages",

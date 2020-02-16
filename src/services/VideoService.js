@@ -24,4 +24,15 @@ export default {
         });
     });
   },
+
+  sections: (params) => {
+    return new Promise((resolve, reject) => {
+      fetch(POST, apis.video.sections, params)
+        .then(res => {
+          resolve(res);
+        }, err => {
+          reject(err);
+        });
+    });
+  },
 };
