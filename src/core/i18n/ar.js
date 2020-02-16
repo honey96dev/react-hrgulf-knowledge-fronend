@@ -29,6 +29,7 @@ export default {
       SUBMIT: "خضع",
       QUESTIONS: "الأسئلة",
       DELIVERY: "تسليم",
+      DOWNLOAD: "تحميل",
       ADMIN_PAGE: "بوابة المشرف",
     },
     VALIDATION: {
@@ -88,6 +89,7 @@ export default {
       POSTS: "المقالات",
       ADD: "أضف مقال",
       ALL: "جميع المقالات",
+      MAGAZINES: "المجلة الشهرية",
     },
     NEWS: "الأخبار",
     VIDEO: "المقاطع التعليمية",
@@ -200,6 +202,12 @@ export default {
       NO_COMMENT: "لا يوجد أي تعليق حتى الان",
     },
     LATEST_POSTS: "آخر المشاركات",
+    MAGAZINES: {
+      MAGAZINE_DETAIL: "مجلة التفاصيل",
+      DATE: "تاريخ",
+      TITLE: "عنوان",
+      DESCRIPTION: "وصف",
+    },
   },
   NEWS: {
     NEWS: "الأخبار",

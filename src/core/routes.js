@@ -26,6 +26,8 @@ export const routes = {
     add: "/posts/add",
     detail: "/posts/detail",
     comment: "/posts/comment",
+    magazines: "/posts/magazines",
+    magazineDetail: "/posts/magazine-detail",
   },
   news: {
     root: "/news",

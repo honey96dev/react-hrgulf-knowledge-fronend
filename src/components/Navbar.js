@@ -91,6 +91,7 @@ export default ({thresholdY}) => {
               </MDBDropdownToggle>
               <MDBDropdownMenu className="text-left">
                 <MDBDropdownItem onClick={() => history.push(routes.posts.all)}>{t("NAVBAR.POSTS.ALL")}</MDBDropdownItem>
+                <MDBDropdownItem onClick={() => history.push(routes.posts.magazines)}>{t("NAVBAR.POSTS.MAGAZINES")}</MDBDropdownItem>
                 <MDBDropdownItem onClick={() => history.push(routes.posts.add)}>{t("NAVBAR.POSTS.ADD")}</MDBDropdownItem>
               </MDBDropdownMenu>
             </MDBDropdown>

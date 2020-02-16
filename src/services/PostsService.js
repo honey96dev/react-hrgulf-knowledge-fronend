@@ -91,4 +91,26 @@ export default {
         });
     });
   },
+
+  magazines: (params) => {
+    return new Promise((resolve, reject) => {
+      fetch(POST, apis.posts.magazines, params)
+        .then(res => {
+          resolve(res);
+        }, err => {
+          reject(err);
+        });
+    });
+  },
+
+  getMagazine: (params) => {
+    return new Promise((resolve, reject) => {
+      fetch(POST, apis.posts.getMagazine, params)
+        .then(res => {
+          resolve(res);
+        }, err => {
+          reject(err);
+        });
+    });
+  },
 };

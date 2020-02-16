@@ -1,0 +1,64 @@
+import React, {Fragment} from "react";
+import {MDBBtn, MDBIcon} from "mdbreact";
+import {Link} from "react-router-dom";
+import {useTranslation} from "react-i18next";
+import {DESCRIPTION_LENGTH_BREAKPOINT} from "core/globals";
+
+import "./NewsListItem.scss";
+
+export default ({id, date, time, author, comments, media, title, description, detailLabel, detailLink}) => {
+  const {t} = useTranslation();
+  const desc = description.length > DESCRIPTION_LENGTH_BREAKPOINT ? description.substr(0, DESCRIPTION_LENGTH_BREAKPOINT) + " ..." : description;
+
+  return (
+    <Fragment>
+      {/*<MDBRow>*/}
+        {/*<MDBCol md="5" lg="5" xl="4">*/}
+        {/*  <MDBView hover className="rounded z-depth-1-half mb-lg-0 mb-4">*/}
+        {/*    {!!media.length && <img*/}
+        {/*      className="img-fluid post-media"*/}
+        {/*      src={media}*/}
+        {/*      alt=""*/}
+        {/*    />}*/}
+        {/*    {!media.length && <img*/}
+        {/*      className="img-fluid post-media"*/}
+        {/*      src={images.newsListitem}*/}
+        {/*      alt=""*/}
+        {/*    />}*/}
+        {/*    <Link to={`${detailLink}/${id}`}>*/}
+        {/*      <MDBMask overlay="white-slight" />*/}
+        {/*    </Link>*/}
+        {/*  </MDBView>*/}
+        {/*</MDBCol>*/}
+        {/* <MDBCol md="7" lg="7" xl="8">*/}
+          <h3 className="font-weight-bold mb-3 p-0">
+            <Link to={`${detailLink}/${id}`}>
+              <strong>{title}</strong>
+            </Link>
+          </h3>
+          <div className="infor-section">
+            <p className="mr-2">
+              <span className="mr-2"><MDBIcon icon="calendar-alt"/></span>
+              {date}
+            </p>
+            <p className="mr-2">{time}</p>
+            {/*<p>{t("DIRECTION") === "ltr" ? "/" : "\\"}</p>*/}
+            {/*<p className="mx-2">*/}
+            {/*  <span className="mr-2"><MDBIcon icon="user"/></span>*/}
+            {/*  {author}*/}
+            {/*</p>*/}
+          </div>
+          <p className="dark-grey-text">{desc}</p>
+          {/*<p>*/}
+          {/*  by <a href="#!" className="font-weight-bold">Jessica Clark</a>, 19/04/2018*/}
+          {/*</p>*/}
+          <Link to={`${detailLink}/${id}`}>
+            <MDBBtn size="sm" color="indigo" flat>
+              {detailLabel}
+            </MDBBtn>
+          </Link>
+      {/*  </MDBCol>*/}
+      {/*</MDBRow>*/}
+    </Fragment>
+  );
+};

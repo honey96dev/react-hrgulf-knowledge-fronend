@@ -29,6 +29,7 @@ export default {
       SUBMIT: "Submit",
       QUESTIONS: "Questions",
       DELIVERY: "Delivery",
+      DOWNLOAD: "Download",
       ADMIN_PAGE: "Admin Portal",
     },
     VALIDATION: {
@@ -88,6 +89,7 @@ export default {
       POSTS: "Articles",
       ADD: "Add Articles",
       ALL: "All Articles",
+      MAGAZINES: "Monthly Magazines",
     },
     NEWS: "News",
     VIDEO: "Educational Clips",
@@ -200,6 +202,12 @@ export default {
       NO_COMMENT: "There is no comment yet",
     },
     LATEST_POSTS: "Latest Articles",
+    MAGAZINES: {
+      MAGAZINE_DETAIL: "Magazine Detail",
+      DATE: "Date",
+      TITLE: "Title",
+      DESCRIPTION: "Description",
+    },
   },
   NEWS: {
     NEWS: "News",

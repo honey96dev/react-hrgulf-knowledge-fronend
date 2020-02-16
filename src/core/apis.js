@@ -26,6 +26,8 @@ export default {
     commentList: "posts/comment-list",
     writeComment: "posts/write-comment",
     topics: "posts/topics",
+    magazines: "posts/magazines",
+    getMagazine: "posts/get-magazine",
   },
   news: {
     list: "news/list",

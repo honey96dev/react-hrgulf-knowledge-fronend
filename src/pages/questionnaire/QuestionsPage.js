@@ -1,17 +1,7 @@
 import React, {Fragment, useEffect, useMemo, useState} from "react";
 import {Link, useHistory, useParams} from "react-router-dom";
 import {useSelector} from "react-redux";
-import {
-  MDBAlert,
-  MDBBreadcrumb,
-  MDBBreadcrumbItem,
-  MDBBtn,
-  MDBCol,
-  MDBIcon,
-  MDBRow,
-  MDBStep,
-  MDBStepper
-} from "mdbreact";
+import {MDBAlert, MDBBreadcrumb, MDBBreadcrumbItem, MDBBtn, MDBCol, MDBRow, MDBStep, MDBStepper} from "mdbreact";
 import {useTranslation} from "react-i18next";
 import {animateScroll as scroll} from "react-scroll";
 import {Helmet} from "react-helmet";
@@ -19,15 +9,7 @@ import {CSSTransition} from "react-transition-group";
 
 import Loading from "components/Loading";
 import Service from "services/QuestionnaireService";
-import {
-  ALERT_DANGER,
-  ALERT_SUCCESS,
-  PREFIX_CHECKBOX,
-  PREFIX_INPUT,
-  SCOPE_CURRENT,
-  SUCCESS,
-  TRANSITION_TIME
-} from "core/globals";
+import {ALERT_DANGER, ALERT_SUCCESS, PREFIX_CHECKBOX, PREFIX_INPUT, SUCCESS, TRANSITION_TIME} from "core/globals";
 import routes from "core/routes";
 import AnswerCheckbox from "./partial/AnswerCheckbox";
 import AnswerInput from "./partial/AnswerInput";
