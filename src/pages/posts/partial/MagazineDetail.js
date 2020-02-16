@@ -2,8 +2,9 @@ import React, {Fragment} from "react";
 import {useTranslation} from "react-i18next";
 import {MDBBtn, MDBIcon} from "mdbreact";
 
+import GlobalService from "services/GlobalService";
+
 import "./MagazineDetail.scss";
-import GlobalService from "../../../services/GlobalService";
 
 export default ({data}) => {
   const {t} = useTranslation();

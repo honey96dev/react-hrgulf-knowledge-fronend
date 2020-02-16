@@ -1,6 +1,7 @@
 import {isDev} from "core/globals";
 
 export default {
+  origin: isDev ? "http://localhost:8080" : "https://knowledge.hrgulf.org",
   baseUrl: isDev ? "http://localhost:8080/api/" : "/api/",
   assetsBaseUrl: isDev ? "http://localhost:8080/assets/" : "/assets/",
   auth: {

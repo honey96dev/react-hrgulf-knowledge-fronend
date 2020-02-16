@@ -1,8 +1,12 @@
 import fetch from "apis/fetch";
 import {GET} from "apis/constants";
+import apis from "core/apis";
 
 export default {
   downloadFile: ({url, filename, params}) => {
+    if (!url.startsWith("http")) {
+      url = `${apis.origin}${url}`;
+    }
     return new Promise((resolve, reject) => {
       fetch(GET, url, params, {Accept: "application/pdf"}, {responseType: "blob"})
         .then(res => {

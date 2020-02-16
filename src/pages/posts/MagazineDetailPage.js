@@ -37,8 +37,9 @@ export default ({}) => {
     Service.getMagazine({id, userId: !!auth.user ? auth.user.id : undefined})
       .then(res => {
         if (res.result === SUCCESS) {
-          !!res.data["media"].length && (res.data["media"] = (res.data["media"].startsWith("http://") || res.data["media"].startsWith("https://")) ? res.data["media"] : sprintf("%s%s", apis.assetsBaseUrl, res.data["media"]));
+          !!res.data["media"].length && (res.data["media"] = sprintf("%s%s", apis.assetsBaseUrl, res.data["media"]));
           setData(res.data);
+          console.log(res.data);
         } else {
           setAlert({
             show: true,
