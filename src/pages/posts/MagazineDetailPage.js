@@ -14,7 +14,7 @@ import Loading from "components/Loading";
 import Error404 from "components/Error404";
 import MagazineDetail from "./partial/MagazineDetail";
 import Service from "services/PostsService";
-import LatestNews from "components/LatestNews";
+import LatestMagazines from "components/LatestMagazines";
 
 import "./MagazineDetailPage.scss";
 
@@ -85,7 +85,7 @@ export default ({}) => {
             {/*  <LatestPosts detailLink={routes.posts.detail} detailLabel={t("COMMON.BUTTON.DETAILS")}/>*/}
             {/*</div>*/}
             <div className="mt-10">
-              <LatestNews detailLink={routes.news.detail} detailLabel={t("COMMON.BUTTON.DETAILS")}/>
+              <LatestMagazines detailLink={routes.news.detail} detailLabel={t("COMMON.BUTTON.DETAILS")}/>
             </div>
           </MDBCol>
         </MDBRow>

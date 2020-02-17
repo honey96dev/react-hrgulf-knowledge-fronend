@@ -29,6 +29,7 @@ export default {
     topics: "posts/topics",
     magazines: "posts/magazines",
     getMagazine: "posts/get-magazine",
+    latestMagazines: "posts/latest-magazines",
   },
   news: {
     list: "news/list",

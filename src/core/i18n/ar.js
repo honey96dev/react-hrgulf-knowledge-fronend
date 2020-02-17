@@ -207,6 +207,7 @@ export default {
       DATE: "تاريخ",
       TITLE: "عنوان",
       DESCRIPTION: "وصف",
+      LATEST_MAGAZINES: "أحدث المجلات",
     },
   },
   NEWS: {

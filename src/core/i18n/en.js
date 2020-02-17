@@ -207,6 +207,7 @@ export default {
       DATE: "Date",
       TITLE: "Title",
       DESCRIPTION: "Description",
+      LATEST_MAGAZINES: "Latest Magazines",
     },
   },
   NEWS: {

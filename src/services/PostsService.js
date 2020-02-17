@@ -113,4 +113,15 @@ export default {
         });
     });
   },
+
+  latestMagazines: (params) => {
+    return new Promise((resolve, reject) => {
+      fetch(POST, apis.posts.latestMagazines, params)
+        .then(res => {
+          resolve(res);
+        }, err => {
+          reject(err);
+        });
+    });
+  },
 };
