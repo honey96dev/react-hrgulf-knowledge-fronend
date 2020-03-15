@@ -238,7 +238,7 @@ export default () => {
                 </MDBStep>
               ))}
             </MDBStepper>
-            {!loading && <div className="md-form">
+            {!loading && !!requireAttachment && <div className="md-form">
               <div id="file" className="fileupload-wrapper mx-auto">
                 <p className="text-white">{t("QUESTIONNAIRE.ATTACHMENT")}</p>
                 <MDBFileupload
