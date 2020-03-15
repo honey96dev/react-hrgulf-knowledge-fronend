@@ -235,6 +235,7 @@ export default {
     PACKAGES: "حزم الاستبيان",
     PACKAGE: "حزمة الاستبيان",
     QUESTIONS: "أسئلة الاستبيان",
+    ATTACHMENT: "المرفق",
     RESULT: "نتيجة الاستبيان",
     ANSWER: "إجابة",
     NO_DATA: "لا يوجد استبيانات في الوقت الحالي",

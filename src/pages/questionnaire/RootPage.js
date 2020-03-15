@@ -21,7 +21,7 @@ export default () => {
       <MDBContainer className={"section"}>
         <Switch>
           <Route path={`${routes.questionnaire.all}/:scope/:page?`} exact component={PackagesPage}/>
-          <SignedInRoute path={`${routes.questionnaire.questions}/:packageId/:page?/:page2?`} exact component={QuestionsPage}/>
+          <Route path={`${routes.questionnaire.questions}/:packageId/:page?/:page2?`} exact component={QuestionsPage}/>
           <Route path={`${routes.questionnaire.result}/:packageId/:page?/:page2?`} exact component={ResultPage}/>
           <Route component={Error404}/>
         </Switch>

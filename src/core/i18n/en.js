@@ -235,6 +235,7 @@ export default {
     PACKAGES: "Questionnaire Packages",
     PACKAGE: "Questionnaire Package",
     QUESTIONS: "Questionnaire Questions",
+    ATTACHMENT: "Attachment",
     RESULT: "Questionnaire Result",
     ANSWER: "Answer",
     NO_DATA: "There are no questionnaires at the moment",

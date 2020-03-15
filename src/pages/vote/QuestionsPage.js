@@ -163,25 +163,27 @@ export default () => {
             <MDBAlert color={alert.color} dismiss onClosed={() => setAlert({})}>{alert.message}</MDBAlert>
           </CSSTransition>
         </MDBCol>
-        <MDBCol md={12} className="survey-card z-depth-1">
-          <MDBStepper vertical className="text-left">
-            {items.map((item, index) => (
-              <MDBStep key={index} className={`${!!item.answered || index <= lastIndex ? "completed" : ""}`}>
-                <a onClick={e => (!!item.answered || index <= lastIndex) && setCurrentIndex(index)}>
-                  <span className="circle">{index + 1}</span>
-                  {!!item.answered && <span className="label text-left white-text">{t("COMMON.COMPLETE.COMPLETED")}</span>}
-                </a>
-                {index === currentIndex && <Fragment>
-                  <div className="step-content lighten-4 white-text">
-                    <h6 className="mb-0">{item.question}</h6>
-                  </div>
-                  <div className="step-content mt-3">
-                    <AnswerList data={item} onUpdate={handleUpdate}/>
-                  </div>
-                </Fragment>}
-              </MDBStep>
-            ))}
-          </MDBStepper>
+        <MDBCol md={12}>
+          <div className="survey-card z-depth-1">
+            <MDBStepper vertical className="text-left">
+              {items.map((item, index) => (
+                <MDBStep key={index} className={`${!!item.answered || index <= lastIndex ? "completed" : ""}`}>
+                  <a onClick={e => (!!item.answered || index <= lastIndex) && setCurrentIndex(index)}>
+                    <span className="circle">{index + 1}</span>
+                    {!!item.answered && <span className="label text-left white-text">{t("COMMON.COMPLETE.COMPLETED")}</span>}
+                  </a>
+                  {index === currentIndex && <Fragment>
+                    <div className="step-content lighten-4 white-text">
+                      <h6 className="mb-0">{item.question}</h6>
+                    </div>
+                    <div className="step-content mt-3">
+                      <AnswerList data={item} onUpdate={handleUpdate}/>
+                    </div>
+                  </Fragment>}
+                </MDBStep>
+              ))}
+            </MDBStepper>
+          </div>
         </MDBCol>
       </MDBRow>}
     </Fragment>
