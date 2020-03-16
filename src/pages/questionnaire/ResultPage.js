@@ -7,11 +7,12 @@ import {animateScroll as scroll} from "react-scroll";
 import {Helmet} from "react-helmet";
 import {CSSTransition} from "react-transition-group";
 
+import {ALERT_DANGER, SUCCESS, TRANSITION_TIME} from "core/globals";
+import routes from "core/routes";
+import FakeUserId from "helpers/FakeUserId";
 import Loading from "components/Loading";
 import Pagination from "components/Pagination";
 import Service from "services/QuestionnaireService";
-import {ALERT_DANGER, SUCCESS, TRANSITION_TIME} from "core/globals";
-import routes from "core/routes";
 import Result from "./partial/Result";
 
 import "./ResultPage.scss";
@@ -40,7 +41,7 @@ export default () => {
   }, [page, t]);
 
   const loadData = e => {
-    Service.getPackage({packageId})
+    Service.getPackage({packageId, userId: !!auth.user ? auth.user.id : FakeUserId()})
       .then(res => {
         if (res.result === SUCCESS) {
           setPackageData(res.data);
@@ -60,7 +61,7 @@ export default () => {
           message: t('COMMON.ERROR.UNKNOWN_SERVER_ERROR'),
         });
       });
-    Service.result({packageId, page})
+    Service.result({packageId, page, userId: !!auth.user ? auth.user.id : FakeUserId()})
       .then(res => {
         if (res.result === SUCCESS) {
           setPageCount(res.pageCount);

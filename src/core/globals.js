@@ -51,6 +51,7 @@ export const REQUIRED = "REQUIRED";
 export const INVALID = "INVALID";
 export const MIN_LENGTH = "MIN_LENGTH";
 export const MAX_LENGTH = "MAX_LENGTH";
+export const FAKE_USER_ID = "FAKE_USER_ID";
 
 export const SCOPE_CURRENT = "current";
 

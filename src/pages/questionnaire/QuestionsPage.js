@@ -8,10 +8,11 @@ import {useTranslation} from "react-i18next";
 import {animateScroll as scroll} from "react-scroll";
 import {Helmet} from "react-helmet";
 import {CSSTransition} from "react-transition-group";
+import {v4 as uuid} from "uuid";
 
 import {
   ALERT_DANGER,
-  ALERT_SUCCESS,
+  ALERT_SUCCESS, FAKE_USER_ID,
   FILEUPLOAD_MAXSIZE1,
   PREFIX_CHECKBOX,
   PREFIX_INPUT,
@@ -22,6 +23,7 @@ import ext2mime from "core/ext2mime";
 import routes from "core/routes";
 import Loading from "components/Loading";
 import MakeFilePreview from "components/MakeFilePreview";
+import FakeUserId from "helpers/FakeUserId";
 import Service from "services/QuestionnaireService";
 import AnswerCheckbox from "./partial/AnswerCheckbox";
 import AnswerInput from "./partial/AnswerInput";
@@ -59,7 +61,7 @@ export default () => {
 
   const loadData = e => {
     setLoading(true);
-    Service.getPackage({packageId})
+    Service.getPackage({packageId, userId: !!auth.user ? auth.user.id : FakeUserId()})
       .then(res => {
         if (res.result === SUCCESS) {
           const {name, requireAttachment, attachment} = res.data;
@@ -89,7 +91,7 @@ export default () => {
       });
 
     setLoading2(true);
-    Service.questions({packageId, page, userId: auth.user && auth.user.id})
+    Service.questions({packageId, page, userId: auth.user ? auth.user.id : FakeUserId()})
       .then(res => {
         if (res.result === SUCCESS) {
           setItems(res.data);
@@ -129,7 +131,11 @@ export default () => {
   const handleSubmit = e => {
     const formData = new FormData();
     formData.append("questionnaireId", packageId);
-    auth.user && formData.append("userId", auth.user.id);
+    if (auth.user) {
+      formData.append("userId", auth.user.id);
+    } else {
+      formData.append("userId", FakeUserId());
+    }
     formData.append("packageId", packageId);
     formData.append("answers", JSON.stringify(answers));
     file && formData.append("file", file);
