@@ -36,6 +36,7 @@ export default () => {
   const {auth} = useSelector(state => state);
 
   const [loading, setLoading] = useState(true);
+  const [loading2, setLoading2] = useState(true);
   const [alert, setAlert] = useState({});
 
   const [pageCount, setPageCount] = useState(0);
@@ -57,13 +58,14 @@ export default () => {
   const itemsCount = items.length - 1;
 
   const loadData = e => {
+    setLoading(true);
     Service.getPackage({packageId})
       .then(res => {
         if (res.result === SUCCESS) {
           const {name, requireAttachment, attachment} = res.data;
           setPackageName(name);
           setRequireAttachment(requireAttachment);
-          setAttachment(!!attachment ? `${apis.assetsBaseUrl}${attachment}` : "");
+          // setAttachment(!!attachment ? `${apis.assetsBaseUrl}${attachment}` : "");
           setAlert({
             ...alert,
             show: false,
@@ -75,6 +77,7 @@ export default () => {
             message: res.message,
           });
         }
+        setLoading(false);
       })
       .catch(err => {
         setAlert({
@@ -82,13 +85,20 @@ export default () => {
           color: ALERT_DANGER,
           message: t('COMMON.ERROR.UNKNOWN_SERVER_ERROR'),
         });
+        setLoading(false);
       });
 
+    setLoading2(true);
     Service.questions({packageId, page, userId: auth.user && auth.user.id})
       .then(res => {
         if (res.result === SUCCESS) {
           setItems(res.data);
           setPageCount(res.pageCount);
+          let answers = {};
+          for (let item of res.data) {
+            answers = Object.assign({}, answers, {[item.id]: {type: item.type, answer: item.type === PREFIX_INPUT ? "" : []}});
+          }
+          setAnswers(answers);
           setAlert({
             ...alert,
             show: false,
@@ -100,7 +110,7 @@ export default () => {
             message: res.message,
           });
         }
-        setLoading(false);
+        setLoading2(false);
       })
       .catch(err => {
         setAlert({
@@ -108,7 +118,7 @@ export default () => {
           color: ALERT_DANGER,
           message: t('COMMON.ERROR.UNKNOWN_SERVER_ERROR'),
         });
-        setLoading(false);
+        setLoading2(false);
       });
   };
 
@@ -203,11 +213,11 @@ export default () => {
         <MDBBreadcrumbItem><Link to={`${routes.questionnaire.current}/${page2}`}>{t('NAVBAR.QUESTIONNAIRE.CURRENT')}</Link></MDBBreadcrumbItem>
         <MDBBreadcrumbItem active>{t('QUESTIONNAIRE.QUESTIONS')}</MDBBreadcrumbItem>
       </MDBBreadcrumb>
-      {!!loading && <Loading/>}
-      {!loading && !items.length && <Fragment>
+      {!!loading && !!loading2 && <Loading/>}
+      {!loading && !!loading2 && !items.length && <Fragment>
         <h4 className="text-primary font-weight-bold no-data-section p-0 text-center">{t("COMMON.ERROR.NO_DATA")}</h4>
       </Fragment>}
-      {!loading && !!items.length && <MDBRow>
+      {!loading && !loading2 && !!items.length && <MDBRow>
         <MDBCol md={12}>
           <h3 className="mt-4 font-weight-bold text-center h3-response">{t('QUESTIONNAIRE.QUESTIONNAIRE')}</h3>
           <p className="text-left"><span className="font-weight-bold">{t("QUESTIONNAIRE.PACKAGE")}: </span>{packageName}</p>
@@ -238,7 +248,7 @@ export default () => {
                 </MDBStep>
               ))}
             </MDBStepper>
-            {!loading && !!requireAttachment && <div className="md-form">
+            {!loading && !loading2 && !!requireAttachment && <div className="md-form">
               <div id="file" className="fileupload-wrapper mx-auto">
                 <p className="text-white">{t("QUESTIONNAIRE.ATTACHMENT")}</p>
                 <MDBFileupload

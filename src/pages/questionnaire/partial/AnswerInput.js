@@ -14,14 +14,16 @@ export default ({data, onUpdate, onIsValid}) => {
   const [value, setValue] = useState('');
 
   useEffect(e => {
+    let value = "";
     if (!!data.answered) {
       for (let answer of data.answers) {
         if (data.answered[0] === answer.id) {
-          setValue(answer.answer);
-          handleUpdate(answer.answer);
+          value = answer.answer;
         }
       }
     }
+    setValue(value);
+    handleUpdate(value);
   }, [data]);
 
   const handleUpdate = e => {
