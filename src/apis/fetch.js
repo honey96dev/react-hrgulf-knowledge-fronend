@@ -1,6 +1,5 @@
 import axios from "axios";
 import {DELETE, GET, PATCH, POST, PUT} from "./constants";
-import apis from "../core/apis";
 
 let CancelToken = axios.CancelToken;
 
@@ -28,7 +27,7 @@ const getJsonBody = (params) => {
 };
 
 export const setBaseUrl = (value) => {
-  axios.defaults.baseURL = apis.baseUrl;
+  axios.defaults.baseURL = value;
 };
 
 export const setHeader = (params) => {
